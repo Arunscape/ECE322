@@ -1,0 +1,98 @@
+%preamble
+\documentclass[letterpaper]{article}
+\synctex=1
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{lipsum}
+\usepackage{float}
+% \bibliographystyle{IEEEtran}
+% \bibliographystyle{ieeetr}
+
+\usepackage{amssymb}
+
+\usepackage{siunitx}
+
+\usepackage{multirow}
+% for merging table cells I think
+
+\usepackage{tabularx}
+% allows for linewrap within cells
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\usepackage{todonotes}
+
+
+\usepackage{fancyhdr} %header
+\fancyhf{}
+\fancyhead[R]{Arun Woosaree XXXXXXX}
+\renewcommand\headrulewidth{0pt}
+\fancyfoot[C]{\thepage}
+\renewcommand\footrulewidth{0pt}
+\pagestyle{fancy}
+
+% make subsection use letters
+\renewcommand{\thesubsection}{\thesection\ \alph{subsection})}
+
+
+% \usepackage{amsthm}
+
+%actual document
+\begin{document}
+
+% \maketitle %insert titlepage here
+\begin{titlepage}
+ \begin{center}
+  \vspace*{1cm}
+  \Huge
+  ECE 322
+  \vspace{1cm}
+  
+  Assignment 1
+  \vspace{1cm}
+  
+  Arun Woosaree
+  
+  \today
+  \vfill
+ \end{center}
+\end{titlepage}
+
+\section{}
+After reading the two papers, the two most essential factors which make software testing difficult in my opinion is: 
+
+\begin{enumerate}
+	\item human nature
+	\item the always changing nature of software
+\end{enumerate}
+
+\section{}
+
+\begin{itemize}
+	\item Functionality
+		Does the software allow the vehicle to work autonomously, without human input? 
+		Does it do so in an acceptable manner? 
+		(i.e. safely, and reaching the destination in about the same amount of time as a good human driver would do, or better.
+	\item Performance and reliability
+		Does the software still control the vehicle in an acceptable manner in more difficult situations?
+		If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the softare still behave reliably?
+		It should work on both highways and in city driving conditions. 
+		It should still control the vehicle reliable when conditions are non-ideal.
+		(i.e. it would be unnaceptable for the system to lose control on slippery roads)
+	\item Efficiency
+	\item Maintainability
+	\item Usability
+	\item Portability
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c|}
+Risk Category & Technical Risk & Business Risk \\ \hline
+Risk 1 &  &  \\ \hline
+Risk 2 &  &  \\ \hline
+Risk 3 &  &  \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}
