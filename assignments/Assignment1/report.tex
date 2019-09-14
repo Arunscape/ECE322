@@ -6,8 +6,14 @@
 
 \usepackage{lipsum}
 \usepackage{float}
-% \bibliographystyle{IEEEtran}
-% \bibliographystyle{ieeetr}
+
+\usepackage[
+    style=ieee,
+    backend=biber
+    ]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{hyperref}
 
 \usepackage{amssymb}
 
@@ -119,4 +125,39 @@ Risk 3 &  &  \\ \hline
 \end{tabular}
 \end{table}
 
+\section{}
+
+\begin{enumerate}
+	\item Reliability
+	\item Correctness
+	\item Usability
+	\item Efficiency
+\end{enumerate}
+
+\section{}
+
+
+	\subsection*{Feature Description}
+
+	\subsubsection*{Boeing 737 MAX flight control system}
+
+	\subsection*{Nature of Software Failure}
+
+	\subsection*{Any testing efforts regarding the failure?}
+	apparently it was ``only'' classified as a “major failure,” meaning that it could cause physical distress to people on the plane, but not death. \cite{gates_2019}
+
+	\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
+
+	\section{todo, read these articles}
+	\begin{itemize}
+		\item https://spectrum.ieee.org/aerospace/aviation/how-the-boeing-737-max-disaster-looks-to-a-software-developer
+		\item https://www.bloomberg.com/news/articles/2019-06-28/boeing-s-737-max-software-outsourced-to-9-an-hour-engineers
+		\item https://www.bloomberg.com/news/articles/2019-07-27/latest-737-max-fault-that-alarmed-test-pilots-rooted-in-software
+		\item https://www.google.com/search?q=boeing+737+max+software+testing&oq=boeing+737+max+software+testing&aqs=chrome..69i57.6818j0j0&sourceid=chrome&ie=UTF-8
+		\item https://www.businessinsider.com/boeing-knew-737-max-software-error-year-before-telling-faa-2019-5
+		\item https://www.cnn.com/2019/06/26/politics/boeing-737-max-flaw/index.html
+		\item https://www.theverge.com/2019/5/2/18518176/boeing-737-max-crash-problems-human-error-mcas-faa
+	\end{itemize}
+\nocite{*}
+\printbibliography
 \end{document}
