@@ -68,7 +68,15 @@
 After reading the two papers, the two most essential factors which make software testing difficult in my opinion is: 
 
 \begin{enumerate}
-	\item human nature
+	\item Human nature\\
+		In my opinion, people are generally lazy. In terms of software testing, this means that in some cases,
+		people will tend to write enough tests to convince themselves that their program is correct, or 
+		In some cases they might even refuse to write tests once they have some code that in their mind already works, 
+		so there is no percieved need to test the software.
+		This is probably because most programmers experience a significant mental reward when they finally get a program `working'.
+		However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
+		Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
+		their program is already working as expected.
 	\item the always changing nature of software
 \end{enumerate}
 
@@ -101,7 +109,9 @@ After reading the two papers, the two most essential factors which make software
 	\item Is the software well-documented?
 		\item How easy is it to add functionality to the software? (e.g. if new driving laws have to be followed, how easy will it be to add a patch to be in compliance)
 		\item How much technical debt exists in the software project
-		\item When faults\todo{check if this is the right word} are found, how easy is it to fix them?
+		\item When faults
+		% \todo{check if this is the right word} 
+		are found, how easy is it to fix them?
 	\end{itemize}
 	\item Usability
 	\begin{itemize}	
@@ -128,10 +138,10 @@ Risk 3 &  &  \\ \hline
 \section{}
 
 \begin{enumerate}
-	\item Reliability
-	\item Correctness
-	\item Usability
-	\item Efficiency
+	\item Reliability (Operation factor)
+	\item Interoperability (Transition factor)
+	\item Usability (Operation factor)
+	\item Efficiency (Operation factor)
 \end{enumerate}
 
 \section{}
