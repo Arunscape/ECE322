@@ -1,4 +1,3 @@
-%preamble
 \documentclass[letterpaper]{article}
 \synctex=1
 \usepackage{graphicx}
@@ -168,20 +167,23 @@ customers, and other stakeholders
 	\subsection*{Nature of Software Failure}
 
 	\subsection*{Any testing efforts regarding the failure?}
-	apparently it was ``only'' classified as a “major failure,” meaning that it could cause physical distress to people on the plane, but not death. \cite{gates_2019}
+	apparently it was ``only'' classified as a “major failure,” meaning that it could cause physical distress to people on the plane, but not death. 
+	\cite{gates_2019}
 
 	\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
 
-	\section{todo, read these articles}
-	\begin{itemize}
-		\item https://spectrum.ieee.org/aerospace/aviation/how-the-boeing-737-max-disaster-looks-to-a-software-developer
-		\item https://www.bloomberg.com/news/articles/2019-06-28/boeing-s-737-max-software-outsourced-to-9-an-hour-engineers
-		\item https://www.bloomberg.com/news/articles/2019-07-27/latest-737-max-fault-that-alarmed-test-pilots-rooted-in-software
-		\item https://www.google.com/search?q=boeing+737+max+software+testing&oq=boeing+737+max+software+testing&aqs=chrome..69i57.6818j0j0&sourceid=chrome&ie=UTF-8
-		\item https://www.businessinsider.com/boeing-knew-737-max-software-error-year-before-telling-faa-2019-5
-		\item https://www.cnn.com/2019/06/26/politics/boeing-737-max-flaw/index.html
-		\item https://www.theverge.com/2019/5/2/18518176/boeing-737-max-crash-problems-human-error-mcas-faa
-	\end{itemize}
+	\section{Notes}
+	To make their new plane more efficient, Boeing added larger engines to the 737 MAX. 
+	To compensate for ground clearance, they moved the engines further in front of the wings,
+	which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings, which makes
+	changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software, 
+	so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
+	The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall. 
+	Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
+	they look out the window and conclude that the plane is in fact, not stalling. 
+
+
+
 \nocite{*}
 \printbibliography
 \end{document}
