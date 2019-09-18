@@ -77,7 +77,9 @@ After reading the two papers, the two most essential factors which make software
 		However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
 		Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
 		their program is already working as expected.
+
 	\item the always changing nature of software
+
 \end{enumerate}
 
 \section{}
@@ -88,8 +90,8 @@ After reading the two papers, the two most essential factors which make software
 	\begin{itemize}
 		\item Does the software allow the vehicle to work autonomously, without human input? 
 		\item Does it do so in an acceptable manner? 
-		\item (i.e. does it reach the destination in about the same amount of time as a good human driver would do or better?
-		\item does it do it as safe as, or better than a good human driver?)
+		\item (i.e. does it reach the destination in about the same amount of time as a good human driver would do or better?\\
+		 Does it do it as safe as, or better than a good human driver?)
 	\end{itemize}
 	\item Performance and reliability
 	\begin{itemize}
@@ -103,8 +105,8 @@ After reading the two papers, the two most essential factors which make software
 	\begin{itemize}
 		\item Does the software utilize its resources efficiently?
 		\item Does the software respond quickly enough to its environment?
+	\end{itemize}
 	\item Maintainability
-\end{itemize}
 	\begin{itemize}	
 	\item Is the software well-documented?
 		\item How easy is it to add functionality to the software? (e.g. if new driving laws have to be followed, how easy will it be to add a patch to be in compliance)
@@ -129,9 +131,10 @@ After reading the two papers, the two most essential factors which make software
 \centering
 \begin{tabular}{c|c|c|}
 Risk Category & Technical Risk & Business Risk \\ \hline
-Risk 1 &  &  \\ \hline
-Risk 2 &  &  \\ \hline
-Risk 3 &  &  \\ \hline
+Car might crash while in autonomous mode &  & Might get sued (1)  \\ \hline
+Poor quality tests & (1)  &  \\ \hline
+Poor test coverage & (2) &  \\ \hline
+Poorly defined requirements & (1) & \\ \hline
 \end{tabular}
 \end{table}
 
