@@ -161,22 +161,7 @@ customers, and other stakeholders
 
 
 	\subsection*{Feature Description}
-
 	\subsubsection*{Boeing 737 MAX flight control system}
-
-	\subsection*{Nature of Software Failure}
-
-	\subsection*{Any testing efforts regarding the failure?}
-	apparently it was ``only'' classified as a “major failure,” meaning that it could cause physical distress to people on the plane, but not death. 
-	\cite{gates_2019}
-
-	Virtual simulations were done, and the issue of the plane repeatedly nosediving was noticed in 2017, before the plane was certified. 
-	However, ``at that time, Boeing concluded that pilots could overcome the nose-down movement by performing a procedure to shut off the motor driving the stabilizer movement.''\cite{bloomberg}
-	
-
-	\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
-
-	\section{Notes}
 	To make their new plane more efficient, Boeing added larger engines to the 737 MAX. 
 	To compensate for ground clearance, they moved the engines further in front of the wings,
 	which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings, which makes
@@ -184,8 +169,43 @@ customers, and other stakeholders
 	so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
 	The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall. 
 	Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
-	they look out the window and conclude that the plane is in fact, not stalling. 
+	they look out the window and conclude that the plane is in fact, not stalling. 	
+	Apparently it was ``only'' classified as a ``major failure'', meaning that it could cause physical distress to people on the plane, but not death.\cite{gates_2019}
 
+	\subsection*{Nature of Software Failure}
+
+	\begin{enumerate}
+		\item The \textit{Maneuvering Characteristics Augmentation System} had no redundancy.
+			Normally, systems like this have 2 redundant computers collecting data from different sensors,
+			and if there is a disagreement, the software does a ``sanity'' check, and also alerts the user.
+			In this case, if the software thought something was wrong, it would immediately act on behalf of the pilot,
+			which should have been fine, but it was difficult for the pilots to maintin control as the failiure would happen
+			frequently and the system was physically challenging to override.\cite{verge}
+
+		\item The sensors used to determine if the plane is stalling are known to be less reliable than other sensors on the plane.
+			Normally, this isn't a problem, as the pilots and software are supposed to be able to do ``sanity'' checks 
+			on the reported sensor data, but was more of a problem in this case, since the system made it difficult for the pilot to
+			override the controls.\cite{ieeespectrum}
+
+		\item The plane itself is packed with a whole bunch of modern features, yet most of it is designed to handle and work like the 
+			original 737 which is roughly 50 years old. This was done so that pilots did not have to get re-certified to use a new plane design.
+			Originally, it did not handle like the other 737 models, and the software was added to attempt to make up for this difference.\cite{verge}
+
+	\end{enumerate}
+	
+
+	\subsection*{Any testing efforts regarding the failure?}
+
+	Virtual simulations were done, and the issue of the plane repeatedly nosediving was noticed in 2017, before the plane was certified. 
+	However, Boeing concluded that the problem did not ``adversely impact airplane safety or operation.'', and that 
+	``pilots could overcome the nose-down movement by performing a procedure to shut off the motor driving the stabilizer movement.''\cite{bloomberg}\cite{goggin_2019}
+	
+
+	\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
+	Boeing should be rolling out a set of software updates\cite{ieeespectrum}\cite{bloomberg}.
+	There is no confirmation, only speculation that the software update will cross-check data between the two redundant computer systems
+	instead of immediately nosediving.\cite{ieeespectrum}
+	Pilot training will also be undergoing an update.\cite{cnn}
 
 
 \nocite{*}
