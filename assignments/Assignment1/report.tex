@@ -47,107 +47,107 @@
 
 % \maketitle %insert titlepage here
 \begin{titlepage}
- \begin{center}
-  \vspace*{1cm}
-  \Huge
-  ECE 322
-  \vspace{1cm}
-  
-  Assignment 1
-  \vspace{1cm}
-  
-  Arun Woosaree
-  
-  \today
-  \vfill
- \end{center}
+	\begin{center}
+		\vspace*{1cm}
+		\Huge
+		ECE 322
+		\vspace{1cm}
+
+		Assignment 1
+		\vspace{1cm}
+
+		Arun Woosaree
+
+		\today
+		\vfill
+	\end{center}
 \end{titlepage}
 
 \section{}
-After reading the two papers, the two most essential factors which make software testing difficult in my opinion is: 
+After reading the two papers, the two most essential factors which make software testing difficult in my opinion is:
 
 \begin{enumerate}
 	\item Human nature\\
-		In my opinion, people are generally lazy. In terms of software testing, this means that in some cases,
-		people will tend to write enough tests to convince themselves that their program is correct, or 
-		In some cases they might even refuse to write tests once they have some code that in their mind already works, 
-		so there is no percieved need to test the software.
-		This is probably because most programmers experience a significant mental reward when they finally get a program `working'.
-		However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
-		Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
-		their program is already working as expected.
+	      In my opinion, people are generally lazy. In terms of software testing, this means that in some cases,
+	      people will tend to write enough tests to convince themselves that their program is correct, or
+	      In some cases they might even refuse to write tests once they have some code that in their mind already works,
+	      so there is no percieved need to test the software.
+	      This is probably because most programmers experience a significant mental reward when they finally get a program `working'.
+	      However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
+	      Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
+	      their program is already working as expected.
 
 	\item The always changing nature of software\\
-			It is nearly, if not impossible to write software once, ship it to a customer, and forget about it.
-			For example, new hardware might be released, and users may want the software to interact with new hardware.
-			Maybe someone else releases new software, and your users demand Interoperability with it. 
-			There can be other factors too, such as new laws and regulations that the software must comply with,
-			even though the software was released before the regulations were realized. Not only does this make
-			software difficult to maintain, since factors like these cause the requirements to change, but because the
-			requirements are changing, the tests have to be updated or extended as well. 
-			Assuming the software engineers wrote their codebase in a maintinable fashion, updating the software
-			to conform with society's new expectations \textit{usually} is not that difficult. However, one small change
-			in how the software behaves may result in a plethora of tests failing since they were written at a time 
-			when the requirements were different. 
-			When this happens, software engineers may become desensitized to the failing tests, or even disable them
-			and allow 'tech debt' to pile up, in addition to the need to write new tests. These factors combined can make
-			software testing difficult in nature. 
+	      It is nearly, if not impossible to write software once, ship it to a customer, and forget about it.
+	      For example, new hardware might be released, and users may want the software to interact with new hardware.
+	      Maybe someone else releases new software, and your users demand Interoperability with it.
+	      There can be other factors too, such as new laws and regulations that the software must comply with,
+	      even though the software was released before the regulations were realized. Not only does this make
+	      software difficult to maintain, since factors like these cause the requirements to change, but because the
+	      requirements are changing, the tests have to be updated or extended as well.
+	      Assuming the software engineers wrote their codebase in a maintinable fashion, updating the software
+	      to conform with society's new expectations \textit{usually} is not that difficult. However, one small change
+	      in how the software behaves may result in a plethora of tests failing since they were written at a time
+	      when the requirements were different.
+	      When this happens, software engineers may become desensitized to the failing tests, or even disable them
+	      and allow 'tech debt' to pile up, in addition to the need to write new tests. These factors combined can make
+	      software testing difficult in nature.
 \end{enumerate}
 
 \section{}
 
 \begin{itemize}
 	\item Functionality
-		
-	\begin{itemize}
-		\item Does the software allow the vehicle to work autonomously, without human input? 
-		\item Does it do so in an acceptable manner? 
-		\item (i.e. does it reach the destination in about the same amount of time as a good human driver would do or better?\\
-		 Does it do it as safe as, or better than a good human driver?)
-	\end{itemize}
+
+	      \begin{itemize}
+		      \item Does the software allow the vehicle to work autonomously, without human input?
+		      \item Does it do so in an acceptable manner?
+		      \item (i.e. does it reach the destination in about the same amount of time as a good human driver would do or better?\\
+		            Does it do it as safe as, or better than a good human driver?)
+	      \end{itemize}
 	\item Performance and reliability
-	\begin{itemize}
-		\item How reliably does the software react to its environment?
-		\item Does the software still control the vehicle in an acceptable manner in more difficult situations?
-		\item If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the software still behave reliably?
-		\item It should work in different driving conditions (e.g. highways vs in-city, sunny vs slippery roads)
-		\item Will the software perform just as reliably a few years from now?
-	\end{itemize}
-		\item Efficiency
-	\begin{itemize}
-		\item Does the software utilize its resources efficiently?
-		\item Does the software respond quickly enough to its environment?
-	\end{itemize}
+	      \begin{itemize}
+		      \item How reliably does the software make the vehicle react to its environment?
+		      \item Does the software still control the vehicle in an acceptable manner in more difficult situations?
+		      \item If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the software still behave reliably?
+		      \item It should work in different driving conditions (e.g. highways vs in-city, sunny vs slippery roads)
+		      \item Will the software perform just as reliably a few years from now?
+	      \end{itemize}
+	\item Efficiency
+	      \begin{itemize}
+		      \item Does the software utilize its resources efficiently?
+		      \item Does the software respond allow the vehicle to react quickly enough to its environment?
+	      \end{itemize}
 	\item Maintainability
-	\begin{itemize}	
-	\item Is the software well-documented?
-		\item How easy is it to add functionality to the software? (e.g. if new driving laws have to be followed, how easy will it be to add a patch to be in compliance)
-		\item How much technical debt exists in the software project
-		\item When faults
-		% \todo{check if this is the right word} 
-		are found, how easy is it to fix them?
-	\end{itemize}
+	      \begin{itemize}
+		      \item Is the software well-documented?
+		      \item How easy is it to add functionality to the software? (e.g. if new driving laws have to be followed, how easy will it be to add a patch to be in compliance)
+		      \item How much technical debt exists in the software project
+		      \item When faults
+		            % \todo{check if this is the right word} 
+		            are found, how easy is it to fix them?
+	      \end{itemize}
 	\item Usability
-	\begin{itemize}	
-	\item From the user's perspective, how easy is it to use the autonomous mode of the vehicle, and how is the user experience?
-		\item Also, how easy it is to switch between autonomous and manual modes of the vehicle?
-	\end{itemize}
+	      \begin{itemize}
+		      \item From the user's perspective, how easy is it to use the autonomous mode of the vehicle, and how is the user experience?
+		      \item Also, how easy it is to switch between autonomous and manual modes of the vehicle?
+	      \end{itemize}
 	\item Portability
-	\begin{itemize}	
-	\item Can the software be used in multiple types of vehicles? 
-		\item (e.g. if there are multiple models of cars, can the same software be used with all of them?)
-	\end{itemize}
+	      \begin{itemize}
+		      \item Can the software be used in multiple types of vehicles?
+		      \item (e.g. if there are multiple models of cars, can the same software be used with all of them?)
+	      \end{itemize}
 \end{itemize}
 
 \begin{table}[H]
-\centering
-\begin{tabular}{c|c|c|}
-Risk Category & Technical Risk & Business Risk \\ \hline
-Car might crash while in autonomous mode &  & Might get sued (1)  \\ \hline
-Poor quality tests & (1)  &  \\ \hline
-Poor test coverage & (2) &  \\ \hline
-Poorly defined requirements & (1) & \\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{c|c|c|}
+		Risk Category                            & Technical Risk & Business Risk      \\ \hline
+		Car might crash while in autonomous mode &                & Might get sued (1) \\ \hline
+		Poor quality tests                       & (1)            &                    \\ \hline
+		Poor test coverage                       & (2)            &                    \\ \hline
+		Poorly defined requirements              & (1)            &                    \\ \hline
+	\end{tabular}
 \end{table}
 
 \subsection{delet this}
@@ -173,52 +173,52 @@ customers, and other stakeholders
 \section{}
 
 
-	\subsection*{Feature Description}
-	\subsubsection*{Boeing 737 MAX flight control system}
-	To make their new plane more efficient, Boeing added larger engines to the 737 MAX. 
-	To compensate for ground clearance, they moved the engines further in front of the wings,
-	which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings, which makes
-	changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software, 
-	so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
-	The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall. 
-	Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
-	they look out the window and conclude that the plane is in fact, not stalling. 	
-	Apparently it was ``only'' classified as a ``major failure'', meaning that it could cause physical distress to people on the plane, but not death.\cite{gates_2019}
+\subsection*{Feature Description}
+\subsubsection*{Boeing 737 MAX flight control system}
+To make their new plane more efficient, Boeing added larger engines to the 737 MAX.
+To compensate for ground clearance, they moved the engines further in front of the wings,
+which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings, which makes
+changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software,
+so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
+The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall.
+Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
+they look out the window and conclude that the plane is in fact, not stalling.
+Apparently it was ``only'' classified as a ``major failure'', meaning that it could cause physical distress to people on the plane, but not death.\cite{gates_2019}
 
-	\subsection*{Nature of Software Failure}
+\subsection*{Nature of Software Failure}
 
-	\begin{enumerate}
-		\item The \textit{Maneuvering Characteristics Augmentation System} had no redundancy.
-			Normally, systems like this have 2 redundant computers collecting data from different sensors,
-			and if there is a disagreement, the software does a ``sanity'' check, and also alerts the user.
-			In this case, if the software thought something was wrong, it would immediately act on behalf of the pilot,
-			which should have been fine, but it was difficult for the pilots to maintin control as the failiure would happen
-			frequently and the system was physically challenging to override.\cite{verge}
+\begin{enumerate}
+	\item The \textit{Maneuvering Characteristics Augmentation System} had no redundancy.
+	      Normally, systems like this have 2 redundant computers collecting data from different sensors,
+	      and if there is a disagreement, the software does a ``sanity'' check, and also alerts the user.
+	      In this case, if the software thought something was wrong, it would immediately act on behalf of the pilot,
+	      which should have been fine, but it was difficult for the pilots to maintin control as the failiure would happen
+	      frequently and the system was physically challenging to override.\cite{verge}
 
-		\item The sensors used to determine if the plane is stalling are known to be less reliable than other sensors on the plane.
-			Normally, this isn't a problem, as the pilots and software are supposed to be able to do ``sanity'' checks 
-			on the reported sensor data, but was more of a problem in this case, since the system made it difficult for the pilot to
-			override the controls.\cite{ieeespectrum}
+	\item The sensors used to determine if the plane is stalling are known to be less reliable than other sensors on the plane.
+	      Normally, this isn't a problem, as the pilots and software are supposed to be able to do ``sanity'' checks
+	      on the reported sensor data, but was more of a problem in this case, since the system made it difficult for the pilot to
+	      override the controls.\cite{ieeespectrum}
 
-		\item The plane itself is packed with a whole bunch of modern features, yet most of it is designed to handle and work like the 
-			original 737 which is roughly 50 years old. This was done so that pilots did not have to get re-certified to use a new plane design.
-			Originally, it did not handle like the other 737 models, and the software was added to attempt to make up for this difference.\cite{verge}
+	\item The plane itself is packed with a whole bunch of modern features, yet most of it is designed to handle and work like the
+	      original 737 which is roughly 50 years old. This was done so that pilots did not have to get re-certified to use a new plane design.
+	      Originally, it did not handle like the other 737 models, and the software was added to attempt to make up for this difference.\cite{verge}
 
-	\end{enumerate}
-	
+\end{enumerate}
 
-	\subsection*{Any testing efforts regarding the failure?}
 
-	Virtual simulations were done, and the issue of the plane repeatedly nosediving was noticed in 2017, before the plane was certified. 
-	However, Boeing concluded that the problem did not ``adversely impact airplane safety or operation.'', and that 
-	``pilots could overcome the nose-down movement by performing a procedure to shut off the motor driving the stabilizer movement.''\cite{bloomberg}\cite{goggin_2019}
-	
+\subsection*{Any testing efforts regarding the failure?}
 
-	\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
-	Boeing should be rolling out a set of software updates\cite{ieeespectrum}\cite{bloomberg}.
-	There is no confirmation, only speculation that the software update will cross-check data between the two redundant computer systems
-	instead of immediately nosediving.\cite{ieeespectrum}
-	Pilot training will also be undergoing an update.\cite{cnn}
+Virtual simulations were done, and the issue of the plane repeatedly nosediving was noticed in 2017, before the plane was certified.
+However, Boeing concluded that the problem did not ``adversely impact airplane safety or operation.'', and that
+``pilots could overcome the nose-down movement by performing a procedure to shut off the motor driving the stabilizer movement.''\cite{bloomberg}\cite{goggin_2019}
+
+
+\subsection*{Any follow up action taken? Any plan to alleviate further problems?}
+Boeing should be rolling out a set of software updates\cite{ieeespectrum}\cite{bloomberg}.
+There is no confirmation, only speculation that the software update will cross-check data between the two redundant computer systems
+instead of immediately nosediving.\cite{ieeespectrum}
+Pilot training will also be undergoing an update.\cite{cnn}
 
 
 \nocite{*}
