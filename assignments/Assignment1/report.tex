@@ -77,8 +77,21 @@ After reading the two papers, the two most essential factors which make software
 		Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
 		their program is already working as expected.
 
-	\item the always changing nature of software
-
+	\item The always changing nature of software\\
+			It is nearly, if not impossible to write software once, ship it to a customer, and forget about it.
+			For example, new hardware might be released, and users may want the software to interact with new hardware.
+			Maybe someone else releases new software, and your users demand Interoperability with it. 
+			There can be other factors too, such as new laws and regulations that the software must comply with,
+			even though the software was released before the regulations were realized. Not only does this make
+			software difficult to maintain, since factors like these cause the requirements to change, but because the
+			requirements are changing, the tests have to be updated or extended as well. 
+			Assuming the software engineers wrote their codebase in a maintinable fashion, updating the software
+			to conform with society's new expectations \textit{usually} is not that difficult. However, one small change
+			in how the software behaves may result in a plethora of tests failing since they were written at a time 
+			when the requirements were different. 
+			When this happens, software engineers may become desensitized to the failing tests, or even disable them
+			and allow 'tech debt' to pile up, in addition to the need to write new tests. These factors combined can make
+			software testing difficult in nature. 
 \end{enumerate}
 
 \section{}
@@ -96,7 +109,7 @@ After reading the two papers, the two most essential factors which make software
 	\begin{itemize}
 		\item How reliably does the software react to its environment?
 		\item Does the software still control the vehicle in an acceptable manner in more difficult situations?
-		\item If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the softare still behave reliably?
+		\item If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the software still behave reliably?
 		\item It should work in different driving conditions (e.g. highways vs in-city, sunny vs slippery roads)
 		\item Will the software perform just as reliably a few years from now?
 	\end{itemize}
