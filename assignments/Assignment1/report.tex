@@ -141,25 +141,18 @@ After reading the two papers, the two most essential factors which make software
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{c|c|c|}
-		Risk Category                            & Technical Risk & Business Risk      \\ \hline
-		Car might crash while in autonomous mode &                & Might get sued (1) \\ \hline
-		Poor quality tests                       & (1)            &                    \\ \hline
-		Poor test coverage                       & (2)            &                    \\ \hline
-		Poorly defined requirements              & (1)            &                    \\ \hline
-	\end{tabular}
+	\begin{tabularx}{\textwidth}{X|c|c|}
+		Risk Category                                                             & Technical Risk & Business Risk \\ \hline
+		Car might crash while in autonomous mode                                  & (3)            & (1)           \\ \hline
+		Poor test coverage                                                        & (3)            & (5)           \\ \hline
+		Poor quality tests                                                        & (1)            & (4)           \\ \hline
+		Poorly defined requirements                                               & (2)            & (3)           \\ \hline
+		Sensor malfunction                                                        & (2)            & (1)           \\ \hline
+		Security and hacking                                                      & (2)            & (1)           \\ \hline
+		Compliance with the law                                                   & (5)            & (1)           \\ \hline
+		Privacy risks (collecting camera data, customer data potentially leaking) & (4)            & (2)           \\ \hline
+	\end{tabularx}
 \end{table}
-
-\subsection{delet this}
-technical risk is the likelihood that a fault might exist
-
-assessment: system architect, designer, senior programmers
-
-
-business risk is the impact of a given ault might have on the users,
-customers, and other stakeholders
-
-1 - very high 5- very low risk
 
 \section{}
 
@@ -171,7 +164,6 @@ customers, and other stakeholders
 \end{enumerate}
 
 \section{}
-
 
 \subsection*{Feature Description}
 \subsubsection*{Boeing 737 MAX flight control system}
