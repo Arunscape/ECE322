@@ -71,7 +71,7 @@ After reading the two papers, the two most essential factors which make software
 	      In my opinion, people are generally lazy. In terms of software testing, this means that in some cases,
 	      people will tend to write enough tests to convince themselves that their program is correct, or
 	      In some cases they might even refuse to write tests once they have some code that in their mind already works,
-	      so there is no percieved need to test the software.
+	      so there is no perceivedneed to test the software.
 	      This is probably because most programmers experience a significant mental reward when they finally get a program `working'.
 	      However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
 	      Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
@@ -85,7 +85,7 @@ After reading the two papers, the two most essential factors which make software
 	      even though the software was released before the regulations were realized. Not only does this make
 	      software difficult to maintain, since factors like these cause the requirements to change, but because the
 	      requirements are changing, the tests have to be updated or extended as well.
-	      Assuming the software engineers wrote their codebase in a maintinable fashion, updating the software
+	      Assuming the software engineers wrote their codebase in a maintainable fashion, updating the software
 	      to conform with society's new expectations \textit{usually} is not that difficult. However, one small change
 	      in how the software behaves may result in a plethora of tests failing since they were written at a time
 	      when the requirements were different.
@@ -119,8 +119,8 @@ After reading the two papers, the two most essential factors which make software
 	      \begin{itemize}
 		      \item Does the software utilize its efficiently?
 		            (i.e. How much CPU, GPU, memory etc. \textit{should} it need versus how much the software is actually using)
-		      \item Does the software respond allow the vehicle to react quickly enough to its environment?
-		      \item Are the algorithms used in the software the most efficient? (e.g. could do big O time space analysis)
+		      \item Does the software allow the vehicle to react quickly enough to its environment?
+		      \item Are the algorithms used in the software the most efficient? (e.g. could do big O time-space analysis)
 	      \end{itemize}
 
 	\item Maintainability
@@ -131,7 +131,7 @@ After reading the two papers, the two most essential factors which make software
 		      \item When faults
 		            % \todo{check if this is the right word} 
 		            are found, how easy is it to fix them?
-		      \item How are updates shipped to the consumer? Can they be done over-the-air (OTA), or does the car need to be routinely visit a car dealer/autobody location to get updates?
+		      \item How are updates shipped to the consumer? Can they be done over-the-air (OTA), or does the car need to routinely visit a car dealer/autobody location to get updates?
 	      \end{itemize}
 
 	\item Usability
@@ -185,10 +185,14 @@ After reading the two papers, the two most essential factors which make software
 \section{}
 
 \begin{enumerate}
-	\item Reliability (Operation factor)
-	\item Interoperability (Transition factor)
-	\item Usability (Operation factor)
-	\item Efficiency (Operation factor)
+	\item \textbf{Reliability} (Product Operation factor) \\
+	chosen because of the requirement with the probability of a state of failure
+	\item \textbf{Interoperability} (Product Transition factor) \\
+		chosen because of the requirement to interface with other software
+	\item \textbf{Usability} (Product Operation factor) \\
+		chosen because of training requirements ($<3$ days), and operation usability (being able to manage 20 patients per hour)
+	\item \textbf{Reliability} (Product Operation factor) \\
+		chosen because ``The hardware system shall conform to all \underline{availability} requirements\dots''
 \end{enumerate}
 
 \section{}
@@ -199,11 +203,11 @@ To make their new plane more efficient, Boeing added larger engines to the 737 M
 To compensate for ground clearance, they moved the engines further in front of the wings,
 which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings.
 This makes changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software,
-so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
+so-called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
 The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall.
-Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
+Unfortunately, when the software takes this corrective action, it does not give pilots an easy way to override it if
 they look out the window and conclude that the plane is in fact, not stalling.
-Apparently it was ``only'' classified as a ``major failure'', meaning that it could cause physical distress to people on the plane, but not death.\cite{gates_2019}
+Apparently, it was ``only'' classified as a ``major failure'', meaning that it could cause physical distress to people on the plane, but not death.\cite{gates_2019}
 
 \subsection*{Nature of Software Failure}
 
@@ -212,7 +216,7 @@ Apparently it was ``only'' classified as a ``major failure'', meaning that it co
 	      Normally, systems like this have 2 redundant computers collecting data from different sensors,
 	      and if there is a disagreement, the software does a ``sanity'' check, and also alerts the user.
 	      In this case, if the software thought something was wrong, it would immediately act on behalf of the pilot,
-	      which should have been fine, but it was difficult for the pilots to maintin control as the failiure would happen
+	      which should have been fine, but it was difficult for the pilots to maintain control as the failure would happen
 	      frequently and the system was physically challenging to override.\cite{verge}
 
 	\item The sensors used to determine if the plane is stalling are known to be less reliable than other sensors on the plane.
