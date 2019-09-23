@@ -75,7 +75,7 @@ After reading the two papers, the two most essential factors which make software
 	      This is probably because most programmers experience a significant mental reward when they finally get a program `working'.
 	      However, when it comes to writing tests for the code they just wrote, there usually is much less excitement.
 	      Sometimes, programmers may even find themselves wrestling with a testing framework, which can be a frustrating experience when (they think that)
-	      their program is already working as expected.
+	      their program is already working as expected. This is a non-technical factor.
 
 	\item The always changing nature of software\\
 	      It is nearly, if not impossible to write software once, ship it to a customer, and forget about it.
@@ -91,33 +91,38 @@ After reading the two papers, the two most essential factors which make software
 	      when the requirements were different.
 	      When this happens, software engineers may become desensitized to the failing tests, or even disable them
 	      and allow 'tech debt' to pile up, in addition to the need to write new tests. These factors combined can make
-	      software testing difficult in nature.
+	      software testing difficult in nature. This is a technical factor.
 \end{enumerate}
 
 \section{}
 
 \begin{itemize}
 	\item Functionality
-
 	      \begin{itemize}
 		      \item Does the software allow the vehicle to work autonomously, without human input?
 		      \item Does it do so in an acceptable manner?
 		      \item (i.e. does it reach the destination in about the same amount of time as a good human driver would do or better?\\
 		            Does it do it as safe as, or better than a good human driver?)
+		      \item Can a human driver override the autonomous controls if needed?
 	      \end{itemize}
+
 	\item Performance and reliability
 	      \begin{itemize}
 		      \item How reliably does the software make the vehicle react to its environment?
 		      \item Does the software still control the vehicle in an acceptable manner in more difficult situations?
 		      \item If certain conditions like heavier traffic puts a higher load on the processing unit for the system, does the software still behave reliably?
 		      \item It should work in different driving conditions (e.g. highways vs in-city, sunny vs slippery roads)
-		      \item Will the software perform just as reliably a few years from now?
+		      \item Will the software perform just as reliably a few years from now? (or better due to software updates)
 	      \end{itemize}
+
 	\item Efficiency
 	      \begin{itemize}
-		      \item Does the software utilize its resources efficiently?
+		      \item Does the software utilize its efficiently?
+		            (i.e. How much CPU, GPU, memory etc. \textit{should} it need versus how much the software is actually using)
 		      \item Does the software respond allow the vehicle to react quickly enough to its environment?
+		      \item Are the algorithms used in the software the most efficient? (e.g. could do big O time space analysis)
 	      \end{itemize}
+
 	\item Maintainability
 	      \begin{itemize}
 		      \item Is the software well-documented?
@@ -126,31 +131,54 @@ After reading the two papers, the two most essential factors which make software
 		      \item When faults
 		            % \todo{check if this is the right word} 
 		            are found, how easy is it to fix them?
+		      \item How are updates shipped to the consumer? Can they be done over-the-air (OTA), or does the car need to be routinely visit a car dealer/autobody location to get updates?
 	      \end{itemize}
+
 	\item Usability
 	      \begin{itemize}
 		      \item From the user's perspective, how easy is it to use the autonomous mode of the vehicle, and how is the user experience?
 		      \item Also, how easy it is to switch between autonomous and manual modes of the vehicle?
 	      \end{itemize}
+
 	\item Portability
 	      \begin{itemize}
 		      \item Can the software be used in multiple types of vehicles?
-		      \item (e.g. if there are multiple models of cars, can the same software be used with all of them?)
+		      \item (e.g. if there are multiple models of cars, can the same software be used with all of them? What about trucks or vans?)
+		      \item How easy would it be to port the software to a newer version of a car, so that everything need not be written from scratch
+		            when the car manufacturer wants to make a new model?
+		      \item Hardware compatibility: e.g. does the software work on multiple types of architectures? (e.g. x86, ARM, RISC-V, etc.)
 	      \end{itemize}
 \end{itemize}
 
 \begin{table}[H]
 	\centering
 	\begin{tabularx}{\textwidth}{X|c|c|}
-		Risk Category                                                             & Technical Risk & Business Risk \\ \hline
-		Car might crash while in autonomous mode                                  & (3)            & (1)           \\ \hline
-		Poor test coverage                                                        & (3)            & (5)           \\ \hline
-		Poor quality tests                                                        & (1)            & (4)           \\ \hline
-		Poorly defined requirements                                               & (2)            & (3)           \\ \hline
-		Sensor malfunction                                                        & (2)            & (1)           \\ \hline
-		Security and hacking                                                      & (2)            & (1)           \\ \hline
-		Compliance with the law                                                   & (5)            & (1)           \\ \hline
-		Privacy risks (collecting camera data, customer data potentially leaking) & (4)            & (2)           \\ \hline
+		Risk Category                                                                         & Technical Risk & Business Risk \\ \hline
+		\textbf{Functionality}                                                                &                &               \\ \hline
+		Car might crash while in autonomous mode                                              & (3)            & (1)           \\ \hline
+		What if the user cannot manually override the autonomous controls?                    & (5)            & 1             \\ \hline
+		\textbf{Performance \& Reliability}                                                            &                &               \\ \hline
+		Software not as reliable in different situations (traffic, weather...)                & (2)            & (1)           \\ \hline
+		The vehicle does not perform as reliably in a few years as it did when it was new     & (3)            & (2)           \\ \hline
+		\textbf{Efficiency}                                                                   &                &               \\ \hline
+		Software does not utilize its hardware resources efficiently                          & (2)            & (5)           \\ \hline
+		\textbf{Maintainability}                                                              &                &               \\ \hline
+		Poor software documentation                                                           & (1)            & (5)           \\ \hline
+		Technical debt                                                                        & (1)            & (5)           \\ \hline
+		Poorly architectured code base (i.e. not easily extendable)                           & (1)            & (4)           \\ \hline
+		Ease of delivering fixes and software updates                                         & (3)            & (2)           \\ \hline
+		\textbf{Usability}                                                                    &                &               \\ \hline
+		Software is not intuitive for the user                                                & (4)            & (2)           \\ \hline
+		\textbf{Portability}                                                                  &                &               \\ \hline
+		Software cannot be ported to newer hardware or other vehicles                         & (1)            & (3)           \\ \hline
+		\textbf{Other}                                                                        &                &               \\ \hline
+		Poor test coverage                                                                    & (3)            & (5)           \\ \hline
+		Poor quality tests                                                                    & (1)            & (4)           \\ \hline
+		Poorly defined requirements                                                           & (2)            & (3)           \\ \hline
+		Sensor or other hardware malfunction (also, how the software handles faulty hardware) & (2)            & (1)           \\ \hline
+		Security and hacking                                                                  & (2)            & (1)           \\ \hline
+		Compliance with the law                                                               & (5)            & (1)           \\ \hline
+		Privacy risks (collecting camera data, customer data potentially leaking)             & (4)            & (2)           \\ \hline
 	\end{tabularx}
 \end{table}
 
@@ -169,8 +197,8 @@ After reading the two papers, the two most essential factors which make software
 \subsubsection*{Boeing 737 MAX flight control system}
 To make their new plane more efficient, Boeing added larger engines to the 737 MAX.
 To compensate for ground clearance, they moved the engines further in front of the wings,
-which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings, which makes
-changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software,
+which makes it so that the engines can provide lift at higher angles of attack, in addition to the wings.
+This makes changing the plane's pitch more difficult. Boeing's ``solution'' to this problem was in their software,
 so called “Maneuvering Characteristics Augmentation System”\cite{ieeespectrum}
 The software's purpose is to make the plane tilt down if it ``thinks'' that the plane is going to stall.
 Unfortunateley, when the software takes this corrective action, it does not give pilots an easy way to override it if
@@ -189,7 +217,7 @@ Apparently it was ``only'' classified as a ``major failure'', meaning that it co
 
 	\item The sensors used to determine if the plane is stalling are known to be less reliable than other sensors on the plane.
 	      Normally, this isn't a problem, as the pilots and software are supposed to be able to do ``sanity'' checks
-	      on the reported sensor data, but was more of a problem in this case, since the system made it difficult for the pilot to
+	      on the reported sensor data, but it was a problem in this case since the system made it difficult for the pilot to
 	      override the controls.\cite{ieeespectrum}
 
 	\item The plane itself is packed with a whole bunch of modern features, yet most of it is designed to handle and work like the
