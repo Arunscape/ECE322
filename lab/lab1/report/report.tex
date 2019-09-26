@@ -23,7 +23,7 @@
 
 \usepackage{pdfpages} % for attaching the table lol
 
-
+% \usepackage[toc,page]{appendix}
 
 
 \title{ECE 322 \\
@@ -42,7 +42,24 @@ XXXXXXX}
 
 \section*{Part 1 - Failure/Dirty Testing, Error Guessing}
 For task one in this lab, we had to be creative, as is the nature of Failure/Dirty testing, and error guessing.
-The purpose was to test the functionality of a calculator program.
+The purpose was to test the functionality of a calculator program, which was written in Java. A table of
+test cases was produced, checking for basic functionality, common errors. A few test cases were also 
+made based on previous experience, which is also known as error guessing. Altogether, the test cases check
+for the following functionality:
+
+\begin{enumerate}
+    \item whether the calculator buttons work
+    \item non-numerical input
+    \item mismatched brackets
+    \item order or operations (BEDMAS/PEMDAS)
+    \item large numbers
+    \item small numbers
+    \item incorrect syntax (e.g. 2++2)
+\end{enumerate}
+
+The full list of test cases, along with the inputs and expected versus actual outputs can be found in Appendix \ref{calculatortestcases}.
+The test cases where the expected result does not match the actual result are highlighted in red.
+
 
 \section*{Part 2 - Partition Testing}
 
@@ -74,8 +91,13 @@ The purpose was to test the functionality of a calculator program.
 
 
 
-\section*{Appendix}
 \appendix
-\section{Calculator Test Cases}
+\section*{Appendix}
+\section{Calculator Test Cases} \label{calculatortestcases}
 \includepdf[pages=-]{calculatortable.pdf}
+
+% \begin{appendices}
+% \section{Calculator Test Cases}
+% \includepdf[pages=-]{calculatortable.pdf}
+% \end{appendices}
 \end{document}
