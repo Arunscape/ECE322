@@ -64,9 +64,36 @@ for the following functionality:
 
 The full list of test cases, along with the inputs and expected versus actual outputs can be found in Appendix \ref{calculatortestcases}.
 The test cases where the expected result does not match the actual result are highlighted in red.
-
-\todo{explain the failed test cases}
-
+From experience, these test failures could be due to the following:
+\begin{itemize}
+    \item numbers like $2^{512}$ are ridiculously big. It's likely that that the implementation was not designed to handle such large numbers.
+    \item similarly, numbers like $2^{-512}$ are so small that the calculator interprets it as being the number 0
+    \item entering nothing results in an output of 0. It's likely that a lone space is interpreted as a 0 by the calculator
+    \item if there's a space between a number and the minus sign after it, the calculator outputs NaN. It could be that when parsing the input, the calculator may be interpreting it as two numbers with no operator in between, so it does not know what to do and returns an error (NaN)
+    \item the calculator does not follow the correct order of operations.
+          If there's a division and multiplication. (e.g. $80/4*5$),
+          it appears to be doing the multiplication before the division,
+          even though the multiplication should be done afterwards,
+          since it is on the right hand side of the previous division operation.
+    \item when multiple exponent (\textasciicircum) operators are used in between two operands,
+          the result is always one, instead of showing an error. This might be because the right half is evaluated as 0 by the calculator,
+          and anything to the power of 0 is 1.
+    \item when the first operand is missing for $+$ the calculator seems to ignore it and treat it like a positive number. This is why the calculator says $2++++2=4$
+    \item when the first operand is missing for $*$, $/$, or \textasciicircum, the calculator evaluates it as being equal to 0 instead of returning an error.
+          % This becomes apparent in operations like $\textrm2$,  $2**2$, or $/2$
+    \item with the exponent operator, the calculator tries to evaluate everything after the exponent.
+          however, this violates the BEDMAS rule in cases where the exponent should be done before multiplication, division, addition, or subtraction.
+          This results in errors like $2^1+1$ resulting in 4 instead of 3.
+          This also compounds with the previous errors in some cases where an expression like $2^3 + 2^3$
+          is incorrectly evaluated as $2^5$, since
+          \textasciicircum 3
+          is evaluated as 1, and the expression is reduced to $2^{3 + 2}$, resulting in the incorrect response.
+    \item when numbers are only separated by a space, the calculator concatenates the digits. i.e. 1 2 becomes 12, instead of showing an error.
+          when these numbers are wrapped by brackets, the calculator still concatenates them instead of multiplying. e.g. (2)(2) becomes 22 instead of 4.
+    \item the calculator has some rounding issues, which result in a loss of precision in the answer. Adding numbers like $2.000001+2.000002$ result in a rounded
+          answer instead of the exact answer.
+\end{itemize}
+\todo{fix the table and highlightthe failed test case}
 
 \section*{Part 2 - Partition Testing}
 Task two of this lab involved partition-based testing of a triangle application.
