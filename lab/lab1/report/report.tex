@@ -15,6 +15,8 @@
 % for merging table cells I think
 
 \usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+
 % allows for linewrap within cells
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
@@ -27,23 +29,29 @@
 
 
 \title{ECE 322 \\
-Lab Reporrt 1}
+Lab Report 1}
 \author{Arun Woosaree\\
 XXXXXXX}
 \begin{document}
- \maketitle 
+\maketitle
 
- \section*{Introduction}
- The purpose of this lab was to serve as a practical introduction to rudimentary black-box testing techniques.
- The testing methods introduced were dirty testing, error guessing, and partition-based testing.
- It should be noted that numerous other black-box testing methods exist
- The idea of black-box testing is that tests are carried out with no knowledge of how the software
- internally works. In other words, the implementation details are a ``black box'' as the name would suggest.
+\section*{Introduction}
+The purpose of this lab was to serve as a practical introduction to rudimentary black-box testing techniques.
+The testing methods introduced were dirty testing, error guessing, and partition-based testing.
+It should be noted that numerous other black-box testing methods exist
+The idea of black-box testing is that tests are carried out with no knowledge of how the software
+internally works. In other words, the implementation details are a ``black box'' as the name would suggest.
+Dirty testing and error guessing involves using creativity to come up with test cases,
+and also using past experiences to come up with test cases to find faults in the program.
+THe purpose of partition-based testing is to categorize possible test cases in `equivalence'
+classes, and to test as many valid equivalence classes with as few test cases, and to come up
+with a test case for each invalid equivalence class. The goal for partition-based testing
+is to lower the number of test cases.
 
 \section*{Part 1 - Failure/Dirty Testing, Error Guessing}
 For task one in this lab, we had to be creative, as is the nature of Failure/Dirty testing, and error guessing.
 The purpose was to test the functionality of a calculator program, which was written in Java. A table of
-test cases was produced, checking for basic functionality, common errors. A few test cases were also 
+test cases was produced, checking for basic functionality, common errors. A few test cases were also
 made based on previous experience, which is also known as error guessing. Altogether, the test cases check
 for the following functionality:
 
@@ -60,35 +68,86 @@ for the following functionality:
 The full list of test cases, along with the inputs and expected versus actual outputs can be found in Appendix \ref{calculatortestcases}.
 The test cases where the expected result does not match the actual result are highlighted in red.
 
+\todo{explain the failed test cases}
+
 
 \section*{Part 2 - Partition Testing}
-
+Task two of this lab involved partition-based testing of a triangle application.
+The purpose of this application is to take 3 space separated positive integers,
+each representing sides of a triangle, and the program is expected to tell the
+user whether the triangle is a scalene, isosceles, or equilateral triangle.
+The following equivalence classes were decided on for creating the test cases.
 \subsection*{Triangle Equivalence Classes}
-\subsubsection*{Valid}
-\begin{enumerate}
-    \item $a + b > c$
-    \item Equilateral
-    \item Isoscoles
-    \item Scalene
-    \item 3 arguments
-    \item separated by one space
-    \item positive integers
-\end{enumerate}
 
-\subsubsection*{Invalid}
-\begin{enumerate}
-    \item $a + b = c$
-    \item $ a + b < c$
-    \item $< 3$ arguments
-    \item $> 3$ arguments
-    \item separated by more than one space
-    \item negative argument
-    \item argument with the number `0'
-    \item decimal argument
-\end{enumerate}
+% \subsubsection*{Valid}
+% \begin{enumerate}
+%     \item $a + b > c$
+%     \item Equilateral
+%     \item Isosceles
+%     \item Scalene
+%     \item 3 arguments
+%     \item separated by one space
+%     \item positive integers
+%     \item Enter command pressed after input
+% \end{enumerate}
 
+% \subsubsection*{Invalid}
+% \begin{enumerate}
+%     \setcounter{enumi}{7}
+%     \item $a + b = c$
+%     \item $ a + b < c$
+%     \item $< 3$ arguments
+%     \item $> 3$ arguments
+%     \item separated by more than one space
+%     \item negative argument
+%     \item argument with the number `0'
+%     \item decimal argument
+%     \item Enter command not presses after input
+% \end{enumerate}
 
+\begin{table}[H]
+    \begin{tabularx}{1.1\textwidth}{X|X|X|}
+        \centering
+        Input Condition                       & Valid Input Classes   & Invalid Input Classes                         \\ \hline
+        number of input arguments             & 3 input arguments (1) & $< 3$ input arguments (9)                     \\
+                                              &                       & $> 3$ input arguments (10)                    \\ \hline
+        space between arguments               & one space (2)         & more than one space (11)                      \\
+                                              &                       & non space character separating arguments (12) \\ \hline
+        argument type                         & positive integer (3)  & negative integer (13)                         \\
+                                              &                       & zero (14)                                     \\
+                                              &                       & decimal (15)                                  \\ \hline
+        triangle type                         & equilateral (4)       & $a + b = c$ (16)                              \\
+                                              & isosceles (5)         & $a + b < c$ (17)                              \\
+                                              & scalene (6)           &                                               \\
+                                              & $a + b > c$ (7)       &                                               \\ \hline
+        key pressed after inputting arguments & Enter key pressed (8) & Enter key not pressed (18)                    \\ \hline
+    \end{tabularx}
+    \caption{Valid and Invalid equivalence classes for the triangle program}
+    \label{equivalenceclasses}
+\end{table}
 
+From these equivalence classes, the following test cases were created:
+
+\subsection*{Test cases for valid inputs}
+\begin{itemize}
+    \item 3 3 3 covers (1, 2, 3, 4, 7, 8)
+    \item 4 4 5 covers (1, 2, 3, 5, 7, 8)
+    \item 6 7 8 covers (1, 2, 3, 6, 7, 8)
+\end{itemize}
+
+\subsection*{Test cases for invalid inputs}
+\begin{itemize}
+    \item 1 2 covers (9)
+    \item 3 4 5 6 covers (10)
+    \item 7 8       9 covers (11)
+    \item 8\_7\_6 covers (12)
+    \item 1 $-2$ 3 covers (13)
+    \item 5 0 4 covers (14)
+    \item 3 2 0.1 covers (15)
+    \item 2 2 4 covers (16)
+    \item 3 4 9 covers (17)
+    \item not pressing Enter covers (18)
+\end{itemize}
 
 
 \appendix
