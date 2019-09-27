@@ -85,11 +85,12 @@ From experience, these test failures could be due to the following:
           however, this violates the BEDMAS rule in cases where the exponent should be done before multiplication, division, addition, or subtraction.
           This results in errors like $2^1+1$ resulting in 4 instead of 3.
           This also compounds with the previous errors in some cases where an expression like $2^3 + 2^3$
-          is incorrectly evaluated as $2^5$, since
+          is incorrectly evaluated as $2^5$, since $3+2$ is evaluated first, which results in 
           \textasciicircum 3
-          is evaluated as 1, and the expression is reduced to $2^{3 + 2}$, resulting in the incorrect response.
+          being evaluated as 1, and the expression is reduced to $2^{5}$, resulting in the incorrect response.
     \item when numbers are only separated by a space, the calculator concatenates the digits. i.e. 1 2 becomes 12, instead of showing an error.
           when these numbers are wrapped by brackets, the calculator still concatenates them instead of multiplying. e.g. (2)(2) becomes 22 instead of 4.
+          However, multiplying negative numbers using brackets e.g. (2)(-2) instead of the * operator results in a NaN error.
     \item the calculator has some rounding issues, which result in a loss of precision in the answer. Adding numbers like $2.000001+2.000002$ result in a rounded
           answer instead of the exact answer.
 \end{itemize}
@@ -148,7 +149,18 @@ From these equivalence classes, the following test cases were created:
 \end{itemize}
 
 The results of these test cases, including expected versus actual output can be found in Appendix \ref{triangletestcases}.
-Failed test cases are highlighted in red.
+Failed test cases are highlighted in red. There was one test case which failed. For the input where we have the case $a+b=c$,
+(2 2 4) in this case, the program tells us that it is a isosceles triangle instead of an invalid one.
+This is likely because the implementation checks validity by looking for $a+b>c$ instead of $a+b \geq c$.
+
+
+\section*{Conclusion}
+In this lab, we were introduced to dirty testing. 
+\dots
+While equivalence testing allowed us to write significantly fewer test cases,
+it does not catch some unique cases like testing inputs like 1234567890 1234567890 1, which returns ERROR: Invalid triangle
+instead of saying that it's an isosceles one.
+
 \appendix
 \section*{Appendix}
 \section{Calculator Test Cases} \label{calculatortestcases}
