@@ -40,7 +40,7 @@ The idea of black-box testing is that tests are carried out with no knowledge of
 internally works. In other words, the implementation details are a ``black box'' as the name would suggest.
 Dirty testing and error guessing involves using creativity to come up with test cases,
 and also using past experiences to come up with test cases to find faults in the program.
-THe purpose of partition-based testing is to categorize possible test cases in `equivalence'
+The purpose of partition-based testing is to categorize possible test cases in `equivalence'
 classes, and to test as many valid equivalence classes with as few test cases, and to come up
 with a test case for each invalid equivalence class. The goal for partition-based testing
 is to lower the number of test cases.
@@ -155,6 +155,7 @@ Failed test cases are highlighted in red. There was one test case which failed.
     \item For the input where we have the case $a+b=c$,
     (2 2 4) in this case, the program tells us that it is a isosceles triangle instead of an invalid one.
     This is likely because the implementation checks validity by looking for $a+b>c$ instead of $a+b \geq c$.    
+    Similarly, with the inputs (1 2 3), the program tells us that it is a scalene triangle instead of showing an error.
 \end{itemize}
 
 \section*{Conclusion}
@@ -170,7 +171,10 @@ to write significantly fewer test cases,
 it does not catch some unique cases. For example, if dirty testing was done instead,
 one might have tried the test inputs $$1111111111\ 1111111111\ 1$$, which returns ERROR: Invalid triangle
 instead of saying that it's an isosceles one. This error, and potentially others were not
-caught using partition-based testing. Overall, it would not be fair to say that
+caught using partition-based testing. What is interesting, though is that the one
+test failure with inputs (2 2 4) for the Triangle program allowed for another error to be found, which is
+the case where an input like (1 2 3) which should cause an error instead returns `Scalene'.
+Overall, it would not be fair to say that
 one testing method is universally better than the other, however, the tester would
 need to use their judgement and experience to choose an appropriate testing method
 for the software that they want to test.
