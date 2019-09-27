@@ -25,9 +25,6 @@
 
 \usepackage{pdfpages} % for attaching the table lol
 
-% \usepackage[toc,page]{appendix}
-
-
 \title{ECE 322 \\
 Lab Report 1}
 \author{Arun Woosaree\\
@@ -79,32 +76,6 @@ user whether the triangle is a scalene, isosceles, or equilateral triangle.
 The following equivalence classes were decided on for creating the test cases.
 \subsection*{Triangle Equivalence Classes}
 
-% \subsubsection*{Valid}
-% \begin{enumerate}
-%     \item $a + b > c$
-%     \item Equilateral
-%     \item Isosceles
-%     \item Scalene
-%     \item 3 arguments
-%     \item separated by one space
-%     \item positive integers
-%     \item Enter command pressed after input
-% \end{enumerate}
-
-% \subsubsection*{Invalid}
-% \begin{enumerate}
-%     \setcounter{enumi}{7}
-%     \item $a + b = c$
-%     \item $ a + b < c$
-%     \item $< 3$ arguments
-%     \item $> 3$ arguments
-%     \item separated by more than one space
-%     \item negative argument
-%     \item argument with the number `0'
-%     \item decimal argument
-%     \item Enter command not presses after input
-% \end{enumerate}
-
 \begin{table}[H]
     \begin{tabularx}{1.1\textwidth}{X|X|X|}
         \centering
@@ -139,7 +110,7 @@ From these equivalence classes, the following test cases were created:
 \begin{itemize}
     \item 1 2 covers (9)
     \item 3 4 5 6 covers (10)
-    \item 7 8       9 covers (11)
+    \item 7 8 \qquad 9 covers (11)
     \item 8\_7\_6 covers (12)
     \item 1 $-2$ 3 covers (13)
     \item 5 0 4 covers (14)
@@ -149,14 +120,20 @@ From these equivalence classes, the following test cases were created:
     \item not pressing Enter covers (18)
 \end{itemize}
 
-
+The results of these test cases, including expected versus actual output can be found in Appendix \ref{triangletestcases}.
+Failed test cases are highlighted in red.
 \appendix
 \section*{Appendix}
 \section{Calculator Test Cases} \label{calculatortestcases}
 \includepdf[pages=-]{calculatortable.pdf}
 
-% \begin{appendices}
-% \section{Calculator Test Cases}
-% \includepdf[pages=-]{calculatortable.pdf}
-% \end{appendices}
+\section{Triangle Test Cases} \label{triangletestcases}
+% \includepdf[]{triangletable.pdf}
+\begin{table}[H]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1.1\textwidth]{triangletable.png}
+    \end{figure}
+    \caption{Test cases covering the equivalence classes identified in Part 2 for the Triangle program. Failed test cases are highlighted in red.}
+\end{table}
 \end{document}
