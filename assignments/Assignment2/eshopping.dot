@@ -5,9 +5,8 @@ size="8,5"
 node [shape = circle];
 begin [label= "", shape=none,height=.0,width=.0];
 begin -> "Sign up" [label = "User signs up"];
-"Sign up" -> "Logged in" [label = "User logs in"];
-"Logged out" -> "Logged in" [ label = "User logs in" ];
-"Logged in" -> "Logged out" [label = "User logs out"];
+"Sign up" -> "Shopping" [label = "User logs in"];
+"Logged out" -> Shopping [ label = "User logs in" ];
 Shopping -> Shopping [label = "Add item to cart"];
 Shopping -> Checkout [label = "User clicks checkout"];
 Shopping -> "Logged out" [label = "User logs out"];
