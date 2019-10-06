@@ -39,7 +39,7 @@
 \usepackage[pdf]{graphviz}
 \usepackage{adjustbox}
 
-
+\usepackage{amsmath}
 % make subsection use letters
 \renewcommand{\thesubsection}{\thesection\ \alph{subsection})}
 
@@ -101,6 +101,37 @@ The following assumptions were made:
 }
 \end{adjustbox}
 
+\section{maxofThreeNumbers(int n1, int n2, int n3}
+\subsection{Exhaustive Testing}
+By definition, with exhaustive testing, we would have to check for every
+possible combination of inputs to cover the input space. 
+Assuming the program in question stores its
+\textbf{int} data type as a 64-bit signed integer, each parameter can
+have a minimum value of $-9223372036854775808$, and a maximum value of
+$9223372036854775807$. Therefore, for each input argument, there are
+$18446744073709551615$ possibilities. So, to account for each possible
+combination of inputs, there would be 
+\begin{multline*}
+18446744073709551615 \times 18446744073709551615 \times 18446744073709551615 = \\ 6277101735386680762814942322444851025767571854389858533375
+\end{multline*}
+test cases. 
+
+\subsection{Error Guessing}
+With error guessing, we can choose some inputs from the input space
+that from previous experience and from guessing we might think could 
+break the program. A few test cases are listed below:
+
+\begin{enumerate}
+	\item maxOfThreeNumbers(-1, 0 2) checks for negative and positive inputs
+	\item maxOfThreeNumbers(0, 0, 1) checks for when two inputs are the same
+	\item maxOfThreeNumbers(-9223372036854775808, 0 4) minmum value for one input
+	\item maxOfThreeNumbers(2, -2, 9223372036854775807) maximum value for one input
+	\item maxOfThreeNumbers(0, 0, 0) checks for when all arguments are zero, and also when all the arguments are the same
+	\item maxOfThreeNumbers(1, 2, 3) checks for all positive arguments
+	\item maxOfThreeNumbers(-5, -9, -2) checks for all negative arguments
+\end{enumerate}
+
+\section{}
 
 \nocite{*}
 \printbibliography
