@@ -1,0 +1,103 @@
+\documentclass[letterpaper]{article}
+\synctex=1
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{lipsum}
+\usepackage{float}
+
+\usepackage[
+    style=ieee,
+    backend=biber
+    ]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+
+\usepackage{siunitx}
+
+\usepackage{multirow}
+% for merging table cells I think
+
+\usepackage{tabularx}
+% allows for linewrap within cells
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\usepackage{todonotes}
+
+
+\usepackage{fancyhdr} %header
+\fancyhf{}
+\fancyhead[R]{Arun Woosaree XXXXXXX}
+\renewcommand\headrulewidth{0pt}
+\fancyfoot[C]{\thepage}
+\renewcommand\footrulewidth{0pt}
+\pagestyle{fancy}
+
+\usepackage[pdf]{graphviz}
+\usepackage{adjustbox}
+
+
+% make subsection use letters
+\renewcommand{\thesubsection}{\thesection\ \alph{subsection})}
+
+
+% \usepackage{amsthm}
+
+%actual document
+\begin{document}
+
+% \maketitle %insert titlepage here
+\begin{titlepage}
+	\begin{center}
+		\vspace*{1cm}
+		\Huge
+		ECE 322
+		\vspace{1cm}
+
+		Assignment 1
+		\vspace{1cm}
+
+		Arun Woosaree
+
+		\today
+		\vfill
+	\end{center}
+\end{titlepage}
+
+\section{e-Shopping System FSM}
+
+The following assumptions were made:
+\begin{enumerate}
+	\item The items added to the user's cart are always in stock
+	\item A user must sign up to use the system, and cannot delete theri
+\end{enumerate}
+\begin{adjustbox}{width=2\textwidth,center}
+\digraph{eshopping}{
+	rankdir=LR;
+	size="8,5"
+	// node [shape = doublecircle];
+	node [shape = circle];
+	begin [label= "", shape=none,height=.0,width=.0];
+	begin -> "Sign up" [label = "User signs up"];
+	"Sign up" -> "Logged in" [label = "User logs in"];
+	"Logged out" -> "Logged in" [ label = "User logs in" ];
+	"Logged in" -> "Logged out" [label = "User logs out"];
+	Shopping -> Shopping [label = "Add item to cart"];
+	Shopping -> Checkout [label = "User clicks checkout"];
+	Shopping -> "Logged out" [label = "User logs out"];
+	Checkout -> Shopping [label = "User cancels order"];
+	Checkout -> "Logged out" [label = "User Logs out"];
+	Checkout -> "Process order" [label = "Checkout successful"];
+	"Process order" -> "Shopping";
+
+
+}
+\end{adjustbox}
+
+
+\nocite{*}
+\printbibliography
+\end{document}
