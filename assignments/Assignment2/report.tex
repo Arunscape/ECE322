@@ -6,11 +6,11 @@
 \usepackage{lipsum}
 \usepackage{float}
 
-\usepackage[
-    style=ieee,
-    backend=biber
-    ]{biblatex}
-\addbibresource{references.bib}
+% \usepackage[
+%     style=ieee,
+%     backend=biber
+%     ]{biblatex}
+% \addbibresource{references.bib}
 
 \usepackage{hyperref}
 
@@ -22,6 +22,7 @@
 % for merging table cells I think
 
 \usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 % allows for linewrap within cells
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
@@ -72,15 +73,15 @@
 The following assumptions were made:
 \begin{enumerate}
 	\item The items added to the user's online shopping cart are always
-		in stock
+	      in stock
 	\item A user must sign up before being able to purchase an item
-		from this e-shopping system.
+	      from this e-shopping system.
 	\item Once the user has signed up, their account cannot be deleted.
-		They can however, remain logged out indefinitely.
+	      They can however, remain logged out indefinitely.
 	\item Once an order is processed, the user cannot cancel their order
 \end{enumerate}
 \begin{adjustbox}{width=2\textwidth,center}
-\digraph{eshopping}{
+	\digraph{eshopping}{
 	rankdir=LR;
 	size="8,5"
 	// node [shape = doublecircle];
@@ -98,41 +99,80 @@ The following assumptions were made:
 	"Process order" -> "Shopping";
 
 
-}
+	}
 \end{adjustbox}
 
 \section{maxofThreeNumbers(int n1, int n2, int n3}
 \subsection{Exhaustive Testing}
 By definition, with exhaustive testing, we would have to check for every
-possible combination of inputs to cover the input space. 
+possible combination of inputs to cover the input space.
 Assuming the program in question stores its
 \textbf{int} data type as a 64-bit signed integer, each parameter can
 have a minimum value of $-9223372036854775808$, and a maximum value of
 $9223372036854775807$. Therefore, for each input argument, there are
 $18446744073709551615$ possibilities. So, to account for each possible
-combination of inputs, there would be 
+combination of inputs, there would be
 \begin{multline*}
-18446744073709551615 \times 18446744073709551615 \times 18446744073709551615 = \\ 6277101735386680762814942322444851025767571854389858533375
+	18446744073709551615 \times 18446744073709551615 \times 18446744073709551615 = \\ 6277101735386680762814942322444851025767571854389858533375
 \end{multline*}
-test cases. 
+test cases.
 
 \subsection{Error Guessing}
 With error guessing, we can choose some inputs from the input space
-that from previous experience and from guessing we might think could 
+that from previous experience and from guessing we might think could
 break the program. A few test cases are listed below:
 
 \begin{enumerate}
 	\item maxOfThreeNumbers(-1, 0 2) checks for negative and positive inputs
 	\item maxOfThreeNumbers(0, 0, 1) checks for when two inputs are the same
-	\item maxOfThreeNumbers(-9223372036854775808, 0 4) minmum value for one input
+	\item maxOfThreeNumbers(-9223372036854775808, 0 4) minimum value for one input
 	\item maxOfThreeNumbers(2, -2, 9223372036854775807) maximum value for one input
 	\item maxOfThreeNumbers(0, 0, 0) checks for when all arguments are zero, and also when all the arguments are the same
 	\item maxOfThreeNumbers(1, 2, 3) checks for all positive arguments
 	\item maxOfThreeNumbers(-5, -9, -2) checks for all negative arguments
 \end{enumerate}
 
-\section{}
+\section{Equivalence Partitioning}
+\subsection{equivalence classes}
+Given \emph{n} input variables and \emph{m} equivalence classes in each $n^{th}$
+input space, there would be $m \times n$ total equivalence classes.
+There would be at most one test case for each test case with a valid input for
+that equivalence class (because multiple valid equivalence classes can be
+covered with one test case), and at least one test case for each invalid input
+for that equivalence class. Thus, we would have at most $m \times n \times 2$
+test cases. As we've been implying, this is an upper bound, and the number of
+test cases can absolutely be reduced. We still need one test case for each
+equivalence class's invalid input, but one test case can cover multiple
+valid inputs for different equivalence classes. Thus, the minimum number
+of test cases would be $m \times n + 1$, which would be the case when
+all valid equivalence classes are covered by one test case.
 
-\nocite{*}
-\printbibliography
+For example, for $n=10$ and $m=10$, the most number of test cases can be calculated as follows:
+\[ 10 \times 10 \times 2 = 200 \]
+And, if there is an input that covers all valid equivalence classes, the minimum number of test cases would be
+\[ 10 \times 10 + 1 = 101 \] test cases.
+
+\subsection{example with function S}
+given:
+\begin{enumerate}
+	\item input range [-50, 50]
+	\item S is invoked if the reading of a sensor is within [a.b] or [c,d], $b < c$
+\end{enumerate}
+
+\begin{adjustbox}{center}
+	% \begin{table}[H]
+	\begin{tabularx}{1.2\textwidth}{X|X|X|}
+		%        \centering
+		Input Condition & Valid Input Classes  & Invalid Input Classes \\ \hline
+		sensor reading  & reading within [a,b] & reading $<a$          \\
+		                & reading within [c,d] & reading $>d$          \\
+		                &                      & $b <$ reading $< c$   \\
+		                &                      & $b=c$                 \\ \hline
+	\end{tabularx}
+	% \caption{Valid and Invalid equivalence classes for the triangle program}
+	% \end{table}
+\end{adjustbox}
+
+% \nocite{*}
+% \printbibliography
 \end{document}
