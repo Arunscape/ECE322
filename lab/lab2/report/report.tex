@@ -25,13 +25,17 @@
 
 \usepackage{pdfpages} % for attaching the table lol
 
+%for plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=8cm,compat=1.15}\usepgfplotslibrary{patchplots}
 \title{ECE 322 \\
 Lab Report 1}
 \author{Arun Woosaree\\
 XXXXXXX}
 \begin{document}
 \maketitle
-\section*{Introduction} The purpose of this lab was to serve as a practical
+\section{Introduction} The purpose of this lab was to serve as a practical
 introduction to some more black box testing techniques. In this lab, the
 testing methods introduced were the Extreme Point Combination (EPC), and the
 Weak n x 1 strategy methods. We tested two programs written in Java using both
@@ -57,23 +61,50 @@ n x 1 strategy, $b \times (n + 1)$ test cases are generated, where b is the
 number of linear boundaries, and n is the dimensionality, or the number of
 inputs.
 
-\section*{Part 1 - Failure/Dirty Testing, Error Guessing}
-For task one in this lab, we had to be creative, as is the nature of Failure/Dirty testing, and error guessing.
-The purpose was to test the functionality of a calculator program, which was written in Java. A table of
-test cases was produced, checking for basic functionality, common errors. A few test cases were also
-made based on previous experience, which is also known as error guessing. Altogether, the test cases check
-for the following functionality:
+\section{Task 1 - Drone}
+For task one in this lab, the Drone application was tested using both the
+EPC method and the weak n x 1 strategy. Drone is a command-line program
+written in java, which takes three inputs, $x_1$, $x_2$, and $x_3$.
+If $x_1 + x_2 + x_3 \leq k$, where $k=100$, the program should output
+`Success', and if not, it should output `Failure'. The three inputs 
+must be integers $\geq 0$. 
 
-\begin{enumerate}
-    \item whether the calculator buttons work
-    \item non-numerical input
-    \item mismatched brackets
-    \item order or operations (BEDMAS/PEMDAS)
-    \item large numbers
-    \item small numbers
-    \item incorrect syntax (e.g. 2++2)
-\end{enumerate}
-
+\subsection{Sudomain plot}
+The subdomain for this problem is illustrated below:
+\begin{figure}[H]
+	\centering
+\begin{tikzpicture}
+\begin{axis}[view/h=60,xlabel=$x$,ylabel=$y$,zlabel=$z$]
+\addplot3 [
+opacity=0.5,
+table/row sep=\\,
+patch,
+patch type=polygon,
+vertex count=3,
+patch table with point meta={
+% pt1 pt2 pt3 pt4 pt5 cdata
+0 1 2 0\\
+0 1 3 1\\
+0 2 3 2\\
+1 2 3 3\\
+},
+] table {
+x y z\\
+0 0 0 \\%0
+0 0 100\\%1
+0 100 0\\%2
+100 0 0\\%3
+};
+% replicate the vertex list to show \coordindex:
+%\addplot3 [only marks,
+%nodes near coords=\coordindex,
+%] table [row sep=\\] {
+%0 2 0\\ 2 2 0\\ 0 1 3\\ 0 0 3\\
+%1 0 3\\ 2 0 2\\ 2 0 0\\ 1 1 2\\
+%};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
 The full list of test cases, along with the inputs and expected versus actual outputs can be found in Appendix.
 The test cases where the expected result does not match the actual result are highlighted in red.
 From experience, these test failures could be due to the following:
