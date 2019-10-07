@@ -134,7 +134,7 @@ break the program. A few test cases are listed below:
 
 \section{Equivalence Partitioning}
 \subsection{equivalence classes}
-Given \emph{n} input variables and \emph{m} equivalence classes in each $n^{th}$
+Given $n$ input variables and $m$ equivalence classes in each $n^{th}$
 input space, there would be $m \times n$ total equivalence classes.
 There would be at most one test case for each test case with a valid input for
 that equivalence class (because multiple valid equivalence classes can be
@@ -145,11 +145,13 @@ test cases can absolutely be reduced. We still need one test case for each
 equivalence class's invalid input, but one test case can cover multiple
 valid inputs for different equivalence classes. Thus, the minimum number
 of test cases would be $m \times n + 1$, which would be the case when
-all valid equivalence classes are covered by one test case.
+all valid equivalence classes can be covered by one test case.
 
-For example, for $n=10$ and $m=10$, the most number of test cases can be calculated as follows:
+For example, for $n=10$ and $m=10$, the most number of test cases can be
+calculated as follows:
 \[ 10 \times 10 \times 2 = 200 \]
-And, if there is an input that covers all valid equivalence classes, the minimum number of test cases would be
+And, if there is an input that covers all valid equivalence classes, the
+minimum number of test cases would be
 \[ 10 \times 10 + 1 = 101 \] test cases.
 
 \subsection{example with function S}
@@ -163,16 +165,32 @@ given:
 	% \begin{table}[H]
 	\begin{tabularx}{1.2\textwidth}{X|X|X|}
 		%        \centering
-		Input Condition & Valid Input Classes  & Invalid Input Classes \\ \hline
-		sensor reading  & reading within [a,b] & reading $<a$          \\
-		                & reading within [c,d] & reading $>d$          \\
-		                &                      & $b <$ reading $< c$   \\
-		                &                      & $b=c$                 \\ \hline
+		Input Condition & Valid Input Classes      & Invalid Input Classes    \\ \hline
+		sensor reading  & reading within [a,b] (1) & reading $<a$ (3)         \\
+				& reading within [c,d] (2) & reading $>d$ (4)         \\
+				&                          & $b <$ reading $< c$ (5)  \\ \hline
 	\end{tabularx}
 	% \caption{Valid and Invalid equivalence classes for the triangle program}
 	% \end{table}
 \end{adjustbox}
 
+\subsubsection*{Valid input test cases}
+\begin{itemize}
+	\item an input between a and b would cover (1). e.g. if a was -25 and b
+		was 10, 0 would suffice
+	\item and input between c and d would cover (2). e.g if c was 20 and d
+		was 30, then 20 would suffice
+\end{itemize}
+
+\subsubsection*{Invalid input test cases}
+\begin{itemize}
+	\item an input less than a would cover (3). e.g. if a was -25 then -30
+		would suffice
+	\item an input greater than d would cover (4). e.g. if d was 30 then 40
+		would suffice
+	\item an input between b and c would cover (5). e.g. if b was 10 and c
+		was 20 then 15 would suffice.
+\end{itemize}
 % \nocite{*}
 % \printbibliography
 \end{document}
