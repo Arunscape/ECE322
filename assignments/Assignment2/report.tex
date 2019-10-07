@@ -42,7 +42,7 @@
 
 \usepackage{amsmath}
 % make subsection use letters
-\renewcommand{\thesubsection}{\thesection\ \alph{subsection})}
+\renewcommand{\thesubsection}{\thesection\ \roman{subsection})}
 
 
 % \usepackage{amsthm}
@@ -191,6 +191,18 @@ given:
 	\item an input between b and c would cover (5). e.g. if b was 10 and c
 		was 20 then 15 would suffice.
 \end{itemize}
+
+\subsection{Generalizing the problem in (ii)}
+With two sensors, function S can be invoked if either of the sensors are within
+the range $[a_i, b_i]$ or $[c_i, d_i]$, $i=1,2$. So, there would be 8
+equivalence classes for the valid inputs, since we could have any combination
+of either one or both sensors being within their ranges. As for the
+equivalence classes for invalid inputs, there are 9 cases where both sensors
+should not invoke the function. In this case, we cannot cover more than one
+equivalence class with a singular test case, so in total there would be 17
+total test cases.
+
+
 % \nocite{*}
 % \printbibliography
 \end{document}
