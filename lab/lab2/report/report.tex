@@ -2,12 +2,13 @@
 \documentclass[letterpaper]{article}
 \synctex=1
 \usepackage{graphicx}
-\graphicspath{{images/}}
+%\graphicspath{{images/}}
 
 \usepackage{lipsum}
 \usepackage{float}
 
 \usepackage{amssymb}
+\usepackage{amsmath}
 
 \usepackage{siunitx}
 
@@ -24,6 +25,8 @@
 \usepackage{hyperref}
 
 \usepackage{pdfpages} % for attaching the table lol
+
+\usepackage[section]{placeins} % forces figures to appear in the same section
 
 %for plots
 \usepackage{tikz}
@@ -69,7 +72,7 @@ If $x_1 + x_2 + x_3 \leq k$, where $k=100$, the program should output
 `Success', and if not, it should output `Failure'. The three inputs 
 must be integers $\geq 0$. 
 
-\subsection{Sudomain plot}
+\subsection{Sudomain Plot}
 The subdomain for this problem is illustrated in the 3-Dimensional graph below:
 \begin{figure}[H]
 	\centering
@@ -97,6 +100,7 @@ x y z\\
 };
 \end{axis}
 \end{tikzpicture}
+\caption{Valid inputs for the Drone program. $x_1 + x_2 + x_3 \leq 100\ |\ x_1, x_2, x_3 \geq 0$}
 \end{figure}
 
 \subsection{EPC Strategy}
@@ -137,49 +141,40 @@ testing strategies found an error which seems to stem from the same issue,
 did so with less test cases (17 versus 65).
 
 
-\section*{Part 2 - Partition Testing}
-Task two of this lab involved partition-based testing of a triangle application.
-The purpose of this application is to take 3 space separated positive integers,
-each representing sides of a triangle, and the program is expected to tell the
-user whether the triangle is a scalene, isosceles, or equilateral triangle.
-The following equivalence classes were decided on for creating the test cases.
-\subsection*{Triangle Equivalence Classes}
+\section*{Part 2 - RemoteCar}
+For task two in this lab, the RemoteCar application was tested using both the
+EPC method and the weak n x 1 strategy. RemoteCar is a command-line program
+written in Java, which takes two inputs, $x$, and $y$, which represent a
+point on the Cartesian plane.
+If $(x,y)$ falls on the circle with radius $r=1$, centered about the origin,
+the program will output`Ok.', or `Out of range!'. The input arguments must
+be real numbers, or the program should output an error letting the user know
+that the argument entered was not a number.
 
+\subsection{Subdomain Plot}
+Since circular boundaries are too complex to test using linear methods,
+we approximate the circular subdomain with $m$ linear segments. In this lab,
+we carried out the testing with $m=4$ linear boundaries. More could have been
+used to increase the accuracy, and better approximate the circular boundary.
 
-From these equivalence classes, the following test cases were created:
+\begin{figure}[h]
+	\centering
+	\includegraphics{remotecar-subdomain.png}
+	\caption{Approximate subdomain $m=4$ shown in red.
+		Circle is centered at the origin, $r=1$.
+	        Plot taken from the lab instructions.}
+\end{figure}
 
-\subsection*{Test cases for valid inputs}
-\begin{itemize}
-    \item 3 3 3 covers (1, 2, 3, 4, 7, 8)
-    \item 4 4 5 covers (1, 2, 3, 5, 7, 8)
-    \item 6 7 8 covers (1, 2, 3, 6, 7, 8)
-\end{itemize}
-
-\subsection*{Test cases for invalid inputs}
-\begin{itemize}
-    \item 1 2 covers (9)
-    \item 3 4 5 6 covers (10)
-    \item 7 8 \qquad 9 covers (11)
-    \item 8\_7\_6 covers (12)
-    \item 1 $-2$ 3 covers (13)
-    \item 5 0 4 covers (14)
-    \item 3 2 0.1 covers (15)
-    \item 2 2 4 covers (16)
-    \item 3 4 9 covers (17)
-    \item not pressing Enter covers (18)
-\end{itemize}
-
-The results of these test cases, including expected versus actual output can be found in Appendix.
-Failed test cases are highlighted in red. There was one test case which failed. 
-
-\begin{itemize}
-    \item For the input where we have the case $a+b=c$,
-    (2 2 4) in this case, the program tells us that it is a isosceles triangle instead of an invalid one.
-    This is likely because the implementation checks validity by looking for $a+b>c$ instead of $a+b \geq c$.    
-    Similarly, with the inputs (1 2 3), the program tells us that it is a scalene triangle instead of showing an error.
-\end{itemize}
-
-\section*{Conclusion}
+The equations of the approximated linear boundaries are as follows:
+	\[ y= \begin{cases} 
+      1-x &  0 \leq x \leq 1 \\
+      1+x &  -1 \leq x \leq 0 \\
+      -(1+x) &  -1 \leq x \leq 0 \\
+      x-1 &  0 \leq x \leq 1 \\
+   \end{cases}
+\]
+\FloatBarrier
+\section{Conclusion}
 In this lab, we were introduced to black-box testing. The techniques
 learned were dirty testing, error guessing, and partition-based testing.
 Dirty testing's strength seems to also be its weakness at the same time. That is,
