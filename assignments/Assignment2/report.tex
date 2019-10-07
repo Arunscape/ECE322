@@ -41,6 +41,36 @@
 \usepackage{adjustbox}
 
 \usepackage{amsmath}
+
+\usepackage{listings}
+\usepackage{xcolor}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
 % make subsection use letters
 \renewcommand{\thesubsection}{\thesection\ \roman{subsection})}
 
@@ -202,7 +232,40 @@ should not invoke the function. In this case, we cannot cover more than one
 equivalence class with a singular test case, so in total there would be 17
 total test cases.
 
+\section{3-D Input Domain}
+For $W_1$, $W_2$, and $W_3$ to form a partition, they must be mutually
+exclusive. Using a naive Python script, I determined with up to 0.0001 accuracy
+that $e$ must be between $0 < e < 5$. If there was no restriction that e
+must be positive, then it seems that any negative number would suffice as well.
 
+%\begin{lstlisting}[language=Python]
+%import numpy as np                                                                  
+%X = [i for i in range(0, 11)]                                                       
+%Y = [i for i in range(-5, 21)]                                                      
+%Z = [i for i in range(0, 8)]                                                        
+%                                                                                     
+%possible_values_of_e = np.arange(-30, 101, 0.0001).tolist()                         
+%w = set([ (x, y, z) for x in X for y in Y for z in Z])                              
+%                                                                                      
+%                                                                                      
+%for e in possible_values_of_e:                                                      
+%    w1 = set([ i for i in w if max(abs(i[0]-1), abs(i[1]-1), abs(i[2]-1)) <= e])    
+%    w2 = set([ i for i in w if max(abs(i[0]-5), abs(i[1]-10), abs(i[2]-4)) <= e])
+%    w3 = w - w1 - w2                                                                                                                                                  
+%    
+%    # w3 is automatically disjoint from w1 and w2 bevause w3 = w - w1 - w2  
+%    if len( w1 & w2  ) == 0:                                                        
+%        print(e)
+%\end{lstlisting}
+\vspace{1cm}
+\begin{adjustbox}{width=\textwidth}
+\lstinputlisting[language=Python]{q4.py}
+\end{adjustbox}
+
+\vspace{2cm}
+Thus, it would appear that $e$ can take on any numerical value between
+0 and 5 exclusive at both ends. 
+\[ 0 < e < 5 \]
 % \nocite{*}
 % \printbibliography
 \end{document}
