@@ -1,13 +1,15 @@
 digraph eshopping {
 rankdir=LR;
-size="8,5"
+size="8,5";
+overlap=false;
 // node [shape = doublecircle];
 node [shape = circle];
 begin [label= "", shape=none,height=.0,width=.0];
 begin -> "Sign up" [label = "User signs up"];
 "Sign up" -> "Shopping" [label = "User logs in"];
 "Logged out" -> Shopping [ label = "User logs in" ];
-Shopping -> Shopping [label = "Add item to cart"];
+Shopping:n -> Shopping:n [label = "Add item to cart"];
+Shopping:s -> Shopping:s [label = "Remove item from cart"];
 Shopping -> Checkout [label = "User clicks checkout"];
 Shopping -> "Logged out" [label = "User logs out"];
 Checkout -> Shopping [label = "User cancels order"];

@@ -51,22 +51,22 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
  
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
+%    backgroundcolor=\color{backcolour},   
+%    commentstyle=\color{codegreen},
+%    keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
+%    stringstyle=\color{codepurple},
+%    basicstyle=\ttfamily\footnotesize,
+%    breakatwhitespace=false,         
+%    breaklines=true,                 
+%    captionpos=b,                    
+%    keepspaces=true,                 
+%    numbers=left,                    
+%    numbersep=5pt,                  
+%    showspaces=false,                
+%    showstringspaces=false,
+%    showtabs=false,                  
+%    tabsize=2
 }
  
 \lstset{style=mystyle}
@@ -76,27 +76,30 @@
 
 
 % \usepackage{amsthm}
-
+\title{ECE 322 \\
+Assignment 2}
+  \author{Arun Woosaree\\
+  XXXXXXX} 
 %actual document
 \begin{document}
 
-% \maketitle %insert titlepage here
-\begin{titlepage}
-	\begin{center}
-		\vspace*{1cm}
-		\Huge
-		ECE 322
-		\vspace{1cm}
-
-		Assignment 1
-		\vspace{1cm}
-
-		Arun Woosaree
-
-		\today
-		\vfill
-	\end{center}
-\end{titlepage}
+\maketitle %insert titlepage here
+%\begin{titlepage}
+%	\begin{center}
+%		\vspace*{1cm}
+%		\Huge
+%		ECE 322
+%		\vspace{1cm}
+%
+%		Assignment 1
+%		\vspace{1cm}
+%
+%		Arun Woosaree
+%
+%		\today
+%		\vfill
+%	\end{center}
+%\end{titlepage}
 
 \section{e-Shopping System FSM}
 
@@ -113,14 +116,16 @@ The following assumptions were made:
 \begin{adjustbox}{width=2\textwidth,center}
 	\digraph{eshopping}{
 	rankdir=LR;
-	size="8,5"
+	size="8,5";
+	overlap=false;
 	// node [shape = doublecircle];
 	node [shape = circle];
 	begin [label= "", shape=none,height=.0,width=.0];
 	begin -> "Sign up" [label = "User signs up"];
 	"Sign up" -> "Shopping" [label = "User logs in"];
 	"Logged out" -> Shopping [ label = "User logs in" ];
-	Shopping -> Shopping [label = "Add item to cart"];
+	Shopping:n -> Shopping:n [label = "Add item to cart"];
+	Shopping:s -> Shopping:s [label = "Remove item from cart"];
 	Shopping -> Checkout [label = "User clicks checkout"];
 	Shopping -> "Logged out" [label = "User logs out"];
 	Checkout -> Shopping [label = "User cancels order"];
@@ -160,29 +165,38 @@ break the program. A few test cases are listed below:
 	\item maxOfThreeNumbers(0, 0, 0) checks for when all arguments are zero, and also when all the arguments are the same
 	\item maxOfThreeNumbers(1, 2, 3) checks for all positive arguments
 	\item maxOfThreeNumbers(-5, -9, -2) checks for all negative arguments
+	\item maxofThreeNumbers( 'a', 'b', 'c' ) checks for non integer arguments
 \end{enumerate}
 
 \section{Equivalence Partitioning}
 \subsection{equivalence classes}
 Given $n$ input variables and $m$ equivalence classes in each $n^{th}$
 input space, there would be $m \times n$ total equivalence classes.
-There would be at most one test case for each test case with a valid input for
-that equivalence class (because multiple valid equivalence classes can be
-covered with one test case), and at least one test case for each invalid input
-for that equivalence class. Thus, we would have at most $m \times n \times 2$
+There would be at most one test case for each 
+%test case with a valid input for
+equivalence class using strong normal equivalence class testing.
+Using weak normal equivalence class testing, the number of test
+cases can be lowered by covering as many valid input equivalence classes
+with as few test cases as possible.
+%that equivalence class (because multiple valid equivalence classes can be
+%covered with one test case), and at least one test case for each invalid input
+%for that equivalence class. 
+Thus, we would have at most $m \times n $
 test cases. As we've been implying, this is an upper bound, and the number of
-test cases can absolutely be reduced. We still need one test case for each
-equivalence class's invalid input, but one test case can cover multiple
-valid inputs for different equivalence classes. Thus, the minimum number
-of test cases would be $m \times n + 1$, which would be the case when
-all valid equivalence classes can be covered by one test case.
+test cases can absolutely be reduced using the single fault assumption. 
+We still need one test case for each invalid input equivalence class, but one
+test case can cover multiple valid inputs for different equivalence classes
+using weak normal equivalence class testing.
+%Thus, the minimum number
+%of test cases would be $m \times n + 1$, which would be the case when
+%all valid equivalence classes can be covered by one test case.
 
 For example, for $n=10$ and $m=10$, the most number of test cases can be
 calculated as follows:
-\[ 10 \times 10 \times 2 = 200 \]
-And, if there is an input that covers all valid equivalence classes, the
-minimum number of test cases would be
-\[ 10 \times 10 + 1 = 101 \] test cases.
+\[ 10 \times 10 = 100 \]
+%And, if there is an input that covers all valid equivalence classes, the
+%minimum number of test cases would be
+%\[ 10 \times 10 + 1 = 101 \] test cases.
 
 \subsection{example with function S}
 given:
@@ -224,13 +238,20 @@ given:
 
 \subsection{Generalizing the problem in (ii)}
 With two sensors, function S can be invoked if either of the sensors are within
-the range $[a_i, b_i]$ or $[c_i, d_i]$, $i=1,2$. So, there would be 8
-equivalence classes for the valid inputs, since we could have any combination
-of either one or both sensors being within their ranges. As for the
-equivalence classes for invalid inputs, there are 9 cases where both sensors
-should not invoke the function. In this case, we cannot cover more than one
-equivalence class with a singular test case, so in total there would be 17
-total test cases.
+the range $[a_i, b_i]$ or $[c_i, d_i]$, $i=1,2$. 
+It does not seem like we can cover multiple valid input equivalence classes
+using weak normal equivalence class testing, so using strong normal equivalence 
+class testing, we would take the Cartesian product of the equivalence classes. 
+In (ii) we had 5 equivalence classes, so the Cartesian product is 
+$5 \times 5 = 25$. So, there would be 25 equivalence classes for the valid
+inputs, since we could have any combination of either one or both sensors being
+within their ranges, and we would again have one test case for each equivalence
+class resulting in 25 total test cases.
+%As for the equivalence classes for invalid inputs, there
+%are 9 cases where both sensors should not invoke the function. In this case, we
+%cannot cover more than one equivalence class with a singular test case, so in
+%total there would be 17
+%total test cases.
 
 \section{3-D Input Domain}
 For $W_1$, $W_2$, and $W_3$ to form a partition, they must be mutually
