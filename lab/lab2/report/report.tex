@@ -2,7 +2,7 @@
 \documentclass[letterpaper]{article}
 \synctex=1
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\graphicspath{{images/}}
 
 \usepackage{lipsum}
 \usepackage{float}
@@ -70,11 +70,11 @@ If $x_1 + x_2 + x_3 \leq k$, where $k=100$, the program should output
 must be integers $\geq 0$. 
 
 \subsection{Sudomain plot}
-The subdomain for this problem is illustrated below:
+The subdomain for this problem is illustrated in the 3-Dimensional graph below:
 \begin{figure}[H]
 	\centering
 \begin{tikzpicture}
-\begin{axis}[view/h=60,xlabel=$x$,ylabel=$y$,zlabel=$z$]
+	\begin{axis}[view/h=60,xlabel=$x$,ylabel=$y$,zlabel=$z$,title={Subdomain of Valid Inputs for the Drone Program},zmin=0]
 \addplot3 [
 opacity=0.5,
 table/row sep=\\,
@@ -95,49 +95,47 @@ x y z\\
 0 100 0\\%2
 100 0 0\\%3
 };
-% replicate the vertex list to show \coordindex:
-%\addplot3 [only marks,
-%nodes near coords=\coordindex,
-%] table [row sep=\\] {
-%0 2 0\\ 2 2 0\\ 0 1 3\\ 0 0 3\\
-%1 0 3\\ 2 0 2\\ 2 0 0\\ 1 1 2\\
-%};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
-The full list of test cases, along with the inputs and expected versus actual outputs can be found in Appendix.
-The test cases where the expected result does not match the actual result are highlighted in red.
-From experience, these test failures could be due to the following:
+
+\subsection{EPC Strategy}
+Using the EPC strategy, since there are 3 input variables, there are
+$4^3 + 1 = 65$ test cases. The values chosen were:
 \begin{itemize}
-    \item numbers like $2^{512}$ are ridiculously big. It's likely that that the implementation was not designed to handle such large numbers.
-    \item similarly, numbers like $2^{-512}$ are so small that the calculator interprets it as being the number 0
-    \item entering nothing results in an output of 0. It's likely that a lone space is interpreted as a 0 by the calculator
-    \item if there's a space between a number and the minus sign after it, the calculator outputs NaN. It could be that when parsing the input, the calculator may be interpreting it as two numbers with no operator in between, so it does not know what to do and returns an error (NaN)
-    \item the calculator does not follow the correct order of operations.
-          If there's a division and multiplication. (e.g. $80/4*5$),
-          it appears to be doing the multiplication before the division,
-          even though the multiplication should be done afterwards,
-          since it is on the right hand side of the previous division operation.
-    \item when multiple exponent (\textasciicircum) operators are used in between two operands,
-          the result is always one, instead of showing an error. This might be because the right half is evaluated as 0 by the calculator,
-          and anything to the power of 0 is 1.
-    \item when the first operand is missing for $+$ the calculator seems to ignore it and treat it like a positive number. This is why the calculator says $2++++2=4$
-    \item when the first operand is missing for $*$, $/$, or \textasciicircum, the calculator evaluates it as being equal to 0 instead of returning an error.
-          % This becomes apparent in operations like $\textrm2$,  $2**2$, or $/2$
-    \item with the exponent operator, the calculator tries to evaluate everything after the exponent.
-          however, this violates the BEDMAS rule in cases where the exponent should be done before multiplication, division, addition, or subtraction.
-          This results in errors like $2^1+1$ resulting in 4 instead of 3.
-          This also compounds with the previous errors in some cases where an expression like $2^3 + 2^3$
-          is incorrectly evaluated as $2^5$, since $3+2$ is evaluated first, which results in 
-          \textasciicircum 3
-          being evaluated as 1, and the expression is reduced to $2^{5}$, resulting in the incorrect response.
-    \item when numbers are only separated by a space, the calculator concatenates the digits. i.e. 1 2 becomes 12, instead of showing an error.
-          when these numbers are wrapped by brackets, the calculator still concatenates them instead of multiplying. e.g. (2)(2) becomes 22 instead of 4.
-          However, multiplying negative numbers using brackets e.g. (2)(-2) instead of the * operator results in a NaN error.
-    \item the calculator has some rounding issues, which result in a loss of precision in the answer. Adding numbers like $2.000001+2.000002$ result in a rounded
-          answer instead of the exact answer.
+	\item max: 100
+	\item min: 0
+	\item slightly under min: -1
+	\item slightly over max: 101
 \end{itemize}
-% \todo{fix the table and highlightthe failed test case}
+All the permutations of the 3 inputs taking on these values were generated
+and tested. An additional test case was created within the valid subdomain,
+which was $(x_1, x_2, x_3) = (10, 20, 30)$. The full table of test cases
+along with their expected inputs and outputs can be found in Appendix A of this
+report. The failed test cases are highlighted in red for convenience.
+
+\subsection{Weak n x 1 Strategy}
+Using the weak n x 1 strategy, there are 4 boundary surfaces to take into
+consideration. Since there are 3 inputs, we pick 3 points on each boundary
+surface, and one additional point outside of each boundary, for a total of
+$4\times (3 + 1) + 1 = 17$ test cases. The additional test case chosen inside
+the boundary was $(x_1, x_2, x_3) = (30, 20, 10)$. The table of test cases
+along with their expected inputs and outputs can be found in Appendix B of this
+report. The failed test cases are highlighted in red for convenience.
+
+\subsection{Discussion}
+Using both the EPC and the weak n x 1 strategy, we see that for all of the
+failed test cases, the input variable $x_2$ is a negative. For negative
+inputs, the program is expected to give an error telling the user that 
+negative inputs are not valid. Instead, the program outputs `Success!'
+or `Failure!' when $x_2 < 0$. Using the EPC strategy, we see
+2 types or failures, where the program outputs both `Success!'                       
+or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
+`Success!' is outputted mistakenly. It should be noted however, that both
+testing strategies found an error which seems to stem from the same issue,
+(the application not checking if $x_2$ is negative, and the weak n x 1 strategy
+did so with less test cases (17 versus 65).
+
 
 \section*{Part 2 - Partition Testing}
 Task two of this lab involved partition-based testing of a triangle application.
