@@ -28,12 +28,14 @@
 
 \usepackage[section]{placeins} % forces figures to appear in the same section
 
+\usepackage[T1]{fontenc}
+
 %for plots
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{width=8cm,compat=1.15}\usepgfplotslibrary{patchplots}
 \title{ECE 322 \\
-Lab Report 1}
+Lab Report 2}
 \author{Arun Woosaree\\
 XXXXXXX}
 \begin{document}
@@ -64,7 +66,7 @@ n x 1 strategy, $b \times (n + 1)$ test cases are generated, where b is the
 number of linear boundaries, and n is the dimensionality, or the number of
 inputs.
 
-\section{Task 1 - Drone}
+\section{Task 1 — Drone}
 For task one in this lab, the Drone application was tested using both the
 EPC method and the weak n x 1 strategy. Drone is a command-line program
 written in java, which takes three inputs, $x_1$, $x_2$, and $x_3$.
@@ -133,7 +135,7 @@ failed test cases, the input variable $x_2$ is a negative. For negative
 inputs, the program is expected to give an error telling the user that 
 negative inputs are not valid. Instead, the program outputs `Success!'
 or `Failure!' when $x_2 < 0$. Using the EPC strategy, we see
-2 types or failures, where the program outputs both `Success!'                       
+2 types of failures, where the program outputs both `Success!'                       
 or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
 `Success!' is outputted mistakenly. It should be noted however, that both
 testing strategies found an error which seems to stem from the same issue,
@@ -237,29 +239,49 @@ the weak n x 1 strategy could have a lot more test cases if we added more
 linear boundaries to make a better approximation of the problem's subdomain.
 
 \section{Conclusion}
-In this lab, we were introduced to black-box testing. The techniques
-learned were dirty testing, error guessing, and partition-based testing.
-Dirty testing's strength seems to also be its weakness at the same time. That is,
-the test cases written are only limited by the tester's creativity.
-One disadvantage, however, is that one can generate a lot of extra test cases
-that are arguably unnecessary. That is, there is the possibility of having multiple
-tests which cover the same functionality of the program. This is a problem that
-using the partition-based testing method addressed. While equivalence testing allowed us 
-to write significantly fewer test cases,
-it does not catch some unique cases. For example, if dirty testing was done instead,
-one might have tried the test inputs $$1111111111\ 1111111111\ 1$$, which returns ERROR: Invalid triangle
-instead of saying that it's an isosceles one. This error, and potentially others were not
-caught using partition-based testing. What is interesting, though is that the one
-test failure with inputs (2 2 4) for the Triangle program allowed for another error to be found, which is
-the case where an input like (1 2 3) which should cause an error instead returns `Scalene'.
-Overall, it would not be fair to say that
-one testing method is universally better than the other, however, the tester would
-need to use their judgement and experience to choose an appropriate testing method
-for the software that they want to test.
+In this lab, we were introduced to two more black box testting strategies. The
+techniques learned were the Extreme Point Combination, or EPC strategy, and the
+weak n x 1 strategy. It would not be fair to say that one testing strategy
+is universally better than the other, since it would be better to match
+each problem at hand to the appropriate testing strategy. The weak n x 1
+strategy seems to shine when the problem's subdomain is already linear in
+nature. This way, no approximation needs to be made, and we get very few
+test cases $b \times (n + 1) + 1$, where b is the number of boundaries, and
+n is the number of input variables. The weak n x 1 strategy appears to not
+be very effective however, when the problem's subdomain is approximated as
+a collection of linear boundaries. This configuration appears to result in
+false negative test cases, and additionally, if more input boundaries are
+used to increase the accuracy of the input domain, it is still not perfect,
+and furthermore, $n + 1$ additional test cases need to be added for each
+additional boundary, which can result in more test cases required to be carried
+out, which all still have the potential issue of resulting in a false
+negative result. On the other hand, the EPC strategy might seem tedious
+at first, generating $4^n + 1$ test cases, which might seem excessive.
+However, it seems to overall be more accurate than the weak n x 1 stratrgy.
+There were no false positive test cases, and furthermore, more failiure
+scenarios were found, even though they are likely from the same root cause.
+(For the Drone program, we found using the EPC strategy 2 types of failures,
+where the program outputs both `Success!'                       
+or `Failure!' when $x_2$ was negative instead of an error message, however,
+with the weak n x 1 strategy we only saw one case where
+`Success!' was outputted mistakenly. From a purely subjective standpoint,
+I personally prefer the EPC testing strategy over weak n x 1, since
+even though a lot of test cases are typically generated, this step can be
+automated using a script, and not lot of thought, since only four values
+(min, slightly under min, max, slightly over max) plus one additional
+valid test case needs to be thought of. Computers are fast, so we can simply
+generate most of the test cases without much thought, and then compare the
+results with ease using more automation. However, using the weak n x 1
+strategy, one has to really think about each boundary, and choose $n$ points on
+it, plus one point slightly outside each boundary, and additionally, one final
+test case. Additionally, weak n x 1 testign does not seem to work well for
+subdomains that are non-linear in nature, while the EPC strategy seems to
+overall work well and reliably.
+
+
 
 \vfill
 \appendix
-%\section*{Appendix}
 
 \includepdf[pages=-]{EPC-drone-table.pdf}
 \includepdf[]{weaknx1-drone-table.pdf}
