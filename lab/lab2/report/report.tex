@@ -77,7 +77,7 @@ The subdomain for this problem is illustrated in the 3-Dimensional graph below:
 \begin{figure}[H]
 	\centering
 \begin{tikzpicture}
-	\begin{axis}[view/h=60,xlabel=$x$,ylabel=$y$,zlabel=$z$,title={Subdomain of Valid Inputs for the Drone Program},zmin=0]
+	\begin{axis}[view/h=60,xlabel=$x_1$,ylabel=$x_2$,zlabel=$x_3$,title={Subdomain of Valid Inputs for the Drone Program},zmin=0]
 \addplot3 [
 opacity=0.5,
 table/row sep=\\,
@@ -138,10 +138,13 @@ or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
 `Success!' is outputted mistakenly. It should be noted however, that both
 testing strategies found an error which seems to stem from the same issue,
 (the application not checking if $x_2$ is negative, and the weak n x 1 strategy
-did so with less test cases (17 versus 65).
+did so with less test cases (17 versus 65). As a result, for this problem,
+the weak n x 1 strategy seemed to be both more efficient and effective,
+since the same problem was caught using the EPC strategy but with far fewer
+test cases.
 
 
-\section*{Part 2 - RemoteCar}
+\section{Part 2 - RemoteCar}
 For task two in this lab, the RemoteCar application was tested using both the
 EPC method and the weak n x 1 strategy. RemoteCar is a command-line program
 written in Java, which takes two inputs, $x$, and $y$, which represent a
@@ -154,8 +157,12 @@ that the argument entered was not a number.
 \subsection{Subdomain Plot}
 Since circular boundaries are too complex to test using linear methods,
 we approximate the circular subdomain with $m$ linear segments. In this lab,
-we carried out the testing with $m=4$ linear boundaries. More could have been
-used to increase the accuracy, and better approximate the circular boundary.
+we carried out the testing with $m=4$ linear boundaries to test a circular
+boundary of radius 1 about the origin. The accuracy of the approximation
+could have been increased by increasing the number of linear boundaries.
+For example, $m=8$ which would make an octagon shape would be a more accurate
+representation of the circle, and as $m \to \infty$ we would get closer
+and closer to the actual boundary.
 
 \begin{figure}[h]
 	\centering
@@ -174,6 +181,61 @@ The equations of the approximated linear boundaries are as follows:
    \end{cases}
 \]
 \FloatBarrier
+
+\subsection{EPC Strategy}
+Using the EPC strategy, since there are 2 input variables, there are
+$4^2 + 1 = 17$ test cases. The values chosen were:
+\begin{itemize}
+	\item max: 1
+	\item min: -1
+	\item slightly under min: -1.1
+	\item slightly over max: 1.1
+\end{itemize}
+All the permutations of the 2 inputs taking on these values were generated
+and tested. An additional test case was created within the valid subdomain,
+which was $(x,y) = (0, 0)$. The full table of test cases
+along with their expected inputs and outputs can be found in Appendix C of this
+report. Failed test cases would have been highlighted in red, however,
+there were no test faliures were found using this strategy.
+
+\subsection{Weak n x 1 Strategy}
+Using the weak n x 1 strategy, there are 4 boundary lines to take into
+consideration. Since there are 2 inputs, we pick 2 points on each boundary
+line, and one additional point outside of each boundary, for a total of
+$4\times (2 + 1) + 1 = 13$ test cases. The additional test case chosen inside
+the boundary was $(x, y) = (0.3, 0.7)$. The table of test cases
+along with their expected inputs and outputs can be found in Appendix D of this
+report. The failed test cases are highlighted in red for convenience.
+
+\subsection{Discussion}
+The domain approximation is somewhat effective. It seems to work best if
+test inputs chosen are far away from the boundaries, since there is a risk
+of a false negative test result if the chosen test input is too close to the
+boundary. This can happen when the test case chosen is outside of the
+approximated boundary, while it is still in the actual subdomain's boundary.
+In such a scenario, we might expect a test case to fail using the
+approximation, yet if the program is running correctly, the test case will
+pass. The configuration could have been adjusted to yield higher accuracy
+of the subdomain. For example, we could have increased the number of linear
+boundaries. Using the EPC strategy, the complexity of testing is unaltered. 
+There are still 17 test cases, and they would all be the same. However,
+using the weak n x 1 strategy, the complexity would be increased.
+We would have to make $b \times (2 + 1) + 1$ test cases, where b is
+the number of linear boundaries we choose to use for the approximation.
+In other words, we would need an additional 3 test cases for each boundary
+we add to increase the accuracy. 
+
+For this problem, it seems that the EPC testing strategy is more accurate.
+Using the weak n x 1 strategy, we ran into some cases where the test input
+was outside of our approximated boundary, yet it was inside the actual
+subdomain. This resulted in 4 test case failures, which were not actual
+errors with the program itself, but rather due to the innacurate linear
+approximation of the subdomain. As a result, no actual errors were identified 
+in the application. In this case, with $m=4$ boundaries, the number of test
+cases for the EPC and weak n x 1 strategies were similar. However, 
+the weak n x 1 strategy could have a lot more test cases if we added more 
+linear boundaries to make a better approximation of the problem's subdomain.
+
 \section{Conclusion}
 In this lab, we were introduced to black-box testing. The techniques
 learned were dirty testing, error guessing, and partition-based testing.
