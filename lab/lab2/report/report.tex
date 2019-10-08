@@ -258,7 +258,7 @@ out, which all still have the potential issue of resulting in a false
 negative result. On the other hand, the EPC strategy might seem tedious
 at first, generating $4^n + 1$ test cases, which might seem excessive.
 However, it seems to overall be more accurate than the weak n x 1 stratrgy.
-There were no false positive test cases, and furthermore, more failiure
+There were no false positive test cases, and furthermore, more failure
 scenarios were found, even though they are likely from the same root cause.
 (For the Drone program, we found using the EPC strategy 2 types of failures,
 where the program outputs both `Success!'                       
@@ -274,7 +274,7 @@ generate most of the test cases without much thought, and then compare the
 results with ease using more automation. However, using the weak n x 1
 strategy, one has to really think about each boundary, and choose $n$ points on
 it, plus one point slightly outside each boundary, and additionally, one final
-test case. Additionally, weak n x 1 testign does not seem to work well for
+test case. Additionally, weak n x 1 testing does not seem to work well for
 subdomains that are non-linear in nature, while the EPC strategy seems to
 overall work well and reliably.
 
