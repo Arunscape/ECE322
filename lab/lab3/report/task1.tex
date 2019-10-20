@@ -1,17 +1,75 @@
-For task one in this lab, the Drone application was tested using both the
-EPC method and the weak n x 1 strategy. Drone is a command-line program
-written in java, which takes three inputs, $x_1$, $x_2$, and $x_3$.
-If $x_1 + x_2 + x_3 \leq k$, where $k=100$, the program should output
-`Success', and if not, it should output `Failure'. The three inputs 
-must be integers $\geq 0$. 
+For task one in this lab, the InsuranceCalculator application was tested using
+a cause-effect graph from which a decision table and test cases were made.
+InsuranceCalculator is a GUI program
+written in java, which takes in three inputs:
+\begin{itemize}
+	\item gender: Male/Female
+	\item age: integer
+	\item: claims: integer
+\end{itemize}
+Depending on the value of the inputs, the program will output either \$750,
+\$1000, \$1500, \$3000, or ERROR.
+
+From the following rules, a cause-effect graph was generated, and can be found
+in Appendix A.
+\begin{itemize}
+	\item IF sex = Male AND age $<25$ AND claims $=0$ THEN premium $=\$1500$
+	\item IF sex = Male AND $25\leq$ age $<65$ AND claims $=0$ THEN premium
+	      $=\$1000$
+
+	\item IF sex = Female AND age $<65$ AND claims $=0$ THEN premium
+	      $=\$750$
+	\item IF age $\geq 65$ AND claims $=0$ THEN premium $=\$1500$
+	\item IF claims $\geq 1$ THEN premium $=\$3000$
+\end{itemize}
+
+From the cause-effect graph found in Appendix A, the following decision table
+was made:
+\vspace{20pt}
+
+\begin{adjustbox}{center}
+	\begin{tabular}{llllll}
+		        & 1 & 2 & 3 & 4 & 5 \\ \cline{2-6}
+		Causes  &   &   &   &   &   \\ \cline{1-1}
+		A       & 0 & 1 & 1 & x & x \\
+		B       & 1 & 0 & 0 & x & x \\
+		C       & x & 0 & 1 & 0 & x \\
+		D       & x & 1 & 0 & 0 & x \\
+		E       & 0 & 0 & 0 & 1 & x \\
+		F       & 1 & 1 & 1 & 1 & 0 \\
+		G       & 0 & 0 & 0 & 0 & 1 \\
+		        &   &   &   &   &   \\
+		Effects &   &   &   &   &   \\ \cline{1-1}
+		Y1      & 1 & x & x & x & x \\
+		Y2      & x & 1 & x & x & x \\
+		Y3      & x & x & 1 & 1 & x \\
+		Y4      & x & x & x & x & 1
+	\end{tabular}%
+\end{adjustbox}
+
+From the decision table above, the following test cases were made:
+\vspace{20pt}
+
+\begin{adjustbox}{center}
+	\begin{tabular}{cccccc}
+		Test ID & Sex & Age & Claims & Expected & Actual \\ \hline
+		1       & F   & 64  & 0      & \$750    & \$750  \\
+		2       & M   & 25  & 0      & \$1000   & \$1000 \\
+		3       & M   & 24  & 0      & \$1500   & \$1500 \\
+		4       & F   & 66  & 0      & \$1500   & \$1500 \\
+		5       & F   & 54  & 1      & \$3000   & \$3000 \\
+	\end{tabular}%
+\end{adjustbox}
+Normally, failed test cases would be highlisghted in red. However, none of the
+test cases failed in this case.
 
 \subsection{Discussion}
 Using both the EPC and the weak n x 1 strategy, we see that for all of the
 failed test cases, the input variable $x_2$ is a negative. For negative
-inputs, the program is expected to give an error telling the user that 
+inputs, the program is expected to give an error telling the user that
 negative inputs are not valid. Instead, the program outputs `Success!'
 or `Failure!' when $x_2 < 0$. Using the EPC strategy, we see
-2 types of failures, where the program outputs both `Success!'                       
+2 types of failures, where the program outputs both `Success!'
 or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
 `Success!' is outputted mistakenly. It should be noted however, that both
 testing strategies found an error which seems to stem from the same issue,
@@ -19,4 +77,4 @@ testing strategies found an error which seems to stem from the same issue,
 did so with less test cases (17 versus 65). As a result, for this problem,
 the weak n x 1 strategy seemed to be both more efficient and effective,
 since the same problem was caught using the EPC strategy but with far fewer
-test cases.
+test cases. \todo{kms}
