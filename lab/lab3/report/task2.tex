@@ -1,95 +1,13 @@
-For task two in this lab, the BoilerShutdown application was tested using
-a simplified cause-effect graph from the one which was given, from which a
-decision table was made, and test cases were created.
-BoilerShutdown is a GUI application written in Java, which has 10 checkbox
-inputs labelled alphabetically from A to J. These are defined as:
-\begin{itemize}
-	\item A - Water level meter failure during operation
-	\item B - Steam rate meter failure during operation
-	\item C - Water level out of range
-	\item D - Instrumentation system failure
-	\item E - Communication link failure
-	\item F - Steam rate meter failure during startup
-	\item G - Water level meter failure during startup
-	\item H - Multiple pumps failure (more than one)
-	\item I - Confirmed keystroke entry
-	\item J - Confirmed ``shut now'' message
-\end{itemize}
-
-The given cause-effect graph for Task 2 was simplified, and can be found in
-Appendix B. By tracing back the graph, we were able to determine that inputs
-A, B, and C had no effect on whether the Boiler would shut down or not.
-Furthermore, We were able to eliminate almost all intermediate nodes, since it
-was found that the boiler effectively shuts down if any of the inputs D, E, F,
-G, H, I, or J $=1$ and it does not shut down if all of the inputs from D-J
-$=0$. From the new cause-effect graph, the following rules were derived:
-\begin{itemize}
-	\item IF D OR E OR F OR G OR H OR I OR J THEN Boiler Shutdown
-	\item IF NOT D AND NOT E AND NOT F AND Not G AND NOT H AND NOT I AND
-	      NOT J THEN Boiler not Shutdown
-\end{itemize}
-
-From the rules defined above, a decision table was made:
-\vspace{20pt}
-
-\begin{adjustbox}{center}
-	\begin{tabular}{lllllllll}
-		                    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-		Causes              &   &   &   &   &   &   &   &   \\
-		\cline{1-1}
-		A                   & x & x & x & x & x & x & x & x \\
-		B                   & x & x & x & x & x & x & x & x \\
-		C                   & x & x & x & x & x & x & x & x \\
-		D                   & 1 & x & x & x & x & x & x & 0 \\
-		E                   & x & 1 & x & x & x & x & x & 0 \\
-		F                   & x & x & 1 & x & x & x & x & 0 \\
-		G                   & x & x & x & 1 & x & x & x & 0 \\
-		H                   & x & x & x & x & 1 & x & x & 0 \\
-		I                   & x & x & x & x & x & 1 & x & 0 \\
-		J                   & x & x & x & x & x & x & 1 & 0 \\
-		                    &   &   &   &   &   &   &   &   \\
-		Effects             &   &   &   &   &   &   &   &   \\
-		\cline{1-1}
-		Boiler shutdown     & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
-		Boiler not shutdown & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
-	\end{tabular}%
-\end{adjustbox}
-
-
-\vspace{20pt}
-From the decision table above, the following test cases were made:
-\vspace{20pt}
-
-\begin{adjustbox}{center}
-	\begin{tabular}{lllllllllllll}
-		Testid & A & B & C & D & E & F & G & H & I & J & Expected &
-		Actual                                                           \\ \hline
-		1      & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & FAIL     & FAIL \\
-		2      & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & FAIL     & FAIL \\
-		3      & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & FAIL     & FAIL \\
-		4      & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & FAIL     & FAIL \\
-		5      & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & FAIL     & FAIL \\
-		6      & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & FAIL     & FAIL \\
-		7      & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & FAIL     & FAIL \\
-		8      & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Ok       & Ok
-	\end{tabular}%
-\end{adjustbox}
-\vspace{20pt}
-
-Normally, failed test cases would be highlighted in red. However, all test
-cases passed in this scenario.
-
+For task two in this lab, the RemoteCar application was tested using both the
+EPC method and the weak n x 1 strategy. RemoteCar is a command-line program
+written in Java, which takes two inputs, $x$, and $y$, which represent a
+point on the Cartesian plane.
+If $(x,y)$ falls on the circle with radius $r=1$, centered about the origin,
+the program will output`Ok.', or `Out of range!'. The input arguments must
+be real numbers, or the program should output an error letting the user know
+that the argument entered was not a number.
 
 \subsection{Discussion}
-
-
-\dots however,  using this method, some cases were missed. For example,
-none of the test cases involved entering a negative input. The program does
-appear to work as expected, displaying the output ``ERROR'', however
-this was missed using this testing method. 
-
-
-
 The domain approximation is somewhat effective. It seems to work best if
 test inputs chosen are far away from the boundaries, since there is a risk
 of a false negative test result if the chosen test input is too close to the
@@ -117,4 +35,3 @@ in the application. In this case, with $m=4$ boundaries, the number of test
 cases for the EPC and weak n x 1 strategies were similar. However,
 the weak n x 1 strategy could have a lot more test cases if we added more
 linear boundaries to make a better approximation of the problem's subdomain.
-\todo{kms}

@@ -1,25 +1,19 @@
-The purpose of this lab was to serve as a practical
-introduction to some more black box testing techniques. In this lab, the
-testing methods introduced were the Extreme Point Combination (EPC), and the
-Weak n x 1 strategy methods. We tested two programs written in Java using both
-of these testing strategies. The first application, named Drone takes in three
-arguments, and outputs either `Success!', `Failure', or an error message based
-on whether the arguments are integers $\geq 0$, and their sum is less than
-$k=100$. The second program, named RemoteCar takes in two arguments which
-represent points on a Cartesian plane, and outputs either `Ok', `Out of range',
-or an error message based on whether the point is on a circle of radius 1 about
-the origin. The idea for EPC testing is to identify the input domain limits,
-and produce all possible combinations of inputs with each of the input
-variables taking on a minimum value, slightly under minimum, a maximum value,
-and slightly over maximum value. One additional test case is added somewhere
-within the valid subdomain to generate a total of $4^n + 1$ test cases, where
-n is the dimension of inputs, or put more simply, the number of input
-variables. With the weak n x 1 strategy, we attempt to find linear boundaries
-of the problem using domain analysis. $n$ points are selected on each linear
-boundary, where $n$ is the number of input variables, and one additional point
-is chosen outside of each boundary. An additional point within the boundary is
-chosen if the boundary is open, and if the boundary is instead closed an
-additional point outside the boundary is chosen. In the end, with the weak
-n x 1 strategy, $b \times (n + 1)$ test cases are generated, where b is the
-number of linear boundaries, and n is the dimensionality, or the number of
-inputs. \todo{kms}
+The purpose of this lab was to serve as an introduction to cause-efect graphs
+and decision tables. The goal was to become familiar with the use of these
+graphs and rules in black box testing, and to put into practice generating test
+cases using these tools. We tested two GUI applications written in Java.
+The first application, InsuranceCalculator takes in 3 inputs, a gender
+(Male/Female), an age, and number of claims. A cause-effect graph (Appendix A)
+was derived from 5 rules which were given. From the cause-effect graph, a
+decision table is derived, and test cases were made using the decision table.
+Depending on the input, this application outputs either \$750, \$1000, \$1500,
+or \$3000. The second appplication, BoilerShutdown is also a Java GUI
+application. It takes in 10 inputs labelled from A-J, which are checkboxes.
+Depending on the inputs, it will output either OK or FAIL. In this case, a
+cause-effect graph was provided, however, it was unsimplified. By tracing back,
+a simplified cause-efect graph was created (Appendix B), from which a decision
+table was derived. Finally, from the decision table, test cases were created.
+The purpose of cause-effect graphs is to divide the software specification into
+workable pieces. Once a decision table is generaed, the test cases are derived
+using boundary value analysis, and also looking at the columns of the decision
+table. 
