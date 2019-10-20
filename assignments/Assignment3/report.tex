@@ -58,29 +58,7 @@ Assignment 2}
 
 \section{Credit Union}
 \begin{adjustbox}{center}
-	\begin{tabularx}{\textwidth}{lllll}
-		Conditions            & \multicolumn{4}{l}{Rules}             \\
-		                      & 1                         & 2 & 3 & 4 \\ \cline{2-5}
-		city dweller          & 1                         & x & 0 & x \\
-		male                  & 1                         & 1 & 0 & 1 \\
-		female                & 0                         & 0 & 1 & x \\
-		age $<25$             & x                         & 1 & 0 & x \\
-		$25<$ age $<65$       & x                         & 0 & 1 & x \\
-		age $>65$             & x                         & 0 & 0 & 1 \\
-		                      &                           &   &   &   \\
-		Actions               &                           &   &   &   \\ \cline{1-1}
-		Show Product A        & 1                         & x & x & x \\
-		Show Product B        & x                         & 1 & x & x \\
-		Show Product C        & x                         & x & 1 & x \\
-		Do Not Show Product D & 0                         & 0 & 0 & 1 \\
-	\end{tabularx}%
-\end{adjustbox}
-\subsection{Maximal number of rules}
-As seen in the table above, the maximal number of rules is 4
-
-\subsection{Simplified table}
-\begin{adjustbox}{center}
-	\begin{tabularx}{\textwidth}{lllll}
+	\begin{tabular}{lllll}
 		Conditions            & \multicolumn{4}{l}{Rules}             \\
 		                      & 1                         & 2 & 3 & 4 \\ \cline{2-5}
 		city dweller          & 1                         & x & 0 & x \\
@@ -95,7 +73,22 @@ As seen in the table above, the maximal number of rules is 4
 		Show Product B        & x                         & 1 & x & x \\
 		Show Product C        & x                         & x & 1 & x \\
 		Do Not Show Product D & 0                         & 0 & 0 & 1 \\
-	\end{tabularx}%
+	\end{tabular}%
+\end{adjustbox}
+\subsection{Maximal number of rules}
+Given 6 condutions, the maximal number of rules is $2^6=64$
+
+\subsection{Simplified table}
+The table above is already simplified, so here are the resulting test cases:
+\\ \\
+\begin{adjustbox}{center}
+	\begin{tabular}{ccccccccc}
+		Test & city dweller & male & female & age $<25$ & $25<$ age $<65$ & age $>65$ & Expected              \\ \cline{1-1} \cline{8-8}
+		1    & 1            & 1    & 0      & 1         & 0               & 0         & Show Product A        \\
+		2    & 1            & 1    & 0      & 1         & 0               & 0         & Show Product B        \\
+		3    & 0            & 0    & 1      & 0         & 1               & 0         & Show Product C        \\
+		4    & 1            & 1    & 0      & 0         & 0               & 1         & Do Not Show Product D \\
+	\end{tabular}
 \end{adjustbox}
 
 \section{}
@@ -185,5 +178,69 @@ From the following decision table, the cause effect graph below is generated:
 	\end{tabular}
 \end{adjustbox}
 \includepdf{causeeffect.jpg}
+
+\section{Test Cases}
+The following description table is derived from the cause effect graph
+(Because of the requires, $(C3=1, C6=0)$ will never happen)
+\\ \\
+\begin{adjustbox}{center}
+	\begin{tabular}{llllll}
+		           & 1 & 2 & 3 & 4 & 5 \\ \cline{2-6}
+		Conditions &   &   &   &   &   \\ \cline{1-1}
+		C3         & 1 & 0 & 0 & x & 0 \\
+		C4         & x & x & 1 & x & 0 \\
+		C5         & 1 & x & 1 & 0 & x \\
+		C6         & 1 & 0 & 1 & x & x \\
+		           &   &   &   &   &   \\
+		Effects    &   &   &   &   &   \\ \cline{1-1}
+		E          & 1 & 0 & 1 & 0 & 0 \\
+	\end{tabular}
+\end{adjustbox}
+\\ \\
+From the decision table above, the following test cases are generated:
+\\ \\
+\begin{adjustbox}{center}
+	\begin{tabular}{llllll}
+		Test & C3 & C4 & C5 & C6 & Expected \\ \cline{1-1} \cline{6-6}
+		1    & 1  & 0  & 1  & 1  & 1        \\
+		2    & 0  & 1  & 1  & 0  & 0        \\
+		3    & 0  & 1  & 1  & 1  & 1        \\
+		4    & 1  & 1  & 0  & 1  & 0        \\
+		5    & 0  & 0  & 1  & 1  & 0        \\
+	\end{tabular}
+\end{adjustbox}
 \section{Combinatorial Testing}
+There are
+$2 \times 3 \times 3 \times 3 \times 3 \times 2 \times 3 \times 3 = 2916$
+total possible combinations to test.
+Ideally, the orthogonal array should be $2^2 3^6$,
+resulting in
+
+some fucking magic later: \todo{\#todo: explain}
+
+
+The following mapping is created:
+\\ \\
+\begin{adjustbox}{max width=1.5\textwidth, center}
+	\begin{tabular}{ccccccccc}
+		   & PRINTERS & PLUGINS & BROWSERS & OPERATING SYSTEMS & SERVERS & MONITORS & EMAIL SYSTEMS & SOFTWARE PACKAGES \\
+		1  & printer2 & plugin2 & browser3 & os1               & server2 & monitor2 & email1        & software2         \\
+		2  & printer1 & plugin1 & browser1 & os3               & server1 & monitor1 & email2        & software2         \\
+		3  & printer1 & plugin2 & browser1 & os2               & server3 & monitor2 & email3        & software1         \\
+		4  & printer2 & plugin1 & browser2 & os2               & server2 & monitor1 & email1        & software3         \\
+		5  & printer2 & plugin2 & browser2 & os3               & server3 & monitor2 & email2        & software3         \\
+		6  & printer1 & plugin1 & browser3 & os1               & server1 & monitor1 & email3        & software3         \\
+		7  & printer2 & plugin2 & browser3 & os2               & server1 & monitor1 & email2        & software1         \\
+		8  & printer1 & plugin1 & browser2 & os3               & server2 & monitor2 & email3        & software1         \\
+		9  & printer1 & plugin1 & browser3 & os3               & server3 & monitor1 & email1        & software2         \\
+		10 & printer2 & plugin1 & browser1 & os1               & server1 & monitor2 & email1        & software1         \\
+		11 & printer2 & plugin1 & browser2 & os2               & server1 & monitor2 & email3        & software2         \\
+		12 & printer1 & plugin1 & browser2 & os1               & server3 & monitor1 & email2        & software3         \\
+		13 & printer1 & plugin2 & browser1 & os2               & server2 & monitor2 & email2        & software3
+	\end{tabular}%
+\end{adjustbox}
+\\
+
+resulting in 13 test cases, as opposed to 2916 if we were to test all possible
+combinations, a huge improvement.
 \end{document}

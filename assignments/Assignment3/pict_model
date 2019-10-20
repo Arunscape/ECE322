@@ -1,0 +1,8 @@
+PRINTERS: printer1, printer2
+PLUGINS: plugin1, plugin2
+BROWSERS: browser1, browser2, browser3
+OPERATING_SYSTEMS: os1, os2, os3
+SERVERS: server1, server2, server3
+MONITORS: monitor1, monitor2
+EMAIL_SYSTEMS: email1, email2, email3
+SOFTWARE_PACKAGES: software1, software2, software3
