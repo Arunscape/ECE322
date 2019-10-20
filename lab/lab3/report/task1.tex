@@ -60,21 +60,24 @@ From the decision table above, the following test cases were made:
 		5       & F   & 54  & 1      & \$3000   & \$3000 \\
 	\end{tabular}%
 \end{adjustbox}
-Normally, failed test cases would be highlisghted in red. However, none of the
+Normally, failed test cases would be highlighted in red. However, none of the
 test cases failed in this case.
 
 \subsection{Discussion}
-Using both the EPC and the weak n x 1 strategy, we see that for all of the
-failed test cases, the input variable $x_2$ is a negative. For negative
-inputs, the program is expected to give an error telling the user that
-negative inputs are not valid. Instead, the program outputs `Success!'
-or `Failure!' when $x_2 < 0$. Using the EPC strategy, we see
-2 types of failures, where the program outputs both `Success!'
-or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
-`Success!' is outputted mistakenly. It should be noted however, that both
-testing strategies found an error which seems to stem from the same issue,
-(the application not checking if $x_2$ is negative, and the weak n x 1 strategy
-did so with less test cases (17 versus 65). As a result, for this problem,
-the weak n x 1 strategy seemed to be both more efficient and effective,
-since the same problem was caught using the EPC strategy but with far fewer
-test cases. \todo{kms}
+While no failures in the software were caught, this is not neccessarily an
+indication of poor tests. It does appear that there is a good coverage, since
+there is one test case which tests the expected output for each rule defined in
+the software specification, and it does so with relatively few test cases.
+(Only 5 in this case). However, using other black-box testing methods learned
+earlier like dirty testing, EPC, or weak n x 1 strategies, some more scenarios
+are covered, which were not covered using the cause-effect and decision table
+tools. For example, none of the test cases tested negative valued
+inputs for the age or total claims fields, which allow negative inputs. In this
+case, the application behaves as expected, outputting an ERROR message,
+however, this scenario was not covered when using the techniques learned in
+this lab. Relative to the other black-box testing techniques learned, there are
+fewer test cases, which makes efficient test cases from cause-effect graphs and
+decision tables. However, from a subjective standpoint, using this method
+demanded more effort for creating test cases versus other techniques
+previously learned. The black box testing techniques previously learned also
+seem to cover more scenarios that were missed using this technique.
