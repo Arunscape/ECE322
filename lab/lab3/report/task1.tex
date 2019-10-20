@@ -1,0 +1,22 @@
+For task one in this lab, the Drone application was tested using both the
+EPC method and the weak n x 1 strategy. Drone is a command-line program
+written in java, which takes three inputs, $x_1$, $x_2$, and $x_3$.
+If $x_1 + x_2 + x_3 \leq k$, where $k=100$, the program should output
+`Success', and if not, it should output `Failure'. The three inputs 
+must be integers $\geq 0$. 
+
+\subsection{Discussion}
+Using both the EPC and the weak n x 1 strategy, we see that for all of the
+failed test cases, the input variable $x_2$ is a negative. For negative
+inputs, the program is expected to give an error telling the user that 
+negative inputs are not valid. Instead, the program outputs `Success!'
+or `Failure!' when $x_2 < 0$. Using the EPC strategy, we see
+2 types of failures, where the program outputs both `Success!'                       
+or `Failure!'; however, with the weak n x 1 strategy we only saw the case where
+`Success!' is outputted mistakenly. It should be noted however, that both
+testing strategies found an error which seems to stem from the same issue,
+(the application not checking if $x_2$ is negative, and the weak n x 1 strategy
+did so with less test cases (17 versus 65). As a result, for this problem,
+the weak n x 1 strategy seemed to be both more efficient and effective,
+since the same problem was caught using the EPC strategy but with far fewer
+test cases.

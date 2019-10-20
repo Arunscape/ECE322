@@ -1,0 +1,37 @@
+For task two in this lab, the RemoteCar application was tested using both the
+EPC method and the weak n x 1 strategy. RemoteCar is a command-line program
+written in Java, which takes two inputs, $x$, and $y$, which represent a
+point on the Cartesian plane.
+If $(x,y)$ falls on the circle with radius $r=1$, centered about the origin,
+the program will output`Ok.', or `Out of range!'. The input arguments must
+be real numbers, or the program should output an error letting the user know
+that the argument entered was not a number.
+
+\subsection{Discussion}
+The domain approximation is somewhat effective. It seems to work best if
+test inputs chosen are far away from the boundaries, since there is a risk
+of a false negative test result if the chosen test input is too close to the
+boundary. This can happen when the test case chosen is outside of the
+approximated boundary, while it is still in the actual subdomain's boundary.
+In such a scenario, we might expect a test case to fail using the
+approximation, yet if the program is running correctly, the test case will
+pass. The configuration could have been adjusted to yield higher accuracy
+of the subdomain. For example, we could have increased the number of linear
+boundaries. Using the EPC strategy, the complexity of testing is unaltered. 
+There are still 17 test cases, and they would all be the same. However,
+using the weak n x 1 strategy, the complexity would be increased.
+We would have to make $b \times (2 + 1) + 1$ test cases, where b is
+the number of linear boundaries we choose to use for the approximation.
+In other words, we would need an additional 3 test cases for each boundary
+we add to increase the accuracy. 
+
+For this problem, it seems that the EPC testing strategy is more accurate.
+Using the weak n x 1 strategy, we ran into some cases where the test input
+was outside of our approximated boundary, yet it was inside the actual
+subdomain. This resulted in 4 test case failures, which were not actual
+errors with the program itself, but rather due to the innacurate linear
+approximation of the subdomain. As a result, no actual errors were identified 
+in the application. In this case, with $m=4$ boundaries, the number of test
+cases for the EPC and weak n x 1 strategies were similar. However, 
+the weak n x 1 strategy could have a lot more test cases if we added more 
+linear boundaries to make a better approximation of the problem's subdomain.

@@ -1,0 +1,38 @@
+In this lab, we were introduced to two more black box testting strategies. The
+techniques learned were the Extreme Point Combination, or EPC strategy, and the
+weak n x 1 strategy. It would not be fair to say that one testing strategy
+is universally better than the other, since it would be better to match
+each problem at hand to the appropriate testing strategy. The weak n x 1
+strategy seems to shine when the problem's subdomain is already linear in
+nature. This way, no approximation needs to be made, and we get very few
+test cases $b \times (n + 1) + 1$, where b is the number of boundaries, and
+n is the number of input variables. The weak n x 1 strategy appears to not
+be very effective however, when the problem's subdomain is approximated as
+a collection of linear boundaries. This configuration appears to result in
+false negative test cases, and additionally, if more input boundaries are
+used to increase the accuracy of the input domain, it is still not perfect,
+and furthermore, $n + 1$ additional test cases need to be added for each
+additional boundary, which can result in more test cases required to be carried
+out, which all still have the potential issue of resulting in a false
+negative result. On the other hand, the EPC strategy might seem tedious
+at first, generating $4^n + 1$ test cases, which might seem excessive.
+However, it seems to overall be more accurate than the weak n x 1 stratrgy.
+There were no false positive test cases, and furthermore, more failure
+scenarios were found, even though they are likely from the same root cause.
+(For the Drone program, we found using the EPC strategy 2 types of failures,
+where the program outputs both `Success!'                       
+or `Failure!' when $x_2$ was negative instead of an error message, however,
+with the weak n x 1 strategy we only saw one case where
+`Success!' was outputted mistakenly. From a purely subjective standpoint,
+I personally prefer the EPC testing strategy over weak n x 1, since
+even though a lot of test cases are typically generated, this step can be
+automated using a script, and not lot of thought, since only four values
+(min, slightly under min, max, slightly over max) plus one additional
+valid test case needs to be thought of. Computers are fast, so we can simply
+generate most of the test cases without much thought, and then compare the
+results with ease using more automation. However, using the weak n x 1
+strategy, one has to really think about each boundary, and choose $n$ points on
+it, plus one point slightly outside each boundary, and additionally, one final
+test case. Additionally, weak n x 1 testing does not seem to work well for
+subdomains that are non-linear in nature, while the EPC strategy seems to
+overall work well and reliably.
