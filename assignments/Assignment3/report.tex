@@ -75,12 +75,16 @@ Assignment 2}
 		Do Not Show Product D & 0                         & 0 & 0 & 1 \\
 	\end{tabular}%
 \end{adjustbox}
+Note: Do Not Show Product D $=0$ means that Product D will be shown.
+
 \subsection{Maximal number of rules}
-Given 6 condutions, the maximal number of rules is $2^6=64$
+Given there are 2 possibilities for gender (in this problem), 2 possibilities
+for city dweller, and 3 possibilities for age, the maximal number of rules is
+$2 \times 2 \times 3 = 12$. 
 
 \subsection{Simplified table}
 The table above is already simplified, so here are the resulting test cases:
-\\ \\
+\vspace{20pt}
 \begin{adjustbox}{center}
 	\begin{tabular}{ccccccccc}
 		Test & city dweller & male & female & age $<25$ & $25<$ age $<65$ & age $>65$ & Expected              \\ \cline{1-1} \cline{8-8}
@@ -139,6 +143,7 @@ The dimensionality is 2, so 2 points are chosen on each boundary, as well
 as one additional point just outside of each boundary. The last test case
 is one point inside the boundaries. The full list of suggested test cases
 is found below:
+
 \begin{adjustbox}{center}
 	\begin{tabular}{llll}
 		test id & description                              & x    & y    \\ \hline
@@ -157,8 +162,10 @@ is found below:
 		13      & Inside the boundaries                    & 1    & 1    \\
 	\end{tabular}
 \end{adjustbox}
+
 \section{Cause-Effect Graph}
 From the following decision table, the cause effect graph below is generated:
+
 \begin{adjustbox}{center}
 	\begin{tabular}{llllllllllll}
 		Conditions         &   &   &   &   &   &   &   &   &   &   &   \\ \cline{1-1}
@@ -182,7 +189,7 @@ From the following decision table, the cause effect graph below is generated:
 \section{Test Cases}
 The following description table is derived from the cause effect graph
 (Because of the requires, $(C3=1, C6=0)$ will never happen)
-\\ \\
+\vspace{20pt}
 \begin{adjustbox}{center}
 	\begin{tabular}{llllll}
 		           & 1 & 2 & 3 & 4 & 5 \\ \cline{2-6}
@@ -196,10 +203,12 @@ The following description table is derived from the cause effect graph
 		E          & 1 & 0 & 1 & 0 & 0 \\
 	\end{tabular}
 \end{adjustbox}
-\\ \\
+\vspace{20pt}
+
 From the decision table above, the following test cases are generated:
-\\ \\
-\begin{adjustbox}{center}
+\vspace{20pt}
+
+\begin{adjustbox}{max width=\textwidth, center}
 	\begin{tabular}{llllll}
 		Test & C3 & C4 & C5 & C6 & Expected \\ \cline{1-1} \cline{6-6}
 		1    & 1  & 0  & 1  & 1  & 1        \\
@@ -220,7 +229,7 @@ some fucking magic later: \todo{\#todo: explain}
 
 
 The following mapping is created:
-\\ \\
+\vspace{20pt}
 \begin{adjustbox}{max width=1.5\textwidth, center}
 	\begin{tabular}{ccccccccc}
 		   & PRINTERS & PLUGINS & BROWSERS & OPERATING SYSTEMS & SERVERS & MONITORS & EMAIL SYSTEMS & SOFTWARE PACKAGES \\
