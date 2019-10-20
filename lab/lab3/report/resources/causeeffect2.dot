@@ -1,0 +1,20 @@
+digraph G {
+    rankdir="LR";
+    ranksep=4;
+//    ordering=out;
+    A;
+    B;
+    C;
+    D -> 1;
+    E -> 1;
+    F -> 1;
+    G -> 1;
+    H -> 1;
+    I -> 1;
+    J -> 1;
+    1 -> "Boiler Shutdown";
+    1 -> "Boiler not Shutdown";
+//    {rank=same; A B C D E F G};
+//    {rank=same; 1 2};
+//    {rank=same; Y1 Y2 Y3 Y4};
+}
