@@ -81,40 +81,21 @@ cases passed in this scenario.
 
 
 \subsection{Discussion}
-
-
-\dots however,  using this method, some cases were missed. For example,
-none of the test cases involved entering a negative input. The program does
-appear to work as expected, displaying the output ``ERROR'', however
-this was missed using this testing method. 
-
-
-
-The domain approximation is somewhat effective. It seems to work best if
-test inputs chosen are far away from the boundaries, since there is a risk
-of a false negative test result if the chosen test input is too close to the
-boundary. This can happen when the test case chosen is outside of the
-approximated boundary, while it is still in the actual subdomain's boundary.
-In such a scenario, we might expect a test case to fail using the
-approximation, yet if the program is running correctly, the test case will
-pass. The configuration could have been adjusted to yield higher accuracy
-of the subdomain. For example, we could have increased the number of linear
-boundaries. Using the EPC strategy, the complexity of testing is unaltered.
-There are still 17 test cases, and they would all be the same. However,
-using the weak n x 1 strategy, the complexity would be increased.
-We would have to make $b \times (2 + 1) + 1$ test cases, where b is
-the number of linear boundaries we choose to use for the approximation.
-In other words, we would need an additional 3 test cases for each boundary
-we add to increase the accuracy.
-
-For this problem, it seems that the EPC testing strategy is more accurate.
-Using the weak n x 1 strategy, we ran into some cases where the test input
-was outside of our approximated boundary, yet it was inside the actual
-subdomain. This resulted in 4 test case failures, which were not actual
-errors with the program itself, but rather due to the innacurate linear
-approximation of the subdomain. As a result, no actual errors were identified
-in the application. In this case, with $m=4$ boundaries, the number of test
-cases for the EPC and weak n x 1 strategies were similar. However,
-the weak n x 1 strategy could have a lot more test cases if we added more
-linear boundaries to make a better approximation of the problem's subdomain.
-\todo{kms}
+While no failures in the software were caught, this is not neccessarily an
+indication of poor tests. It appears that there is good coverage, since
+there is one test case for each input that should cause the boiler to shut down,and an additional test case where the boiler should not shut down.
+In terms of number of test cases, this is definitely more
+efficient compared to previous methods learned like EPC, weak n x 1, and dirty
+testing. Only 8 test cases were made to test the functionality, while other
+methods would have resulted in far more test cases. Deriving test cases from
+the decision table for this piece of software seemed
+more appropriate than for the InsuranceCalculator program, since the program
+constrains the user to only enter valid inputs. This avoids scenarios like in
+Task 1 where the the test cases had a bunch of valid inputs, but missed the
+cases where an input was invalid. Compared to other black-box testing methods,
+the cause-effect diagram and decision tables seems most effective for testing
+this program, since there are not really any boundaries to check, and the
+inputs are always valid. In this case, we're only concerned about the inputs
+(causes) and their direct effect, and there are not really any edge cases to
+consider. Combinatorial testing, and testing all possible combinations are two
+other testing techniques that my be considered for testing this program. 
