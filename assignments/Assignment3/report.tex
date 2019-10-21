@@ -59,41 +59,45 @@ Assignment 2}
 \section{Credit Union}
 \begin{adjustbox}{center}
 	\begin{tabular}{lllll}
-		Conditions            & \multicolumn{4}{l}{Rules}             \\
-		                      & 1                         & 2 & 3 & 4 \\ \cline{2-5}
-		city dweller          & 1                         & x & 0 & x \\
-		male                  & 1                         & 1 & 0 & 1 \\
-		female                & 0                         & 0 & 1 & 0 \\
-		age $<25$             & x                         & 1 & 0 & 0 \\
-		$25<$ age $<65$       & x                         & 0 & 1 & 0 \\
-		age $>65$             & x                         & 0 & 0 & 1 \\
-		                      &                           &   &   &   \\
-		Actions               &                           &   &   &   \\ \cline{1-1}
-		Show Product A        & 1                         & x & x & x \\
-		Show Product B        & x                         & 1 & x & x \\
-		Show Product C        & x                         & x & 1 & x \\
-		Do Not Show Product D & 0                         & 0 & 0 & 1 \\
+		%	Conditions            & \multicolumn{4}{l}{Rules}             \\
+		Conditions            &   &   &   &   \\ \cline{1-1}
+		%                      & 1 & 2 & 3 & 4 \\ \cline{2-5}
+		city dweller          & 1 & x & 0 & x \\
+		male                  & 1 & 1 & 0 & 1 \\
+		female                & 0 & 0 & 1 & 0 \\
+		age $<25$             & x & 1 & 0 & 0 \\
+		$25<$ age $<65$       & x & 0 & 1 & 0 \\
+		age $>65$             & x & 0 & 0 & 1 \\
+		                      &   &   &   &   \\
+		Actions               &   &   &   &   \\ \cline{1-1}
+		Show Product A        & 1 & x & x & x \\
+		Show Product B        & x & 1 & x & x \\
+		Show Product C        & x & x & 1 & x \\
+		Do Not Show Product D & 0 & 0 & 0 & 1 \\
 	\end{tabular}%
 \end{adjustbox}
+
 Note: Do Not Show Product D $=0$ means that Product D will be shown.
 
 \subsection{Maximal number of rules}
 Given there are 2 possibilities for gender (in this problem), 2 possibilities
 for city dweller, and 3 possibilities for age, the maximal number of rules is
-$2 \times 2 \times 3 = 12$. 
+$2 \times 2 \times 3 = 12$.
 
 \subsection{Simplified table}
 The table above is already simplified, so here are the resulting test cases:
+(Please refer to the table above, which is the simplified table).
 \vspace{20pt}
+
 \begin{adjustbox}{center}
-	\begin{tabular}{ccccccccc}
-		Test & city dweller & male & female & age $<25$ & $25<$ age $<65$ & age $>65$ & Expected              \\ \cline{1-1} \cline{8-8}
-		1    & 1            & 1    & 0      & 1         & 0               & 0         & Show Product A        \\
-		2    & 1            & 1    & 0      & 1         & 0               & 0         & Show Product B        \\
-		3    & 0            & 0    & 1      & 0         & 1               & 0         & Show Product C        \\
-		4    & 1            & 1    & 0      & 0         & 0               & 1         & Do Not Show Product D \\
+	\begin{tabular}{ccccc}
+		Test & city dweller & male   & age & Expected              \\ \hline
+		1    & 1            & male   & 24  & Show Product A        \\
+		2    & 1            & male   & 24  & Show Product B        \\
+		3    & 0            & female & 26  & Show Product C        \\
+		4    & 1            & male   & 66  & Do Not Show Product D \\
 	\end{tabular}
-	\end{adjustbox} \todo{use a specific age in the test cases}
+\end{adjustbox} %\todo{use a specific age in the test cases}
 
 \section{}
 For the given subdomain, the following lines form the boundaries:
@@ -112,28 +116,28 @@ $4^2 + 1=17$ test cases are expected. The extreme points chosen are
 $(7, 7.1, 0, -0.1)$ for $x$, and $(5, 5.1, 0, -0.1)$ for $y$.
 For the additional test case within the boundary, $(x=1, y=1)$ is chosen.
 The full list of suggested test cases is found below:
-
+\vspace{20pt}
 
 \begin{adjustbox}{center}
-	\begin{tabular}{lll}
-		test id & x    & y    \\ \hline
-		1       & 7    & 5    \\
-		2       & 7    & 5.1  \\
-		3       & 7    & -1   \\
-		4       & 7    & -0.1 \\
-		5       & 7.1  & 5    \\
-		6       & 7.1  & 5.1  \\
-		7       & 7.1  & -1   \\
-		8       & 7.1  & -0.1 \\
-		9       & 0    & 5    \\
-		10      & 0    & 5.1  \\
-		11      & 0    & -1   \\
-		12      & 0    & -0.1 \\
-		13      & -0.1 & 5    \\
-		14      & -0.1 & 5.1  \\
-		15      & -0.1 & -1   \\
-		16      & -0.1 & -0.1 \\
-		17      & 1    & 1    \\
+	\begin{tabular}{llll}
+		test id & x    & y    & Expected      \\ \hline
+		1       & 7    & 5    & In domain     \\
+		2       & 7    & 5.1  & Out of domain \\
+		3       & 7    & -1   & Out of domain \\
+		4       & 7    & -0.1 & Out of domain \\
+		5       & 7.1  & 5    & Out of domain \\
+		6       & 7.1  & 5.1  & Out of domain \\
+		7       & 7.1  & -1   & Out of domain \\
+		8       & 7.1  & -0.1 & Out of domain \\
+		9       & 0    & 5    & In domain     \\
+		10      & 0    & 5.1  & Out of domain \\
+		11      & 0    & -1   & Out of domain \\
+		12      & 0    & -0.1 & Out of domain \\
+		13      & -0.1 & 5    & Out of domain \\
+		14      & -0.1 & 5.1  & Out of domain \\
+		15      & -0.1 & -1   & Out of domain \\
+		16      & -0.1 & -0.1 & Out of domain \\
+		17      & 1    & 1    & In domain     \\
 	\end{tabular}
 \end{adjustbox}
 
@@ -143,28 +147,31 @@ The dimensionality is 2, so 2 points are chosen on each boundary, as well
 as one additional point just outside of each boundary. The last test case
 is one point inside the boundaries. The full list of suggested test cases
 is found below:
+\vspace{20pt}
 
 \begin{adjustbox}{center}
-	\begin{tabular}{llll}
-		test id & description                              & x    & y    \\ \hline
-		1       & on $y=5, 0\leq x\leq 7$ boundary         & 2    & 5    \\
-		2       & on $y=5, 0\leq x\leq 7$ boundary         & 4    & 5    \\
-		3       & outside $y=5, 0\leq x\leq 7$ boundary    & 3    & 5.1  \\
-		4       & on $x=0, 0\leq y \leq 5$ boundary        & 0    & 2    \\
-		5       & on $x=0, 0\leq y \leq 5$ boundary        & 0    & 4    \\
-		6       & outside $x=0, 0\leq y \leq 5$ boundary   & -0.1 & 3    \\
-		7       & on $y=-x, 0\leq x\leq 1$ boundary        & 0.3  & -0.3 \\
-		8       & on $y=-x, 0\leq x\leq 1$ boundary        & 0.7  & -0.7 \\
-		9       & outside  $y=-x, 0\leq x\leq 1$ boundary  & 0.5  & -0.6 \\
-		10      & on $y=x-2, 1\leq x \leq 7$ boundary      & 3    & 1    \\
-		11      & on $y=x-2, 1\leq x \leq 7$ boundary      & 5    & 3    \\
-		12      & outside $y=x-2, 1\leq x \leq 7$ boundary & 4    & 1.9  \\
-		13      & Inside the boundaries                    & 1    & 1    \\
+	\begin{tabular}{lllll}
+		test id & description                              & x    & y    & Expected          \\ \hline
+		1       & on $y=5, 0\leq x\leq 7$ boundary         & 2    & 5    & In domain         \\
+		2       & on $y=5, 0\leq x\leq 7$ boundary         & 4    & 5    & In domain         \\
+		3       & outside $y=5, 0\leq x\leq 7$ boundary    & 3    & 5.1  & Outside of domain \\
+		4       & on $x=0, 0\leq y \leq 5$ boundary        & 0    & 2    & In domain         \\
+		5       & on $x=0, 0\leq y \leq 5$ boundary        & 0    & 4    & In domain         \\
+		6       & outside $x=0, 0\leq y \leq 5$ boundary   & -0.1 & 3    & Outside of domain \\
+		7       & on $y=-x, 0\leq x\leq 1$ boundary        & 0.3  & -0.3 & In domain         \\
+		8       & on $y=-x, 0\leq x\leq 1$ boundary        & 0.7  & -0.7 & In domain         \\
+		9       & outside  $y=-x, 0\leq x\leq 1$ boundary  & 0.5  & -0.6 & Outside of domain \\
+		10      & on $y=x-2, 1\leq x \leq 7$ boundary      & 3    & 1    & In domain         \\
+		11      & on $y=x-2, 1\leq x \leq 7$ boundary      & 5    & 3    & In domain         \\
+		12      & outside $y=x-2, 1\leq x \leq 7$ boundary & 4    & 1.9  & Outside of domain \\
+		13      & Inside the boundaries                    & 1    & 1    & In domain         \\
 	\end{tabular}
 \end{adjustbox}
 
 \section{Cause-Effect Graph}
 From the following decision table, the cause effect graph below is generated:
+The cause effect graph can be simplified by choosing the intermediate nodes
+differently. \vspace{20pt}
 
 \begin{adjustbox}{center}
 	\begin{tabular}{llllllllllll}
@@ -190,9 +197,10 @@ From the following decision table, the cause effect graph below is generated:
 The following description table is derived from the cause effect graph
 (Because of the requires, $(C3=1, C6=0)$ will never happen)
 \vspace{20pt}
+
 \begin{adjustbox}{center}
 	\begin{tabular}{llllll}
-		           & 1 & 2 & 3 & 4 & 5 \\ \cline{2-6}
+		%		           & 1 & 2 & 3 & 4 & 5 \\ \cline{2-6}
 		Conditions &   &   &   &   &   \\ \cline{1-1}
 		C3         & 1 & 0 & 0 & x & 0 \\
 		C4         & x & x & 1 & x & 0 \\
@@ -210,7 +218,7 @@ From the decision table above, the following test cases are generated:
 
 \begin{adjustbox}{max width=\textwidth, center}
 	\begin{tabular}{llllll}
-		Test & C3 & C4 & C5 & C6 & Expected \\ \cline{1-1} \cline{6-6}
+		Test & C3 & C4 & C5 & C6 & Expected \\ \hline
 		1    & 1  & 0  & 1  & 1  & 1        \\
 		2    & 0  & 1  & 1  & 0  & 0        \\
 		3    & 0  & 1  & 1  & 1  & 1        \\
@@ -222,14 +230,10 @@ From the decision table above, the following test cases are generated:
 There are
 $2 \times 3 \times 3 \times 3 \times 3 \times 2 \times 3 \times 3 = 2916$
 total possible combinations to test.
-Ideally, the orthogonal array should be $2^2 3^6$,
-resulting in
-
-some fucking magic later: \todo{\#todo: explain}
-
-
-The following mapping is created:
+Ideally, the orthogonal array should be of size $2^2 3^6$.
+Using some code, the following mapping is created:
 \vspace{20pt}
+
 \begin{adjustbox}{max width=1.5\textwidth, center}
 	\begin{tabular}{ccccccccc}
 		   & PRINTERS & PLUGINS & BROWSERS & OPERATING SYSTEMS & SERVERS & MONITORS & EMAIL SYSTEMS & SOFTWARE PACKAGES \\
@@ -248,8 +252,12 @@ The following mapping is created:
 		13 & printer1 & plugin2 & browser1 & os2               & server2 & monitor2 & email2        & software3
 	\end{tabular}%
 \end{adjustbox}
-\\
+\vspace{20pt}
 
 resulting in 13 test cases, as opposed to 2916 if we were to test all possible
-combinations, a huge improvement.
+combinations, a huge improvement ($\frac{2916-13}{2916} \times 100 \approx 99.55\%$)
+
+Alternatively, using a standard orthogonal array, the closest fit is
+$L_{18}(2^1 3^7)$, which would result in 18 test cases and still a huge
+improvement over testing all possible combinations $(\approx 99.38\%)$
 \end{document}
