@@ -15,14 +15,6 @@ class BisectTest {
         b.run(-1.5, 0.5);
     }
 
-//    @Test
-//    void runTestidk() throws Bisect.RootNotFound{
-//        Bisect b = new Bisect(value -> Math.pow(value, 2));
-//        b.run(-10, 10);
-//        // this gives the wrong result, it throws
-//        // that no root can be found when in reality, it can be
-//    }
-
     @Test
     void runTestMaxIter(){
         Bisect b = new Bisect(1, value -> value + 100);
