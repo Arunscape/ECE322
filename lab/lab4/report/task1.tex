@@ -6,32 +6,51 @@ is, wherever the polynomial intersects $x=0$.
 The algotithm which the program implements is outlined as follows:
 
 \begin{enumerate}
-  \item Calculate c, the midpoint of the interval: $ c = \frac{a+b}{2} $
-  \item Calculate the polynomial's value at $f(c)$
-  \item If $|f(c)|$ is within the tolerance, stop
-  \item Check the sign of $f(c)$ and replace either $(a, f(a))$ or $(b, f(b))$
-    with $(c, f(c))$ such that the interval crosses $x=0$ somewhere and repeat
-    until step 3 quits
+	\item Calculate c, the midpoint of the interval: $ c = \frac{a+b}{2} $
+	\item Calculate the polynomial's value at $f(c)$
+	\item If $|f(c)|$ is within the tolerance, stop
+	\item Check the sign of $f(c)$ and replace either $(a, f(a))$ or $(b, f(b))$
+	      with $(c, f(c))$ such that the interval crosses $x=0$ somewhere and repeat
+	      until step 3 quits
 \end{enumerate}
 
 Since this is white box testing, we have access to the source code for this
 application. By inspecting the source code, the following control flow graph was
 generated for the application. The numbers in each node represent the line
-numbers in the source code in \textbf{Bisect.java}
+numbers in the source code in \textbf{Bisect.java}.
+
+
 
 \begin{adjustbox}{center, height=\textheight}
-\digraph{controlflow}{
-    rankdir=TB;
-    idk [label = "56-68"];
-    "52-54"->idk;
-    70->71->idk;
-    idk->60;
-    60->61;
-    60->"64-65"->66;
-    66->67->70;
-    66->69->70;
-    71->73->74;
-    73->77;
-}
+	\digraph{controlflow}{
+		rankdir=TB;
+		idk [label = "56-68"];
+		"52-54"->idk;
+		70->71->idk;
+		idk->60;
+		60->61;
+		60->"64-65"->66;
+		66->67->70;
+		66->69->70;
+		71->73->74;
+		73->77;
+	}
+\end{adjustbox}
+
+Again, from the source code, the following test cases were generated:
+
+\begin{adjustbox}{width=0.9\paperwidth, center}
+	\begin{tabular}{clcccccll}
+		Test Id & Description                                              & tolerance & max iterations & polynomial & $x_1$ & $x_2$      & Expected  & Actual    \\ \hline
+		1       & Exception is thrown when both f(x1) and f(x2) are > 0    & 0.000001  & 50             & $x^2 - 1$  & -5    & 5          & Exception & Exception \\
+		2       & Exception is thrown when maximum iterations are exceeded & 0.000001  & 1              & $x+100$    & -150  & 1000000000 & Exception & Exception \\
+		3       & Test constructor with tolerance                          & 50.0      & 50             & $x$        & -10   & 10         & 0         & 0         \\
+		4       & Test constructor with tolerance and max iterations       & 0         & 50             & $x$        & -10   & 10         & 0         & 0         \\
+		5       & Max iterations getter                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\
+		6       & Max iterations setter                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\
+		7       & Tolerance getter                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\
+		8       & Tolerance setter                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\
+		9       & Normal test case, make sure that f(result) <= result     & 0.000001  & 50             & $x^2 -1$   & -1.5  & 0.5        & -1        & -1
+	\end{tabular}%
 \end{adjustbox}
 

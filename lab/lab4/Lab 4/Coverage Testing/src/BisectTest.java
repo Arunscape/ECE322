@@ -5,14 +5,15 @@ class BisectTest {
 
     @Test
     void runTest61() {
-        Bisect b = new Bisect(value -> Math.pow(value, 2) + 1);
-        assertThrows(Bisect.RootNotFound.class, () -> b.run(-1, 1));
+        Bisect b = new Bisect(value -> Math.pow(value, 2) - 1);
+        assertThrows(Bisect.RootNotFound.class, () -> b.run(-5, 5));
     }
 
     @Test
-    void runTest67() throws Bisect.RootNotFound {
+    void normalTestCase() throws Bisect.RootNotFound {
         Bisect b = new Bisect(value -> Math.pow(value, 2) - 1);
-        b.run(-1.5, 0.5);
+        double result = b.run(-1.5, 0.5);
+        assert Math.abs(Math.pow(result, 2) - 1) <= b.getTolerance();
     }
 
     @Test
@@ -35,15 +36,15 @@ class BisectTest {
 
     @Test
     void runTestGetMaxIterations(){
-        Bisect b = new Bisect(50, value->value);
-        assertEquals(50, b.getMaxIterations());
+        Bisect b = new Bisect(500, value->value);
+        assertEquals(500, b.getMaxIterations());
     }
 
     @Test
     void runTestSetMaxIterations(){
         Bisect b = new Bisect(value -> value);
-        b.setMaxIterations(50);
-        assertEquals(50, b.getMaxIterations());
+        b.setMaxIterations(500);
+        assertEquals(500, b.getMaxIterations());
     }
 
     @Test

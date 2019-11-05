@@ -38,6 +38,8 @@
 \usepackage{minted} %code highlighting make sure you have pygmentize installed
 \usepackage{xcolor}
 
+\usepackage{csvsimple}
+
 \usepackage[pdf]{graphviz}
 
 \title{ECE 322 \\
@@ -72,11 +74,11 @@ XXXXXXX}
 %\includepdf[]{weaknx1-remotecar-table.pdf}
 \section{Bisect JUnit Tests}
 \inputminted[
-%frame=lines,
-%framesep=2mm,
-%baselinestretch=1.2,
-%bgcolor=lightgray,
-%fontsize=\footnotesize,
-linenos
+	%frame=lines,
+	%framesep=2mm,
+	%baselinestretch=1.2,
+	%bgcolor=lightgray,
+	%fontsize=\footnotesize,
+	linenos
 ]{java}{"../Lab 4/Coverage Testing/src/BisectTest.java"}
 \end{document}
