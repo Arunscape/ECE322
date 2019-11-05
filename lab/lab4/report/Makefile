@@ -5,4 +5,11 @@ format: clean
 	latexindent -w intro.tex > /dev/null
 	latexindent -w conclusion.tex > /dev/null
 clean:
-	rm *.bak*
+	rm -rf output.html *.aux *.out *.fls *.fdb_latexmk *.log *.gz *.bak.* _minted-report
+report:
+	pdflatex -shell-escape report
+lint:
+	textidote --check en_CA report.tex
+lint-html:
+	-textidote --output html --check en_CA report.tex > output.html
+	-brave-dev output.html

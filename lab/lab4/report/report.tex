@@ -34,6 +34,12 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{width=8cm,compat=1.15}\usepgfplotslibrary{patchplots}
+
+\usepackage{minted} %code highlighting make sure you have pygmentize installed
+\usepackage{xcolor}
+
+\usepackage[pdf]{graphviz}
+
 \title{ECE 322 \\
 Lab Report 4}
 \author{Arun Woosaree\\
@@ -64,5 +70,13 @@ XXXXXXX}
 
 %\includepdf[]{EPC-remotecar-table.pdf}
 %\includepdf[]{weaknx1-remotecar-table.pdf}
-
+\section{Bisect JUnit Tests}
+\inputminted[
+%frame=lines,
+%framesep=2mm,
+%baselinestretch=1.2,
+%bgcolor=lightgray,
+%fontsize=\footnotesize,
+linenos
+]{java}{"../Lab 4/Coverage Testing/src/BisectTest.java"}
 \end{document}

@@ -1,0 +1,37 @@
+For task one in this lab, the Bisect application was tested using White box
+testing methods. Bisect is a program written in Java, which
+uses the well-known bisection algorithm in mathematics to attempt to find the
+root of any polynomial in a given interval that crosses $x=0$ somewhere. That
+is, wherever the polynomial intersects $x=0$.
+The algotithm which the program implements is outlined as follows:
+
+\begin{enumerate}
+  \item Calculate c, the midpoint of the interval: $ c = \frac{a+b}{2} $
+  \item Calculate the polynomial's value at $f(c)$
+  \item If $|f(c)|$ is within the tolerance, stop
+  \item Check the sign of $f(c)$ and replace either $(a, f(a))$ or $(b, f(b))$
+    with $(c, f(c))$ such that the interval crosses $x=0$ somewhere and repeat
+    until step 3 quits
+\end{enumerate}
+
+Since this is white box testing, we have access to the source code for this
+application. By inspecting the source code, the following control flow graph was
+generated for the application. The numbers in each node represent the line
+numbers in the source code in \textbf{Bisect.java}
+
+\begin{adjustbox}{center, height=\textheight}
+\digraph{controlflow}{
+    rankdir=TB;
+    idk [label = "56-68"];
+    "52-54"->idk;
+    70->71->idk;
+    idk->60;
+    60->61;
+    60->"64-65"->66;
+    66->67->70;
+    66->69->70;
+    71->73->74;
+    73->77;
+}
+\end{adjustbox}
+
