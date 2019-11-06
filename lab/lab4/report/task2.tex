@@ -52,3 +52,21 @@ testing every single pair of input factors, whereas random combinations
 does not have this guarantee, and there are far more combinations to choose
 from. However, random combinations can by chance reveal errors that pairwise
 testing would not catch.
+
+Pairwise testing catches errors where two inputs interact with each other.
+It does not take into account the effect that multiple inputs might have 
+together. For example, imagine an application that requires three inputs to
+be in a certain state before something gets activated. Using pairwise testing
+there is a possibility that we would miss testing the part of the app,
+where three inputs are in the state for somthing to happen, since
+the pairwise tests would only focus on the combination of pairs of the inputs.
+In this way, core functionality of the application can be missed in testing.
+Furthermore, with pairwise testing it is possible to miss the more 
+probable combinations when selecting the test data. However, given the reduction
+in the number of test cases versus exhaustive testing, not to mention the
+cost of running so many tests, these weaknesses may be justifiable to some
+testers, given that pairwise testing usually results yields higher defect
+detection rates, increases the test coverage, all while using significantly
+less test cases. As mentioned above, to cover all possible inputs for the
+application in this example, a total of 27 test cases are required. 
+
