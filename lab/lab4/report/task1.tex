@@ -3,7 +3,7 @@ testing methods. Bisect is a program written in Java, which
 uses the well-known bisection algorithm in mathematics to attempt to find the
 root of any polynomial in a given interval that crosses $x=0$ somewhere. That
 is, wherever the polynomial intersects $x=0$.
-The algotithm which the program implements is outlined as follows:
+The algorithm which the program implements is outlined as follows:
 
 \begin{enumerate}
 	\item Calculate c, the midpoint of the interval: $ c = \frac{a+b}{2} $
@@ -35,7 +35,7 @@ numbers in the source code in \textbf{Bisect.java}.
 	}
 \end{adjustbox}
 
-By inspecting the source code and understanding the bisection algorithim,
+By inspecting the source code and understanding the bisection algorithm,
 some JUnit test cases were generated. These test cases can be found in Appendix
 \ref{junit}. A summary of these test cases is outlined in the table below.
 \vspace{1cm}
@@ -65,19 +65,19 @@ the code have been executed in the tests. That way, if a line is missed for
 example, code coverage criterion will bring to light that fact that the line of
 code was not covered. Furthermore, branch coverage will also ensure that all
 branches have been executed in the tests. In short, coverage criterion is
-effictive for letting us know when a part of the code \textit{for sure} is not
+effective for letting us know when a part of the code \textit{for sure} is not
 being tested. It does not however, guarantee that the correctness of the
 covered statements and branches.
 
 Based solely on the coverage criteria, it would be in my opinion foolish,
 or at best naive to be completely confident in the application being bug-free.
-Having well-thought out tests that aquedately cover the functionality of the
+Having well-thought-out tests that adequately cover the functionality of the
 programs \textit{in addition to} the code coverage criterion, however, does
 increase my confidence in the program working. Tests that are written such that 
-they only cover the code coverage criterion will not aquedately cover the 
+they only cover the code coverage criterion will not adequately cover the 
 correctly. The tests have to be made with the knowledge of how the Bisection
 algorithm works, and testing that the program computes the result as expected.
-With the test cases made in this lab, (available in Appendix \ref{junit}),
+With the test cases made in this lab, (available in Appendix~\ref{junit}),
 I am fairly confident that the portion of the program that does the Bisection
 algorithm works correctly, since they were crafted with the knowledge
 of how the Bisection algorithm works. 

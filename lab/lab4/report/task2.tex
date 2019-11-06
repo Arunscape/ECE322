@@ -1,5 +1,5 @@
 For the second part of the lab, we are to assume that we have a system with
-three independent variables: A, B, C. Each variable has three posisble values:
+three independent variables: A, B, C. Each variable has three possible values:
 0, 1, 2. There is no actual testing for this portion, it is a conceptual
 exercise.
 
@@ -25,10 +25,10 @@ On GNU/Linux systems, the output is as follows:
 On Windows, the output is as follows:
 \inputminted{text}{resources/pictwindoze}
 
-On MacOS, the output is as follows:
+On macOS, the output is as follows:
 \inputminted{text}{resources/pictmacos}
 
-What is strange is that on the Windows and MacOS systems, 10 test cases are
+What is strange is that on the Windows and macOS systems, 10 test cases are
 generated, while on GNU/Linux, 11 test cases are generated. 
 
 Given the inconsistent outputs of the pict tool depending on the operating
@@ -38,8 +38,8 @@ consistent, since this they are not supposed to be chosen randomly. If the
 program worked consistently, however, it would be quite effective since not
 much effort would be required to come up with the test cases, and we have the
 guarantee that every pair of inputs is tested. 
-
-Compared to the orthogonal array, the pict tool generated more test cases
+Compared to the orthogonal array, the pict tool generated more test cases,
+which is another consideration to take into account. 
 
 
 Pairwise testing is fairly useful, especially when you consider it versus
@@ -58,7 +58,7 @@ It does not take into account the effect that multiple inputs might have
 together. For example, imagine an application that requires three inputs to
 be in a certain state before something gets activated. Using pairwise testing
 there is a possibility that we would miss testing the part of the app,
-where three inputs are in the state for somthing to happen, since
+where three inputs are in the state for something to happen, since
 the pairwise tests would only focus on the combination of pairs of the inputs.
 In this way, core functionality of the application can be missed in testing.
 Furthermore, with pairwise testing it is possible to miss the more 
