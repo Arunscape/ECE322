@@ -5,7 +5,7 @@ format: clean
 	latexindent -w intro.tex > /dev/null
 	latexindent -w conclusion.tex > /dev/null
 clean:
-	rm -rf output.html *.aux *.out *.fls *.fdb_latexmk *.log *.gz *.bak.* _minted-report
+	rm -rf output.html *.aux *.out *.fls *.fdb_latexmk *.log *.gz *.bak.* _minted-report *.bak*
 report:
 	pdflatex -shell-escape report
 lint:

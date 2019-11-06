@@ -44,6 +44,7 @@ class BisectTest {
     void runTestSetMaxIterations(){
         Bisect b = new Bisect(value -> value);
         b.setMaxIterations(500);
+        b.setMaxIterations(-1);
         assertEquals(500, b.getMaxIterations());
     }
 
@@ -57,6 +58,7 @@ class BisectTest {
     void runTestSetTolerance(){
         Bisect b = new Bisect(value -> value);
         b.setTolerance(0.1);
+        b.setTolerance(-1);
         assertEquals(0.1, b.getTolerance());
     }
 

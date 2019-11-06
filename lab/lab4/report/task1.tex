@@ -19,8 +19,6 @@ application. By inspecting the source code, the following control flow graph was
 generated for the application. The numbers in each node represent the line
 numbers in the source code in \textbf{Bisect.java}.
 
-
-
 \begin{adjustbox}{center, height=\textheight}
 	\digraph{controlflow}{
 		rankdir=TB;
@@ -37,20 +35,53 @@ numbers in the source code in \textbf{Bisect.java}.
 	}
 \end{adjustbox}
 
-Again, from the source code, the following test cases were generated:
+By inspecting the source code and understanding the bisection algorithim,
+some JUnit test cases were generated. These test cases can be found in Appendix
+\ref{junit}. A summary of these test cases is outlined in the table below.
+\vspace{1cm}
 
-\begin{adjustbox}{width=0.9\paperwidth, center}
-	\begin{tabular}{clcccccll}
-		Test Id & Description                                              & tolerance & max iterations & polynomial & $x_1$ & $x_2$      & Expected  & Actual    \\ \hline
-		1       & Exception is thrown when both f(x1) and f(x2) are > 0    & 0.000001  & 50             & $x^2 - 1$  & -5    & 5          & Exception & Exception \\
-		2       & Exception is thrown when maximum iterations are exceeded & 0.000001  & 1              & $x+100$    & -150  & 1000000000 & Exception & Exception \\
-		3       & Test constructor with tolerance                          & 50.0      & 50             & $x$        & -10   & 10         & 0         & 0         \\
-		4       & Test constructor with tolerance and max iterations       & 0         & 50             & $x$        & -10   & 10         & 0         & 0         \\
-		5       & Max iterations getter                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\
-		6       & Max iterations setter                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\
-		7       & Tolerance getter                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\
-		8       & Tolerance setter                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\
-		9       & Normal test case, make sure that f(result) <= result     & 0.000001  & 50             & $x^2 -1$   & -1.5  & 0.5        & -1        & -1
-	\end{tabular}%
+\begin{adjustbox}{center}
+	\begin{tabularx}{0.9\paperwidth}{c X c c c c c l l}
+		Test Id & Description                                                                              & tolerance & max iterations & polynomial & $x_1$ & $x_2$      & Expected  & Actual    \\ \hline
+		1       & Exception is thrown when both $f(x_1)$ and $f(x_2)$ are $> 0$                            & 0.000001  & 50             & $x^2 - 1$  & -5    & 5          & Exception & Exception \\\hline
+		2       & Exception is thrown when maximum iterations are exceeded                                 & 0.000001  & 1              & $x+100$    & -150  & 1000000000 & Exception & Exception \\\hline
+		3       & Test constructor with tolerance                                                          & 50.0      & 50             & $x$        & -10   & 10         & 0         & 0         \\\hline
+		4       & Test constructor with tolerance and max iterations                                       & 0         & 50             & $x$        & -10   & 10         & 0         & 0         \\\hline
+		5       & Max iterations getter                                                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\\hline
+		6       & Max iterations setter                                                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\\hline
+		7       & Tolerance getter                                                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\\hline
+		8       & Tolerance setter                                                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\\hline
+		9       & Normal test case, make sure that $f(result) \leq result$, and it iterates more than once & 0.000001  & 50             & $x^2 -1$   & -1.5  & 0.5        & -1        & -1
+	\end{tabularx}%
 \end{adjustbox}
+\vspace{1cm}
+
+While code coverage is a useful metric for determining the quality of tests, it
+should not be the only factor in determining the quality of the tests. After
+all, it is possible to have all tests cover all lines and branches, but the
+tests may not be checking for the correctness in execution of these statements
+and branching conditions.  What is useful however, is knowing which lines of
+the code have been executed in the tests. That way, if a line is missed for
+example, code coverage criterion will bring to light that fact that the line of
+code was not covered. Furthermore, branch coverage will also ensure that all
+branches have been executed in the tests. In short, coverage criterion is
+effictive for letting us know when a part of the code \textit{for sure} is not
+being tested. It does not however, guarantee that the correctness of the
+covered statements and branches.
+
+Based solely on the coverage criteria, it would be in my opinion foolish,
+or at best naive to be completely confident in the application being bug-free.
+Having well-thought out tests that aquedately cover the functionality of the
+programs \textit{in addition to} the code coverage criterion, however, does
+increase my confidence in the program working. Tests that are written such that 
+they only cover the code coverage criterion will not aquedately cover the 
+correctly. The tests have to be made with the knowledge of how the Bisection
+algorithm works, and testing that the program computes the result as expected.
+With the test cases made in this lab, (available in Appendix \ref{junit}),
+I am fairly confident that the portion of the program that does the Bisection
+algorithm works correctly, since they were crafted with the knowledge
+of how the Bisection algorithm works. 
+
+To fullfill path coverage, \dots test cases are needed \todo{help}
+
 
