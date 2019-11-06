@@ -1,25 +1,22 @@
-In this lab, we were introduced to the black box testing strategy of creating
-cause-effect graphs and decision tables to help come up with test cases.
-While it would not be fair to say that one testing strategy
-is universally better than the other, since it would be better to match
-each problem at hand to the appropriate testing strategy, compared to other
-testing methods previously learned like dirty testing, error guessing, EPC, and
-weak n x 1 strategy, this method seems to demand the most amount of thought and
-effort for creating the test cases.
-From a subjective standpoint, making cause effect graphs and deriving test
-cases from them is an okay testing technique, but not one of my favourites.
-While in terms of number of test cases, it is efficient in that it generates
-very few test cases while still having generally good coverage, the effort
-required to generate the test cases does not seem like it is worth it for most
-applications. Additionally, it seems to not cover some scenarios, like in
-Task 1 with the CarInsurance program, where invalid inputs were not tested.
-There are some scenarios, however, where the testing technique seems
-appropriate to use. For example, in Task 2 with the BoilerShutdown application,
-it was impossible to enter an invalid input, and we were strictly concerned
-with the inputs (causes), and their effects. By creating a simplified
-cause effect graph, we created few, but effective test cases. Overall, making
-cause-effect graphs and decision tables definitely has its place in black box
-testing. Like with any other testing technique, there are scenarios where it
-shines, and other cases where another testing technique would work better.
-
-
+In this lab, we were introduced to the white-box testing strategy. There was a
+focus on control flow testing, and coverage criterion: Statement coverage,
+branch coverage, condition coverage, and path coverage. A control flow graph
+was generated, and test cases were made knowing the implementation of the
+program, and by inspecting to source code. Knowing the implementation details
+of the program allowed for the creation of test cases that not only check for
+correctess of the implementation of the algorithm, but also that all lines and
+branches in the code were covered by the tests. Statement and branch coverge on
+their own do not indicate good tests, but they can at a glance tell us which
+parts of an application for sure have not been tested yet. In this part of the
+lab, we also discovered the infeasability of path coverage, due to a while loop
+causing the number of potential paths taken to increase exponentially. In the
+second part of
+the lab, the focus was on pairwise testing, where we analyzed a hypothetical
+testing scenario and used a standard orthigonal array to generate test cases,
+and contrasted that with using a tool made my Microsoft named PICT which
+automatically generates test cases, and compared and contrasted these methods
+versus exhaustive testing. In general, it seems like pairwise testing is great
+for reducing the number of test cases, while still keeping detection rate of
+failures high, but it also has some weaknesses, like when more than two inputs
+have some important relation in the application, when pairwise testing by
+definition only looks at the relationships between each pair of inputs.
