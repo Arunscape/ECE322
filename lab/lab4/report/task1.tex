@@ -82,6 +82,11 @@ I am fairly confident that the portion of the program that does the Bisection
 algorithm works correctly, since they were crafted with the knowledge
 of how the Bisection algorithm works. 
 
-To fullfill path coverage, \dots test cases are needed \todo{help}
-
-
+In general, the number of paths available to test is a number between
+$n+1 \leq x \leq 2^n$, where n is the number of branches. This depends
+on when the branches merge. Additionally, for this application,
+there is a branch decision on every loop iteration. So, the number of test
+cases depends on the number of maximum iterations. Even with the default value
+of 50 iterations, we can see how quickly the number of tests needed for path
+coverage can blow up exponentially to ridiculous proportions, which is why
+path coverage is not realistic. 
