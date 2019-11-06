@@ -1,0 +1,54 @@
+For the second part of the lab, we are to assume that we have a system with
+three independent variables: A, B, C. Each variable has three posisble values:
+0, 1, 2. There is no actual testing for this portion, it is a conceptual
+exercise.
+
+In total, there are $3 \times 3 \times 3  = 27$ test cases if we were to do
+combinatorial testing. We are looking for a standard orthogonal array that
+can fit $3^3$. From \url{http://neilsloane.com/oadir/}, we find that
+the $L_9(3^4)$ standard orthogonal array works. 
+Below is the set of test cases using the orthogonal array mentioned above:
+
+\inputminted{text}{resources/standard3^4}
+
+The PICT program (\url{https://github.com/microsoft/pict}) was used to generate
+test cases with the following input:
+
+\inputminted{text}{resources/pict}
+
+It should be noted that strangely, there seems to be different outputs
+depending on the operating system that pict is run on.
+
+On GNU/Linux systems, the output is as follows:
+\inputminted{text}{resources/pictlinux}
+
+On Windows, the output is as follows:
+\inputminted{text}{resources/pictwindoze}
+
+On MacOS, the output is as follows:
+\inputminted{text}{resources/pictmacos}
+
+What is strange is that on the Windows and MacOS systems, 10 test cases are
+generated, while on GNU/Linux, 11 test cases are generated. 
+
+Given the inconsistent outputs of the pict tool depending on the operating
+system that the program is run on, I am not sure about the effectiveness of the
+tool for test case generation. Ideally, the test cases generated should be
+consistent, since this they are not supposed to be chosen randomly. If the
+program worked consistently, however, it would be quite effective since not
+much effort would be required to come up with the test cases, and we have the
+guarantee that every pair of inputs is tested. 
+
+Compared to the orthogonal array, the pict tool generated more test cases
+
+
+Pairwise testing is fairly useful, especially when you consider it versus
+combinatorial testing. In this toy example, the number of test cases was not
+reduced that much, (27 for combinatorial testing, versus 9 with an orthogonal
+table), but one can imagine the reduction in test cases when there are more
+inputs, and more possible values that these inputs can take on. Compared with
+random combinations, pairwise testing gives us the guarantee that we are
+testing every single pair of input factors, whereas random combinations
+does not have this guarantee, and there are far more combinations to choose
+from. However, random combinations can by chance reveal errors that pairwise
+testing would not catch.
