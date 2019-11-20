@@ -33,7 +33,8 @@ public class Entry implements Comparable<Entry>{
 	}
 	
 	public String toString() {
-		return this.name + ", " + this.number;
+		// the parenthesis were added to make error messages easier to read
+		return "(" + this.name + ", " + this.number + ")";
 	}
 
 }

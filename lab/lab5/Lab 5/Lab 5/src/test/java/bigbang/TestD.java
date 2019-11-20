@@ -33,8 +33,8 @@ public class TestD {
 
         md = new ModuleD(mf, mg);
 
-        expected = new ArrayList<Entry>(){{
-            for (int i=0; i<10; i+=1)
+        expected = new ArrayList<>() {{
+            for (int i = 0; i < 10; i += 1)
                 add(new Entry(TEST_NAME + i, TEST_NUMBER + i));
         }};
     }

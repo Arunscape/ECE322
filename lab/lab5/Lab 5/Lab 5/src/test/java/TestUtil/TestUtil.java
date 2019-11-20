@@ -2,6 +2,7 @@ package TestUtil;
 
 import data.Entry;
 import org.junit.jupiter.api.Assertions;
+import org.opentest4j.AssertionFailedError;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,9 @@ public class TestUtil {
             Entry exp = expected.get(i);
             Entry act = actual.get(i);
 
-            Assertions.assertEquals(exp.getName(), act.getName());
-            Assertions.assertEquals(exp.getNumber(), act.getNumber());
+
+            if (!exp.getName().equals(act.getName()) || !exp.getNumber().equals(act.getNumber()))
+                throw new AssertionFailedError("Arrays don't match", expected, actual);
         }
     }
 }
