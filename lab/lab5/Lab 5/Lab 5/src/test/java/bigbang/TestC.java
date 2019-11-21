@@ -23,7 +23,7 @@ public class TestC {
     }
 
     @Test
-    public void setDataTest(){
+    public void sortDataTest(){
 
         final String TEST_NAME = "testName";
         final String TEST_NUMBER = "testNumber";
@@ -54,6 +54,28 @@ public class TestC {
     public void setFTest(){
         ModuleF newF = mock(ModuleF.class);
         mc.setF(newF);
+    }
+
+    // to cover line 28 in ModuleC
+    @Test
+    public void sortFourElementsTest(){
+        ArrayList<Entry> unsorted = new ArrayList<>() {{
+            add(new Entry("ccc", "ccc"));
+            add(new Entry("aaa", "aaa"));
+            add(new Entry("bbb", "ddd"));
+            add(new Entry("bbb", "aaa"));
+        }};
+
+        ArrayList<Entry> sorted = new ArrayList<>() {{
+            add(new Entry("aaa", "aaa"));
+            add(new Entry("bbb", "aaa"));
+            add(new Entry("bbb", "ddd"));
+            add(new Entry("ccc", "ccc"));
+        }};
+
+        ArrayList<Entry> ret = mc.sortData(unsorted);
+
+        TestUtil.compareArrayOfEntries(sorted, ret);
     }
 
 }
