@@ -1,0 +1,93 @@
+For task one in this lab, the Bisect application was tested using White box
+testing methods. Bisect is a program written in Java, which
+uses the well-known bisection algorithm in mathematics to attempt to find the
+root of any polynomial in a given interval that crosses $x=0$ somewhere. That
+is, wherever the polynomial intersects $x=0$.
+The algorithm which the program implements is outlined as follows:
+
+\begin{enumerate}
+	\item Calculate c, the midpoint of the interval: $ c = \frac{a+b}{2} $
+	\item Calculate the polynomial's value at $f(c)$
+	\item If $|f(c)|$ is within the tolerance, stop
+	\item Check the sign of $f(c)$ and replace either $(a, f(a))$ or $(b, f(b))$
+	      with $(c, f(c))$ such that the interval crosses $x=0$ somewhere and repeat
+	      until step 3 quits
+\end{enumerate}
+
+Since this is white box testing, we have access to the source code for this
+application. By inspecting the source code, the following control flow graph was
+generated for the application. The numbers in each node represent the line
+numbers in the source code in \textbf{Bisect.java}.
+
+\begin{adjustbox}{center, height=\textheight}
+	\digraph{controlflow}{
+		rankdir=TB;
+		idk [label = "56-68"];
+		"52-54"->idk;
+		70->71->idk;
+		idk->60;
+		60->61;
+		60->"64-65"->66;
+		66->67->70;
+		66->69->70;
+		71->73->74;
+		73->77;
+	}
+\end{adjustbox}
+
+By inspecting the source code and understanding the bisection algorithm,
+some JUnit test cases were generated. These test cases can be found in Appendix
+\ref{junit}. A summary of these test cases is outlined in the table below.
+\vspace{1cm}
+
+\begin{adjustbox}{center}
+	\begin{tabularx}{0.9\paperwidth}{c X c c c c c l l}
+		Test Id & Description                                                                              & tolerance & max iterations & polynomial & $x_1$ & $x_2$      & Expected  & Actual    \\ \hline
+		1       & Exception is thrown when both $f(x_1)$ and $f(x_2)$ are $> 0$                            & 0.000001  & 50             & $x^2 - 1$  & -5    & 5          & Exception & Exception \\\hline
+		2       & Exception is thrown when maximum iterations are exceeded                                 & 0.000001  & 1              & $x+100$    & -150  & 1000000000 & Exception & Exception \\\hline
+		3       & Test constructor with tolerance                                                          & 50.0      & 50             & $x$        & -10   & 10         & 0         & 0         \\\hline
+		4       & Test constructor with tolerance and max iterations                                       & 0         & 50             & $x$        & -10   & 10         & 0         & 0         \\\hline
+		5       & Max iterations getter                                                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\\hline
+		6       & Max iterations setter                                                                    & 0.000001  & 500            & $x$        & n/a   & n/a        & 500       & 500       \\\hline
+		7       & Tolerance getter                                                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\\hline
+		8       & Tolerance setter                                                                         & 0.0       & 50             & $x$        & n/a   & n/a        & 0.0       & 0.0       \\\hline
+		9       & Normal test case, make sure that $f(result) \leq result$, and it iterates more than once & 0.000001  & 50             & $x^2 -1$   & -1.5  & 0.5        & -1        & -1
+	\end{tabularx}%
+\end{adjustbox}
+\vspace{1cm}
+
+While code coverage is a useful metric for determining the quality of tests, it
+should not be the only factor in determining the quality of the tests. After
+all, it is possible to have all tests cover all lines and branches, but the
+tests may not be checking for the correctness in execution of these statements
+and branching conditions.  What is useful however, is knowing which lines of
+the code have been executed in the tests. That way, if a line is missed for
+example, code coverage criterion will bring to light that fact that the line of
+code was not covered. Furthermore, branch coverage will also ensure that all
+branches have been executed in the tests. In short, coverage criterion is
+effective for letting us know when a part of the code \textit{for sure} is not
+being tested. It does not however, guarantee that the correctness of the
+covered statements and branches.
+
+Based solely on the coverage criteria, it would be in my opinion foolish,
+or at best naive to be completely confident in the application being bug-free.
+Having well-thought-out tests that adequately cover the functionality of the
+programs \textit{in addition to} the code coverage criterion, however, does
+increase my confidence in the program working. Tests that are written such that
+they only cover the code coverage criterion will not adequately cover the
+correctly. The tests have to be made with the knowledge of how the Bisection
+algorithm works, and testing that the program computes the result as expected.
+With the test cases made in this lab, (available in Appendix \ref{junit}),
+I am fairly confident that the portion of the program that does the Bisection
+algorithm works correctly, since they were crafted with the knowledge
+of how the Bisection algorithm works, and therefore test that the functionality
+of the algorithm.
+
+In general, the number of paths available to test is a number between
+$n+1 \leq x \leq 2^n$, where n is the number of branches. This depends
+on when the branches merge. Additionally, for this application,
+there is a branch decision on every loop iteration. So, the number of test
+cases depends on the number of maximum iterations. Even with the default value
+of 50 iterations, we can see how quickly the number of tests needed for path
+coverage can blow up exponentially to ridiculous proportions, which is why
+path coverage is not realistic.

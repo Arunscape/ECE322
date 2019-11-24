@@ -1,0 +1,76 @@
+%preamble
+\documentclass[letterpaper]{article}
+\synctex=1
+\usepackage{graphicx}
+\graphicspath{{resources/}}
+
+\usepackage{lipsum}
+\usepackage{float}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage{siunitx}
+\usepackage{adjustbox}
+\usepackage{multirow}
+% for merging table cells I think
+
+\usepackage{tabularx}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+
+% allows for linewrap within cells
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\usepackage{todonotes}
+\usepackage{hyperref}
+
+\usepackage{pdfpages} % for attaching the table lol
+
+\usepackage[section]{placeins} % forces figures to appear in the same section
+
+\usepackage[T1]{fontenc}
+
+%for plots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=8cm,compat=1.15}\usepgfplotslibrary{patchplots}
+
+\usepackage{minted} %code highlighting make sure you have pygmentize installed
+\usepackage{xcolor}
+
+\usepackage{csvsimple}
+
+\usepackage[pdf]{graphviz}
+
+\title{ECE 322 \\
+Lab Report 4}
+\author{Arun Woosaree\\
+XXXXXXX}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\input{intro.tex}
+
+\section{Task 1}
+\input{task1.tex}
+
+
+\section{Task 2}
+\input{task2.tex}
+
+\section{Conclusion}
+\input{conclusion.tex}
+
+
+\vfill
+\appendix
+
+%\includepdf[pages=-]{EPC-drone-table.pdf}
+%\includepdf[]{causeeffect1.jpg}
+%\includepdf[]{causeeffect2.jpg}
+
+%\includepdf[]{EPC-remotecar-table.pdf}
+%\includepdf[]{weaknx1-remotecar-table.pdf}
+\input{appendix.tex}
+\end{document}
