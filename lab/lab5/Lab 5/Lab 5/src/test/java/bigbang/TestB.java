@@ -1,5 +1,6 @@
 package bigbang;
 
+import TestUtil.TestUtil;
 import modules.ModuleB;
 import modules.ModuleF;
 import org.junit.jupiter.api.AfterEach;
@@ -13,6 +14,8 @@ import data.Entry;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 // IO Exception catching is not tested
@@ -35,7 +38,7 @@ public class TestB {
         f.createNewFile();
         Files.writeString(Paths.get(TEST_FILENAME), """
 This
-is, some
+is,some
 test
 data""");
     }
@@ -52,6 +55,8 @@ data""");
        ArrayList<Entry> expected = new ArrayList<>() {{
            add(new Entry("is", "some"));
        }};
+
+       TestUtil.compareArrayOfEntries(expected, ret);
     }
 
     @Test

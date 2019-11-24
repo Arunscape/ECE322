@@ -230,7 +230,7 @@ ddd,aaa
     @Test
     public void testUpdateCReturnsNull() throws ModuleE.DataBaseExitException {
 
-//        in practce, we see using static analysis that moduleC can never return null
+//        in practice, we see using static analysis that moduleC can never return null
 
 //        Mockito.when(md.updateData(any(), anyInt(), anyString(), anyString(), anyString())).thenReturn(null);
 //        ma.run(new String[]{"load", NONEXISTENT_FILE});

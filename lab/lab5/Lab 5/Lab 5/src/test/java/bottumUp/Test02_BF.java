@@ -1,5 +1,6 @@
 package bottumUp;
 
+import TestUtil.TestUtil;
 import modules.ModuleB;
 import modules.ModuleF;
 import org.junit.jupiter.api.AfterEach;
@@ -23,7 +24,7 @@ public class Test02_BF {
 
     ModuleB mb;
     ModuleF mf;
-    final static String TEST_FILENAME = "BTEST_FILE";
+    final static String TEST_FILENAME = "BFTEST_FILE";
     static File f;
 
     @BeforeEach
@@ -35,7 +36,7 @@ public class Test02_BF {
         f.createNewFile();
         Files.writeString(Paths.get(TEST_FILENAME), """
 This
-is, some
+is,some
 test
 data""");
     }
@@ -52,6 +53,8 @@ data""");
         ArrayList<Entry> expected = new ArrayList<>() {{
             add(new Entry("is", "some"));
         }};
+
+        TestUtil.compareArrayOfEntries(expected, ret);
     }
 
     @Test

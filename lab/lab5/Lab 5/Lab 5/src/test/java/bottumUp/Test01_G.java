@@ -6,8 +6,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -55,6 +57,10 @@ name5,number5
 
     @Test
     public void testModuleGFail() {
+        ByteArrayOutputStream stdout= new ByteArrayOutputStream();
+        System.setOut(new PrintStream(stdout));
         mg.updateData("", new ArrayList<Entry>());
+
+        assertEquals("Error updating DB File.\n", stdout.toString());
     }
 }
