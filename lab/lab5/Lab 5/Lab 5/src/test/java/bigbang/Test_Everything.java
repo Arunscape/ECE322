@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 
-public class TestEverything {
+public class Test_Everything {
 
     ModuleA ma;
     ModuleB mb;
