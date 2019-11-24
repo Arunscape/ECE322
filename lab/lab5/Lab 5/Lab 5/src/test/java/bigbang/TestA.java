@@ -220,5 +220,10 @@ public class TestA {
         // line 147 does not get covered, because the program exits
     }
 
+    @Test
+    public void unknownCommand() throws ModuleE.DataBaseExitException {
+        ma.run(new String[]{"thiscommanddoesn'texist"});
+    }
+
 
 }
