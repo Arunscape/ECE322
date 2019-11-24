@@ -5,12 +5,11 @@ import data.Entry;
 import modules.ModuleD;
 import modules.ModuleF;
 import modules.ModuleG;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 
 public class TestD {
@@ -37,6 +36,15 @@ public class TestD {
             for (int i = 0; i < 10; i += 1)
                 add(new Entry(TEST_NAME + i, TEST_NUMBER + i));
         }};
+    }
+
+    @AfterEach
+    public void after(TestInfo testInfo){
+        if(testInfo.getTags().contains("SkipAfter")) {
+            return;
+        }
+        verify(mf, times(1)).displayData(any());
+        verify(mg, times(1)).updateData(anyString(), any());
     }
 
     @Test
@@ -66,12 +74,14 @@ public class TestD {
         TestUtil.compareArrayOfEntries(expected, ret);
     }
 
+    @Tag("SkipAfter")
     @Test
     public void setFTest(){
         ModuleF newF = mock(ModuleF.class);
         md.setF(newF);
     }
 
+    @Tag("SkipAfter")
     @Test
     public void setGTest(){
         ModuleG newG = mock(ModuleG.class);
