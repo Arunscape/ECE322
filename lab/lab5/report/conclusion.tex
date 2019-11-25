@@ -1,22 +1,20 @@
-In this lab, we were introduced to the white-box testing strategy. There was a
-focus on control flow testing, and coverage criterion: Statement coverage,
-branch coverage, condition coverage, and path coverage. A control flow graph
-was generated, and test cases were made knowing the implementation of the
-program, and by inspecting to source code. Knowing the implementation details
-of the program allowed for the creation of test cases that not only check for
-correctness of the implementation of the algorithm, but also that all lines and
-branches in the code were covered by the tests. Statement and branch coverage on
-their own do not indicate good tests, but they can at a glance tell us which
-parts of an application for sure have not been tested yet. In this part of the
-lab, we also discovered the infeasability of path coverage, due to a while loop
-causing the number of potential paths taken to increase exponentially. In the
-second part of
-the lab, the focus was on pairwise testing, where we analyzed a hypothetical
-testing scenario and used a standard orthogonal array to generate test cases,
-and contrasted that with using a tool made my Microsoft named PICT which
-automatically generates test cases, and compared and contrasted these methods
-versus exhaustive testing. In general, it seems like pairwise testing is great
-for reducing the number of test cases, while still keeping detection rate of
-failures high, but it also has some weaknesses, like when more than two inputs
-have some important relation in the application, when pairwise testing by
-definition only looks at the relationships between each pair of inputs.
+In this lab, we were introduced to integration testing.  We tested a simple
+command-line database application using two integration testing strategies:
+non-incrementeal testing, and the bottum up incremental testing strategy.
+
+In general, integration testing seems beneficial over testing individual
+modules. It allows us to verify that the system as a whole is working as
+expected. For example, we noticed that as a whole, functions like updateData
+worked as expected, even though they failed when testing the modules
+individually. 
+
+This type of testing might be tedious for a large scale system, but would
+definitely be effective, since it would ensure that each module is communicating
+with other modules as expected. If the modules were tested individually for a
+large scale system without integration, we might find that the system as a whole
+does not work, even though the unit tests are passing. Furthermore, using
+inegration testing strategies allows for the errors to be found and traced to
+the modules where the error is happening fairly easily. Imagine trying to debug
+a large scale system as a black box\dots
+
+
