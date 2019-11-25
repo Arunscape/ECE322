@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bigbang.TestG" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-11-21T03:54:21" hostname="Arun-Predator-Linux" time="0.019">
+<testsuite name="bigbang.TestG" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-11-25T03:49:38" hostname="Arun-Predator-Linux" time="0.007">
   <properties/>
-  <testcase name="testModuleGFail()" classname="bigbang.TestG" time="0.016"/>
-  <testcase name="testModuleG()" classname="bigbang.TestG" time="0.002"/>
-  <system-out><![CDATA[Error updating DB File.
-]]></system-out>
+  <testcase name="testModuleGFail()" classname="bigbang.TestG" time="0.005"/>
+  <testcase name="testModuleG()" classname="bigbang.TestG" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[java.io.FileNotFoundException:  (No such file or directory)
 	at java.base/java.io.FileOutputStream.open0(Native Method)
 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:292)
@@ -12,7 +11,7 @@
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:185)
 	at java.base/java.io.FileWriter.<init>(FileWriter.java:96)
 	at modules.ModuleG.updateData(ModuleG.java:17)
-	at bigbang.TestG.testModuleGFail(TestG.java:55)
+	at bigbang.TestG.testModuleGFail(TestG.java:59)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

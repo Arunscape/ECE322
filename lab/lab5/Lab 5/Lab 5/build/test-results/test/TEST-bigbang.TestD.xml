@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bigbang.TestD" tests="5" skipped="0" failures="1" errors="0" timestamp="2019-11-21T03:54:20" hostname="Arun-Predator-Linux" time="0.634">
+<testsuite name="bigbang.TestD" tests="5" skipped="0" failures="1" errors="0" timestamp="2019-11-25T03:49:37" hostname="Arun-Predator-Linux" time="0.298">
   <properties/>
-  <testcase name="updateDataTest()" classname="bigbang.TestD" time="0.624">
+  <testcase name="updateDataTest()" classname="bigbang.TestD" time="0.289">
     <failure message="org.opentest4j.AssertionFailedError: Arrays don't match" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Arrays don't match
 	at TestUtil.TestUtil.compareArrayOfEntries(TestUtil.java:20)
-	at bigbang.TestD.updateDataTest(TestD.java:57)
+	at bigbang.TestD.updateDataTest(TestD.java:65)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -97,7 +97,7 @@
   </testcase>
   <testcase name="insertDataTest()" classname="bigbang.TestD" time="0.002"/>
   <testcase name="deleteDataTest()" classname="bigbang.TestD" time="0.002"/>
-  <testcase name="setFTest()" classname="bigbang.TestD" time="0.002"/>
+  <testcase name="setFTest()" classname="bigbang.TestD" time="0.0"/>
   <testcase name="setGTest()" classname="bigbang.TestD" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

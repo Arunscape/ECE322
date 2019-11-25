@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bigbang.TestF" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-11-21T03:54:20" hostname="Arun-Predator-Linux" time="0.051">
+<testsuite name="bigbang.TestF" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-11-25T03:49:38" hostname="Arun-Predator-Linux" time="0.01">
   <properties/>
-  <testcase name="testModuleF()" classname="bigbang.TestF" time="0.051">
+  <testcase name="testModuleF()" classname="bigbang.TestF" time="0.01">
     <failure message="org.opentest4j.AssertionFailedError: expected: &lt;Current Data:&#10;1 name1, number1&#10;2 name2, number2&#10;3 name3, number3&#10;4 name4, number4&#10;5 name5, number5&#10;&gt; but was: &lt;Current Data:&#10;2 (name2, number2)&#10;3 (name3, number3)&#10;4 (name4, number4)&#10;5 (name5, number5)&#10;&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Current Data:
 1 name1, number1
 2 name2, number2
