@@ -25,24 +25,85 @@ four elements to sort, because it does a check for when the size of the
 collection divided by 2 is equal to 2. In this case, it looks like with four
 elements, the application returns an unsorted ArrayList
 
+\begin{verbatim}
+Input:
+[(ccc, ccc), (aaa, aaa), (bbb, ddd), (bbb, aaa)]
+Expected :
+[(aaa, aaa), (bbb, aaa), (bbb, ddd), (ccc, ccc)]
+Actual :
+[(ccc, ccc), (aaa, aaa), (bbb, ddd), (bbb, aaa)]
+\end{verbatim}
+
 \subsubsection{sortDataTest()}
 The application seems to mostly sort the data ok, but it forgets about sorting
 the first element in the data, and leaves it untouched.
 
-\subsection{Module DFG}
+\begin{verbatim}
+Input    :[(ddd, aaa), (bbb, bbb), (ccc, ccc), (aaa, aaa), (ccc, aaa), (bbb, aaa)]   
+Expected :[(aaa, aaa), (bbb, aaa), (bbb, bbb), (ccc, aaa), (ccc, ccc), (ddd, aaa)]
+Actual   :[(ddd, aaa), (aaa, aaa), (bbb, bbb), (bbb, aaa), (ccc, aaa), (ccc, ccc)]
+\end{verbatim}
+
+
+\subsection{Test DFG}
 \subsubsection{updateDataTest()}
 The updateData function takes in an index, but then it adds one to the index.
 This results in a test failure when the test expects index 5, for example to be
 update, the application actually ends up updating the entry at index 6.
+It is interesting how this unit test fails yet when testing everything at once,
+the update command in module A works as expected. Curiously, in module A,
+the index is subtracted by 2, so this is probably how the functionality
+ends up still working in the end.
 
+\begin{verbatim}
+Expected :
+[(testName0, testNumber0),
+ (testName1, testNumber1),
+ (testName2, testNumber2),
+ (testName3, testNumber3),
+ (testName4, testNumber4),
+ (testName, testNumber),
+ (testName6, testNumber6),
+ (testName7, testNumber7),
+ (testName8, testNumber8),
+ (testName9, testNumber9)]
+Actual :
+[(testName0,
+ testNumber0),
+ (testName1, testNumber1),
+ (testName2, testNumber2),
+ (testName3, testNumber3),
+ (testName4, testNumber4),
+ (testName5, testNumber5),
+ (testName, testNumber),
+ (testName7, testNumber7),
+ (testName8, testNumber8),
+ (testName9, testNumber9)]
+\end{verbatim}
 
-\subsection{Module F}
+\subsection{Test F}
 \subsubsection{testModuleF()}
 When Module F displays data, it skips the first line, or the first entry. This
 is because the for loop on line 15 in Module F starts from $i=1$, instead of
 $i=0$, which means it starts from indexing the second element in the ArrayList,
 instead of the first element.
 
+\begin{verbatim}
+Expected:
+Current Data:
+1 name1, number1
+2 name2, number2
+3 name3, number3
+4 name4, number4
+5 name5, number5
+
+Actual:
+Current Data:
+2 (name2, number2)
+3 (name3, number3)
+4 (name4, number4)
+5 (name5, number5)
+\end{verbatim}
 
 \subsection{Test Everything}
 \subsubsection{testSort()}
@@ -50,6 +111,30 @@ This test fails because the file itself is not sorted. Instead, we have a case
 where Module A is calling Module C to sort the data, but Module A never tells
 another module to update the file with the sorted data, so the database file is
 left unmodified and therefore unsorted.
+
+\begin{verbatim}
+Input:
+ddd,aaa
+bbb,bbb
+ccc,ccc
+aaa,aaa
+ccc,aaa
+bbb,aaa
+Expected :
+aaa,aaa
+bbb,aaa
+bbb,bbb
+ccc,aaa,
+ccc,ccc
+ddd,aaa
+Actual :
+ddd,aaa
+bbb,bbb
+ccc,ccc
+aaa,aaa
+ccc,aaa
+bbb,aaa
+\end{verbatim}
 
 \subsubsection{testDeleteInvalidArguments()}
 The application is not equipped to handle arguments after the delete command
@@ -63,4 +148,3 @@ testDeleteInvalidArguments() fails.
 
 
 %general thoughts
-\todo{talk about your thoughts}
