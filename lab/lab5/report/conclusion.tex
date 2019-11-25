@@ -1,6 +1,6 @@
 In this lab, we were introduced to integration testing.  We tested a simple
 command-line database application using two integration testing strategies:
-non-incrementeal testing, and the bottum up incremental testing strategy.
+non-incremental testing, and the bottom up incremental testing strategy.
 
 In general, integration testing seems beneficial over testing individual
 modules. It allows us to verify that the system as a whole is working as
@@ -39,9 +39,9 @@ strategy, where the library and the users' code is tested individually, and then
 all together at once in the end. 
 
 I think that the The big bang strategy would be
-te easiest testing strategy to maintain over time since if an API changes with
+the easiest testing strategy to maintain over time since if an API changes with
 any module, we just need to update the tests for one module, and the one
-integraion test that tests everything. 
+integration test that tests everything. 
 
 Personally, I like the bottom-up
 strategy for incremental testing, since no stubs are needed, so we know that the
@@ -50,4 +50,4 @@ one, so if we encounter an error during this process, it is very easy to find
 where it is originating. Compared to big-bang testing, what if there is a
 situation where each module individually passes, but the one big integration
 test fails? Where would one even start to look for the error, and determine the
-ofending modules?
+offending modules?

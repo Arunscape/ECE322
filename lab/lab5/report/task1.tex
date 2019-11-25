@@ -77,12 +77,12 @@ Current Data:
 \subsection{Module D}
 \subsubsection{updateDataTest()}
 The updateData function takes in an index, but then it adds one to the index.
-This results in a test failure when the test expects index 5, for example to be
-update, the application actually ends up updating the entry at index 6.
-It is interesting how this unit test fails yet when testing everything at once,
-the update command in module A works as expected. Curiously, in module A,
-the index is subtracted by 2, so this is probably how the functionality
-ends up still working in the end.
+This results in a test failure when the test expects index 5, for example to
+updated, the application actually ends up updating the entry at index 6.  It is
+interesting how this unit test fails yet when testing everything at once, the
+update command in module A works as expected. Curiously, in module A, the index
+is subtracted by 2, so this is probably how the functionality ends up still
+working in the end.
 
 \begin{verbatim}
 Expected :

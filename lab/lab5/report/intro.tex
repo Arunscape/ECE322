@@ -9,22 +9,22 @@ strategy, each module is tested individually, and then there is one final test
 where the entire system is tested as a whole. The second integration testing
 approach is \textit{Incremental} testing, in which we combine the next module
 to be tested with the set of previously tested modules before running tests.
-This can be done in either a bottum up or top down approach. In this lab, a
+This can be done in either a bottom up or top down approach. In this lab, a
 simple command-line database program written in Java was tested. There are 7
 modules which make up the system.  Module A is responsible for the GUI, B for
 opening, C for sorting, D for modifying, E for exiting, F for displaying, and G
 for updating data. Files in the database contain one entry per line, which are
 comma separated. Both testing strategies were used to test the application in
 this lab. Big bang testing was done in the first part, and we chose the
-Bottup-up incremental testing strategy for the second portion of the lab. Where
+Bottum-up incremental testing strategy for the second portion of the lab. Where
 possible, the tests were crafted to cover the full functionality of the
 program, including statement coverage. The exceptions are modules A and B,
-where it was not feasable to cover some lines.  The case with Module A was that
+where it was not feasible to cover some lines.  The case with Module A was that
 line 147 cannot be covered because when the program exits, an exception is
 thrown, which halts execution. With Module B, testing lines 39-42 when an IO
 Exception is caught does not need to be tested, because there is already code
 which handles the case when a file is not found.  Furthermore, this situation
-was neer encountered in our testing, due to the error handing when a file is
+was never encountered in our testing, due to the error handing when a file is
 not found. Additionally, the only code that gets run if this IO Exception
 somehow gets thrown are library functions (Printing to stdout, and printing a
 stacktrace of an error), and these library functions are likely already tested
