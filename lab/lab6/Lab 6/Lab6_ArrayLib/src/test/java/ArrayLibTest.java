@@ -59,6 +59,22 @@ public class ArrayLibTest{
         assertArrayEquals(expected, ret);
     }
 
+    @Test
+    public void withoutTestRemoveTwo(){
+        Integer[] a = {1, 2, 3, 4, 4, 5, 6, 7, 8, 9};
+        Integer[] ret = ArrayLib.without(a, Integer.class, 3, 4,4,  5, 10);
+        Integer[] expected = {1, 2, 6, 7, 8, 9};
+        assertArrayEquals(expected, ret);
+    }
 
+    @Test
+    public void withoutTestRemoveFirstElement(){
+        Integer[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Integer[] ret = ArrayLib.without(a, Integer.class, 1, 3, 4, 5);
+        Integer[] expected = {2, 6, 7, 8, 9};
+        assertArrayEquals(expected, ret);
+    }
+
+    // 36/37 mutation tests killed, the one that survives is because of the bug that we commented out above
 
 }

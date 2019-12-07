@@ -1,8 +1,18 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    configurations.maybeCreate("pitest")
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.5'
+        pitest 'org.pitest:pitest-junit5-plugin:0.10'
+    }
+}
+
 plugins {
     id 'java'
     id 'eclipse' // optional (to generate Eclipse project files)
     id 'idea' // optional (to generate IntelliJ IDEA project files)
-    id "info.solidsoft.pitest" version "1.4.5"
 }
 
 repositories {
@@ -22,14 +32,26 @@ test {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs += "--enable-preview"
-}
+//tasks.withType(JavaCompile) {
+//    options.compilerArgs += "--enable-preview"
+//}
+//
+//tasks.withType(Test) {
+//    jvmArgs += "--enable-preview"
+//}
+//
+//tasks.withType(JavaExec) {
+//    jvmArgs += '--enable-preview'
+//}
 
-tasks.withType(Test) {
-    jvmArgs += "--enable-preview"
-}
+apply plugin: 'info.solidsoft.pitest'
 
-tasks.withType(JavaExec) {
-    jvmArgs += '--enable-preview'
+pitest {
+    targetClasses = ['ArrayLib']  //by default "${project.group}.*"
+    targetTests = ['ArrayLibTest']
+    threads = 8
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+    testPlugin = "junit5"
+    pitestVersion = "1.4.9"
 }
