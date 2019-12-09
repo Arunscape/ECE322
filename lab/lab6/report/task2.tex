@@ -12,9 +12,11 @@ described below. There were a total of nine test cases for this part.
           The normalize method almost works, but there is a small bug where it
           subtracts the $i_{th}$ element from the minimum, when it should
           actually be $values[i] - min$
+          In \texttt{Commit.java} this fix was implemented.
   \item \underline{arrayAddTestDifferentLength}:
           This test fails because the method assumes that both arrays given to
-          it are the same length. The test expects an AssertionFailed error
+          it are the same length. The test expects an AssertionFailed error.
+          This test case was not fixed in \texttt{Commit.java}
 \end{enumerate}
 
 Next, there was an incremental upgrade to the code in the Commit.java file.  The
@@ -59,7 +61,11 @@ on negate, this test also fails.
 Finally, for this part of the lab, we applied fixes to the software. The new
 code is available in Appendix \ref{part2code}. With the fixes all thirteen test
 cases now pass. The full summary of test cases and their results can be found in
-Appendix \ref{part2code}.
+Appendix \ref{part2table}. Most of the fixes involve using existing
+functionality that the Java standard library provides, instead of re-inventing
+the wheel. These library functions have been battle tested by millions of users
+and tests, and are much less likely to have bugs than anything we write
+independently.
 
 Regression testing, as the name implies is excellent for making sure one does
 not regress when adding new features to sotware. That is, when a bug is found, a

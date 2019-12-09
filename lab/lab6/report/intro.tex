@@ -1,36 +1,39 @@
-The purpose of this lab was to serve as an introduction to integration testing.
-Integration testing is a logical extension of the previous lab, in which we did
-unit testing. This also allows us to build on the JUnit skills we learned in
-the previous lab. We were also introduced to the idea of mocking, using the
-Mockito library to mock out relationships between classes as we desire.
-Generally, there are two strategies to integration testing. The first is
-\textit{Non-incremental} testing, also known as Big Bang testing. With this
-strategy, each module is tested individually, and then there is one final test
-where the entire system is tested as a whole. The second integration testing
-approach is \textit{Incremental} testing, in which we combine the next module
-to be tested with the set of previously tested modules before running tests.
-This can be done in either a bottom up or top down approach. In this lab, a
-simple command-line database program written in Java was tested. There are 7
-modules which make up the system.  Module A is responsible for the GUI, B for
-opening, C for sorting, D for modifying, E for exiting, F for displaying, and G
-for updating data. Files in the database contain one entry per line, which are
-comma separated. Both testing strategies were used to test the application in
-this lab. Big bang testing was done in the first part, and we chose the
-Bottum-up incremental testing strategy for the second portion of the lab. Where
-possible, the tests were crafted to cover the full functionality of the
-program, including statement coverage. The exceptions are modules A and B,
-where it was not feasible to cover some lines.  The case with Module A was that
-line 147 cannot be covered because when the program exits, an exception is
-thrown, which halts execution. With Module B, testing lines 39-42 when an IO
-Exception is caught does not need to be tested, because there is already code
-which handles the case when a file is not found.  Furthermore, this situation
-was never encountered in our testing, due to the error handing when a file is
-not found. Additionally, the only code that gets run if this IO Exception
-somehow gets thrown are library functions (Printing to stdout, and printing a
-stacktrace of an error), and these library functions are likely already tested
-extensively, otherwise programmers would not trust them.  The tests were
-written using \textbf{junit-jupiter:5.5.2}, \textbf{mockito-core:3.1.0}, and
-were run using Java 13 with the command-line argument
-\textbf{--enable-preview}. A \textbf{build.gradle} is provided for ease of use,
+The purpose of this lab was to serve as an introduction to mutation testing
+techniques, as well as regression testing.
+
+Mutation testing uses the idea of auomatic code mutation to determine how well
+the tests a tester writes actually are at catching errors in the application.
+The idea is the change, or `mutate' the source code by changing equality
+operator, mathematical operaors, among other things. Each copy of mutated code
+is referred to as a `mutant', and the same set of tests is run on the mutants.
+In order to do the mutation testing, we must first begin with a test suite where
+all the tests are green. The idea is that when a mutant fails a test, it is
+`killed' and the goal is to make sure that your test suite kills all mutants.
+Any mutants that survive are a sign that the tests could be improved, since they
+did not catch the bugs the mutants introduced. In this lab, we test an Array
+Library program using the mutation testing technique. The program is written in
+Java, and was tested using JUnit 5, and the PIT testing library was used to
+generate the mutants and evaluate whether they survive the test suite or not.
+
+With regression testing, we are concerned with testing a system again after an
+update is made to the code base. For example, when a new feature or `bug fix' is
+made, the regression test suite is run to make sure that the change to the code
+base does not re-introduce bugs into the system. The idea is that for each
+iteration of the software, when a  bug is found, a bugfix is applied, and a test
+is also written which checks for that bug. That way, when a new feature is
+applied or some other change is made to the codebase, we can make sure that the
+new changes do not regress and bring back bugs which were previously already
+fixed. In this lab, we test a Math library program using the regression testing
+technique. The program is written in Java and a test suite was created with
+JUnit 5. 
+
+The project was built using Java 13.
+A \textbf{build.gradle} is provided for ease of use,
 from which an IDE like Intellij or Eclipse should be able to install
-dependencies from and run the tests.
+dependencies from and run the tests for both projects. Alternatively, the
+command
+\texttt{./gradlew test} can be run from the command-line.
+\texttt{./gradlew pitest} can be run from the command-line for part 1 of this
+lab to generate the mutation test report. 
+The test suites for each project are located in \texttt{src/main/test/java}
+relative to the project root. 
