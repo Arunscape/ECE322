@@ -75,6 +75,15 @@ public class ArrayLibTest{
         assertArrayEquals(expected, ret);
     }
 
+    @Test
+    public void intersectionTestDuplicate(){
+        Integer[] a = {1, 2, 2, 3, 4};
+        Integer[] b = {2, 2, 3, 4};
+
+        Integer[] expected = {2, 2, 3, 4};
+        assertArrayEquals(expected, ArrayLib.intersection(a, b, Integer.class));
+    }
+
     // 36/37 mutation tests killed, the one that survives is because of the bug that we commented out above
 
 }

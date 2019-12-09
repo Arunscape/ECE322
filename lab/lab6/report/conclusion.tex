@@ -1,0 +1,53 @@
+In this lab, we were introduced to integration testing.  We tested a simple
+command-line database application using two integration testing strategies:
+non-incremental testing, and the bottom up incremental testing strategy.
+
+In general, integration testing seems beneficial over testing individual
+modules. It allows us to verify that the system as a whole is working as
+expected. For example, we noticed that as a whole, functions like updateData
+worked as expected, even though they failed when testing the modules
+individually. 
+
+This type of testing might be tedious for a large scale system, but it would
+definitely be effective, since it would ensure that each module is communicating
+with other modules as expected. If the modules were tested individually for a
+large scale system without integration, we might find that the system as a whole
+does not work, even though the unit tests are passing. Furthermore, using
+integration testing strategies allows for the errors to be found and traced to
+the modules where the error is happening fairly easily. Imagine trying to debug
+a large scale system without knowing where the error is originating when two
+unknown modules communicate with each other.
+
+Drivers and stubs are an effective
+method of isolating modules. They allow for a module which depends on other
+modules to be tested independently of the other modules it may depend on or
+communicate with. In other words, isolating the modules.
+
+I think the bottom up strategy would be best for
+test-driven development. That way, we can start at the lower level modules which
+do not depend on anything, and work our way up. As we get to higher level
+modules, we have continuous integration of the newer code, which means the
+testing process is less painful. As the icing on top, we get validation that
+the system is working as intended every step of the way.
+
+However, for testing software libraries, the
+big bang method might make more sense, since libraries are isolated from the
+code that a user writes. It would not make sense for the burden of testing to be
+passed on to the user of a library. The user expects the library to work when
+they use it, so in this way we end up with something resembling the big bang
+strategy, where the library and the users' code is tested individually, and then
+all together at once in the end. 
+
+I think that the The big bang strategy would be
+the easiest testing strategy to maintain over time since if an API changes with
+any module, we just need to update the tests for one module, and the one
+integration test that tests everything. 
+
+Personally, I like the bottom-up
+strategy for incremental testing, since no stubs are needed, so we know that the
+actual code is always being tested. Plus, each test builds off of the previous
+one, so if we encounter an error during this process, it is very easy to find
+where it is originating. Compared to big-bang testing, what if there is a
+situation where each module individually passes, but the one big integration
+test fails? Where would one even start to look for the error, and determine the
+offending modules?

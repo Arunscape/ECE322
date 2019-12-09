@@ -108,14 +108,4 @@ public class ArrayLib {
 		return compact(removed, c);
 	}
 
-//    @SuppressWarnings("unchecked")
-//    @SafeVarargs
-//    public static <E> E[] without(E[] array, Class<E> c, E... remove) {
-//        E[] ret = array.clone();
-//        for (E e : remove) {
-//            ret = (E[]) Arrays.stream(ret).filter(val -> !val.equals(e)).toArray();
-//        }
-//        return ret;
-//    }
-
 }
