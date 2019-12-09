@@ -28,7 +28,7 @@ that some boundary conditions were changed in the max and min methods, but they
 ultimately did not affect the correctness of the program, since the difference
 is that it now sets the max or min to the element in the array if it is greater
 than or equal to the maximum instead of strictly greater than, and for minimum,
-it sets the minimum if the element is less than or equal to the minumum instead
+it sets the minimum if the element is less than or equal to the minimum instead
 of strictly less than. Either way, the global maximum and minimum will be the
 same. 
 
@@ -37,7 +37,7 @@ same.
     This method returns null, no matter the input. It should return an array.
   \item \underline{arrayAddTestDifferentLength}:
     Again, this does not assert that the input arrays have the name length
-    This test fails for the same reason as the prevous test did, so nothing
+    This test fails for the same reason as the previous test did, so nothing
     changed here.
   \item \underline{distanceTest}:
     This method returns zero, regardless of the input
@@ -68,9 +68,9 @@ and tests, and are much less likely to have bugs than anything we write
 independently.
 
 Regression testing, as the name implies is excellent for making sure one does
-not regress when adding new features to sotware. That is, when a bug is found, a
+not regress when adding new features to software. That is, when a bug is found, a
 test is made, so that when new functionality is added to the program, we ensure
-the bug does not show up again, and if it is re-introuced, the test will catch
+the bug does not show up again, and if it is re-introduced, the test will catch
 it. The lab demonstrated how well this technique works with the test for the
 negation method catching a bug which was introduced in the new commit where
 someone made it also subtract one from each element in the array in addition to

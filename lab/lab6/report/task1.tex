@@ -16,7 +16,7 @@ The failing tests are explained as follows:
         for $index > 0$, the first element is never considered for removal.
 \item \underline{intersectionTestDuplicate}:
         This test fails because if there are elements that appear more than once
-        in both arrays, then the the method will attempt to increment the index
+        in both arrays, then the method will attempt to increment the index
         of the intersection array multiple times. However, this array is
         currently limited to the length of array a. To avoid this error, the
         size of the intersection array should be the length of array a plus the
@@ -37,18 +37,18 @@ instead of $index \geq 0$ on line 104.
 
 
 Before the mutation testing, we found three bugs in the program. After the
-mutants were created and killed, only one of the bugs was highlihted. By the
+mutants were created and killed, only one of the bugs was highlighted. By the
 mutation test report. In this case, the mutation testing did not expose holes in
 the succeeding test cases, but this was mostly due to the luck of the tester
 writing good test cases. In other applications, mutation testing can and will
 help find holes in weak test suites. This is reinforced by the fact that after
 we commented out the failing tests, the mutation test caught one of the bugs
-because a mutant survived when the conditon on line 104 $index > 0$ was mutated.
+because a mutant survived when the condition on line 104 $index > 0$ was mutated.
 
 I think in the real world mutation testing can be used as an indicator, a sort
 of `litmus' test, if you will for the quality of a test suite. It by no means
 should be the only thing one checks for to evaluate the quality of a testing
-suite, but on its own, it can reveal some weaknessed in a test suite. Like any
+suite, but on its own, it can reveal some weaknesses in a test suite. Like any
 other testing strategy, it is not a silver bullet, and the right testing
 strategies should be used for the right situations. In general, mutation testing
 excels at checking boundary conditions, which can be extremely useful, since

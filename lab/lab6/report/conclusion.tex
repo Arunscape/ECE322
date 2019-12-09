@@ -3,19 +3,19 @@ two applications written in Java. The first application is an Array library.
 This was tested with the mutation testing strategy, using a library called
 PITest. 
 In general, mutation testing seems to be a useful tool for getting a feel for
-how rubust a testing suite is. By generating mutant code, and making sure the
+how robust a testing suite is. By generating mutant code, and making sure the
 mutants are caught and killed by the testing suite, we gain confidence in the
 robustness of the testing suite for each mutant killed. Like any other testing
 strategy, it is not a silver bullet, but I can see this technique being used as
 a `litmus test' of sorts to give an initial impression for how good a test suite
 is. After all, if your test suite does not catch the mutants, and the code base
 is later updated when a new feature is added for example and the feature
-inroduces a bug, the system likely will not work as expected. With a more robust
+introduces a bug, the system likely will not work as expected. With a more robust
 test suite, it is more likely that changes like this will be caught by the
 tests, and therefore won't be introduced to the system. Because computing
 mutants takes up a considerable amount of resources, I can see this technique
-working well for small to medium sized systems. I think that for larger systems,
-computing the mutants and running the test suites may be too time consuming.
+working well for small to medium-sized systems. I think that for larger systems,
+computing the mutants and running the test suites may be too time-consuming.
 
 We also tested a Math application for this lab using the regression testing
 strategy. In general, regression testing seems to be really useful for what it
@@ -30,10 +30,10 @@ new feature undid the previous fix.
 Overall, both mutation testing and regression testing techniques seem to be
 really useful and practical testing techniques. Mutation testing is more
 concerned with the quality of the test suite, while regression testing is
-concerned with not re-introducing old bugs, and to preent regression as the name
-suggests. I think that thest techniques should not be used alone, but rather
+concerned with not re-introducing old bugs, and to prevent regression as the name
+suggests. I think that these techniques should not be used alone, but rather
 together with other testing techniques learned over the course of the labs.
 Making sure your test suite is robust enough to catch small changes is
 important, as is the ability to automatically detect and prevent a regression
-when a new feature is added to an application. Used in compination with other
+when a new feature is added to an application. Used in combination with other
 testing techniques, these are very powerful. 
